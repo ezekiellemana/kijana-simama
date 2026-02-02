@@ -1,0 +1,16 @@
+name: kijana-simama
+region: nyc
+static_sites:
+  - name: kijana-simama-web
+    github:
+      repo: ezekiellemana/kijana-simama
+      branch: main
+      deploy_on_push: true
+    build_command: npm run build
+    output_dir: dist
+    source_dir: .
+    environment_slug: node-js
+    node_version: 20
+    routes:
+      - pattern: /*
+    catchall_document: index.html

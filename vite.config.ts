@@ -15,4 +15,6 @@ export default defineConfig({
       },
     },
   },
+  // Base URL - use '/' for root domain
+  base: "/",
 });
