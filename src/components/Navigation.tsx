@@ -1,7 +1,7 @@
 import { Menu, X, Globe } from "lucide-react";
 import { Logo } from "./Logo";
 import { Button } from "./ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface NavigationProps {
   currentPage: string;
@@ -17,31 +17,35 @@ export function Navigation({
   onLanguageToggle,
 }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   const translations = {
     en: {
-      home: "Home",
-      about: "About Us",
-      services: "Services",
-      campaigns: "Campaigns",
-      events: "Events",
-      gallery: "Gallery",
-      partners: "Partners",
-      donate: "Donate",
-      contact: "Contact",
-      faqs: "FAQs",
+      home: "Home", about: "About Us", services: "Services",
+      campaigns: "Campaigns", events: "Events", gallery: "Gallery",
+      partners: "Partners", donate: "Donate", contact: "Contact", faqs: "FAQs",
+      orgName: "Kijana Simama",
+      tagline: "Empowering Youth to Stand Tall",
     },
     sw: {
-      home: "Nyumbani",
-      about: "Kuhusu Sisi",
-      services: "Huduma",
-      campaigns: "Kampeni",
-      events: "Matukio",
-      gallery: "Picha",
-      partners: "Washirika",
-      donate: "Changia",
-      contact: "Wasiliana",
-      faqs: "Maswali",
+      home: "Nyumbani", about: "Kuhusu Sisi", services: "Huduma",
+      campaigns: "Kampeni", events: "Matukio", gallery: "Picha",
+      partners: "Washirika", donate: "Changia", contact: "Wasiliana", faqs: "Maswali",
+      orgName: "Kijana Simama",
+      tagline: "Kuwapa Nguvu Vijana Kusimama Wima",
     },
   };
 
@@ -59,145 +63,192 @@ export function Navigation({
     { id: "faqs", label: t.faqs },
   ];
 
+  const handleNavigate = (page: string) => {
+    onNavigate(page);
+    setMobileMenuOpen(false);
+  };
+
+  const gradientText: React.CSSProperties = {
+    background: "linear-gradient(135deg, #00f260 0%, #0575e6 50%, #1fa2ff 100%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+  };
+
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <div className="shrink-0">
-            <Logo />
-          </div>
+    <>
+      <nav
+        className={`sticky top-0 z-50 bg-white transition-all duration-300 ${
+          scrolled ? "shadow-lg border-b border-gray-100" : "border-b border-gray-200"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-24">
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => onNavigate(item.id)}
-                className={`px-3 py-2 rounded-md transition-colors ${
-                  currentPage === item.id
-                    ? "text-primary bg-blue-50"
-                    : "text-gray-700 hover:text-primary hover:bg-gray-50"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Right side buttons */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onLanguageToggle}
-              className="flex items-center gap-2"
-            >
-              <Globe className="w-4 h-4" />
-              {language === "en" ? "EN" : "SW"}
-            </Button>
-            <Button
-              onClick={() => onNavigate("donate")}
-              className="bg-secondary hover:bg-secondary/90"
-            >
-              {t.donate}
-            </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onLanguageToggle}
-              className="flex items-center gap-1"
-            >
-              <Globe className="w-4 h-4" />
-            </Button>
+            {/* Logo + org name */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-md text-gray-700 hover:bg-gray-100"
+              onClick={() => handleNavigate("home")}
+              className="shrink-0 flex items-center gap-3 focus:outline-none group"
             >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              <Logo size="medium" />
+              <div className="hidden md:flex flex-col items-start leading-snug">
+                <span
+                  className="text-lg font-extrabold tracking-tight"
+                  style={gradientText}
+                >
+                  {t.orgName}
+                </span>
+                <span className="text-xs font-medium text-gray-400 tracking-wide uppercase">
+                  {t.tagline}
+                </span>
+              </div>
             </button>
+
+            {/* Desktop nav */}
+            <div className="hidden lg:flex items-center gap-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavigate(item.id)}
+                  className={`
+                    px-3.5 py-1.5 text-sm font-medium rounded-full
+                    transition-all duration-200
+                    ${
+                      currentPage === item.id
+                        ? "bg-primary text-white shadow-sm shadow-primary/30"
+                        : "text-gray-600 hover:bg-gray-100 hover:text-primary"
+                    }
+                  `}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Right side */}
+            <div className="hidden lg:flex items-center gap-2">
+              <button
+                onClick={onLanguageToggle}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-primary border border-gray-200 hover:border-primary rounded-full transition-all duration-200"
+              >
+                <Globe className="w-3.5 h-3.5" />
+                {language === "en" ? "EN" : "SW"}
+              </button>
+              <Button
+                onClick={() => handleNavigate("donate")}
+                className="bg-secondary hover:bg-secondary/90 text-white rounded-full px-5 shadow-sm hover:shadow-md transition-all duration-200"
+              >
+                {t.donate}
+              </Button>
+            </div>
+
+            {/* Mobile right */}
+            <div className="lg:hidden flex items-center gap-1">
+              <button
+                onClick={onLanguageToggle}
+                className="p-2 rounded-full text-gray-600 hover:bg-gray-100 transition-colors"
+              >
+                <Globe className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 rounded-full text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                {mobileMenuOpen ? (
+                  <X className="w-5 h-5" />
+                ) : (
+                  <Menu className="w-5 h-5" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile menu overlay */}
-      {mobileMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden transition-opacity duration-300 ease-in-out"
-          onClick={() => setMobileMenuOpen(false)}
-        />
-      )}
+      {/* Overlay */}
+      <div
+        className={`fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden transition-opacity duration-300 ${
+          mobileMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setMobileMenuOpen(false)}
+      />
 
-      {/* Mobile menu sidebar */}
+      {/* Mobile sidebar */}
       <aside
-        className={`fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50 lg:hidden transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-72 bg-white z-50 lg:hidden flex flex-col
+          shadow-2xl transition-transform duration-300 ease-in-out ${
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex flex-col h-full">
-          {/* Sidebar Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <Logo />
-            <button
-              onClick={() => setMobileMenuOpen(false)}
-              className="p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Navigation Items */}
-          <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => {
-                  onNavigate(item.id);
-                  setMobileMenuOpen(false);
-                }}
-                className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                  currentPage === item.id
-                    ? "text-primary bg-blue-50 shadow-sm"
-                    : "text-gray-700 hover:bg-gray-50 hover:translate-x-1"
-                }`}
+        {/* Sidebar header */}
+        <div className="flex items-center justify-between px-5 py-5 border-b border-gray-100">
+          <div className="flex items-center gap-3">
+            <Logo size="medium" />
+            <div className="flex flex-col leading-snug">
+              <span
+                className="text-base font-extrabold tracking-tight"
+                style={gradientText}
               >
-                {item.label}
-              </button>
-            ))}
+                {t.orgName}
+              </span>
+              <span className="text-xs font-medium text-gray-400 tracking-wide uppercase">
+                {t.tagline}
+              </span>
+            </div>
           </div>
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="p-2 rounded-full text-gray-500 hover:bg-gray-100 transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
 
-          {/* Sidebar Footer */}
-          <div className="p-4 border-t border-gray-200 space-y-3">
-            <Button
-              variant="outline"
-              onClick={onLanguageToggle}
-              className="w-full flex items-center justify-center gap-2"
+        {/* Nav items */}
+        <div className="flex-1 overflow-y-auto py-4 px-3">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => handleNavigate(item.id)}
+              className={`
+                flex items-center w-full text-left px-4 py-2.5 mb-1
+                rounded-xl text-sm font-medium transition-all duration-200
+                ${
+                  currentPage === item.id
+                    ? "bg-primary text-white shadow-sm shadow-primary/20"
+                    : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                }
+              `}
             >
-              <Globe className="w-4 h-4" />
-              {language === "en"
-                ? "Switch to Swahili"
-                : "Badili kwa Kiingereza"}
-            </Button>
-            <Button
-              onClick={() => {
-                onNavigate("donate");
-                setMobileMenuOpen(false);
-              }}
-              className="w-full bg-secondary hover:bg-secondary/90"
-            >
-              {t.donate}
-            </Button>
-          </div>
+              <span
+                className={`w-1.5 h-1.5 rounded-full mr-3 shrink-0 ${
+                  currentPage === item.id ? "bg-white" : "bg-gray-300"
+                }`}
+              />
+              {item.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className="p-4 border-t border-gray-100 space-y-2">
+          <button
+            onClick={onLanguageToggle}
+            className="w-full flex items-center justify-center gap-2 py-2.5 px-4 text-sm font-medium text-gray-700 border border-gray-200 rounded-xl hover:border-primary hover:text-primary transition-all duration-200"
+          >
+            <Globe className="w-4 h-4" />
+            {language === "en" ? "Switch to Swahili" : "Badili kwa Kiingereza"}
+          </button>
+          <Button
+            onClick={() => handleNavigate("donate")}
+            className="w-full bg-secondary hover:bg-secondary/90 text-white rounded-xl"
+          >
+            {t.donate}
+          </Button>
         </div>
       </aside>
-    </nav>
+    </>
   );
 }

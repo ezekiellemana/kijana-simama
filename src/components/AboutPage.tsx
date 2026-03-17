@@ -1,8 +1,12 @@
 import { Award, Eye, Heart, Target } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
-import { Testimonials } from "./Testimonials";
 import aboutImage from "../assets/about.jpg";
+
+// Team photos — copy these from outputs to src/assets/team/
+import drSyangu from "../assets/team/dr_syangu.png";
+import drAgnes from "../assets/team/dr_agnes.jpeg";
+import drLaura from "../assets/team/dr_laura.jpeg";
 
 interface AboutPageProps {
   language: "en" | "sw";
@@ -16,7 +20,7 @@ export function AboutPage({ language }: AboutPageProps) {
       story: {
         title: "Our Story",
         content:
-          'Founded in 2025, Kijana Simama emerged from a commitment to empower in-school adolescents across Tanzania. Created in response to growing challenges in mental health, sexual and reproductive health, and life skills, the initiative equips young people with the knowledge and confidence they need to thrive. Our name, "Kijana Simama", meaning "Youth, Stand Tall", reflects our belief that every young person has the potential to rise, make responsible decisions, and contribute positively to their communities. Guided by our vision of a generation of resilient, informed, and empowered youth, we work to nurture personal growth, strengthen wellbeing, and build future leaders.',
+          'Founded in 2025, Kijana Simama emerged from a commitment to empower in-school adolescents across Tanzania. Created in response to growing challenges in mental health, sexual and reproductive health, and life skills, the initiative equips young people with the knowledge and confidence they need to thrive. Our name, "Kijana Simama", meaning "Youth, Stand Tall", reflects our belief that every young person has the potential to rise, make responsible decisions, and contribute positively to their communities.',
       },
       vision: {
         title: "Our Vision",
@@ -55,27 +59,28 @@ export function AboutPage({ language }: AboutPageProps) {
       },
       team: {
         title: "Our Team",
-        subtitle: "Meet the dedicated individuals behind Kijana Simama",
+        subtitle: "Meet the founders behind Kijana Simama",
         members: [
           {
-            name: "Dr. Amina Ochieng",
-            role: "Executive Director",
-            bio: "With over 15 years in youth development, Dr. Ochieng leads our strategic vision.",
+            name: "Dr. Syangu E. Mkony",
+            role: "Founder",
+            credential: "Psychiatrist & Public Health Specialist",
+            bio: "Dr. Syangu Mkony is dedicated to advancing adolescent mental health, sexual and reproductive health, and psychosocial wellbeing through school- and community-based interventions in Tanzania. Through Kijana Simama, she champions youth empowerment, early talent nurturing, and resilient, healthy futures for young people.",
+            photo: drSyangu,
           },
           {
-            name: "James Mutua",
-            role: "Programs Director",
-            bio: "James oversees all our educational and mentorship initiatives across communities.",
+            name: "Dr. Agnes Kosia",
+            role: "Founder",
+            credential: "Public Health Specialist, PhD",
+            bio: "Dr. Agnes Kosia is a Public Health Specialist with over 12 years of experience in maternal and child health, adolescent sexual and reproductive health, gender-based violence prevention, and community health programs. She brings strong expertise in youth-centered programming, research, and public health advocacy.",
+            photo: drAgnes,
           },
           {
-            name: "Sarah Wanjiru",
-            role: "Community Engagement Manager",
-            bio: "Sarah builds partnerships and strengthens our relationships with local communities.",
-          },
-          {
-            name: "David Kimani",
-            role: "Operations Manager",
-            bio: "David ensures efficient delivery of our programs and manages organizational operations.",
+            name: "Dr. Laura Urasa",
+            role: "Founder",
+            credential: "Public Health & SRH Specialist",
+            bio: "Dr. Laura Urasa is a Senior Medical Doctor with over 13 years of clinical experience in mental health and psychiatry. She is also a public health professional with expertise in Sexual and Reproductive Health Policy and Programming, applying her experience to strengthen school- and community-based interventions.",
+            photo: drLaura,
           },
         ],
       },
@@ -96,7 +101,7 @@ export function AboutPage({ language }: AboutPageProps) {
       story: {
         title: "Hadithi Yetu",
         content:
-          'Ilianzishwa mnamo 2025, Kijana Simama ilitokana na dhamira ya kuwapa nguvu wanafunzi vijana kote Tanzania. Iliundwa kwa kujibu changamoto zinazokua katika afya ya akili, afya ya uzazi na uzazi, na ujuzi wa maisha, mpango huu unawapa vijana maarifa na ujasiri wanaohitaji kustawi. Jina letu, "Kijana Simama", linamaanisha "Kijana, Simama Wima", linaonyesha imani yetu kwamba kila kijana ana uwezo wa kusimama, kufanya maamuzi yenye uwajibikaji, na kuchangia vyema katika jamii zao. Tukiongozwa na dira yetu ya kizazi cha vijana wenye ustahimilivu, taarifa, na nguvu, tunafanya kazi kuendeleza ukuaji wa kibinafsi, kuimarisha ustawi, na kujenga viongozi wa kesho.',
+          'Ilianzishwa mnamo 2025, Kijana Simama ilitokana na dhamira ya kuwapa nguvu wanafunzi vijana kote Tanzania. Iliundwa kwa kujibu changamoto zinazokua katika afya ya akili, afya ya uzazi na uzazi, na ujuzi wa maisha, mpango huu unawapa vijana maarifa na ujasiri wanaohitaji kustawi. Jina letu, "Kijana Simama", linamaanisha "Kijana, Simama Wima", linaonyesha imani yetu kwamba kila kijana ana uwezo wa kusimama, kufanya maamuzi yenye uwajibikaji, na kuchangia vyema katika jamii zao.',
       },
       vision: {
         title: "Dira Yetu",
@@ -135,27 +140,28 @@ export function AboutPage({ language }: AboutPageProps) {
       },
       team: {
         title: "Timu Yetu",
-        subtitle: "Kutana na watu waliojitoa nyuma ya Kijana Simama",
+        subtitle: "Kutana na waanzilishi wa Kijana Simama",
         members: [
           {
-            name: "Dkt. Amina Ochieng",
-            role: "Mkurugenzi Mtendaji",
-            bio: "Na uzoefu wa zaidi ya miaka 15 katika maendeleo ya vijana, Dkt. Ochieng anaongoza dira yetu ya kimkakati.",
+            name: "Dkt. Syangu E. Mkony",
+            role: "Mwanzilishi",
+            credential: "Daktari wa Akili & Mtaalamu wa Afya ya Umma",
+            bio: "Dkt. Syangu Mkony amejitolea kuendeleza afya ya akili ya vijana, afya ya uzazi na uzazi, na ustawi wa kisaikolojia kupitia mipango ya shule na jamii Tanzania. Kupitia Kijana Simama, anaunga mkono uwezeshaji wa vijana na mustakabali wenye afya.",
+            photo: drSyangu,
           },
           {
-            name: "James Mutua",
-            role: "Mkurugenzi wa Programu",
-            bio: "James anasimamia programu zetu zote za elimu na ushauri katika jamii.",
+            name: "Dkt. Agnes Kosia",
+            role: "Mwanzilishi",
+            credential: "Mtaalamu wa Afya ya Umma, PhD",
+            bio: "Dkt. Agnes Kosia ni Mtaalamu wa Afya ya Umma mwenye uzoefu wa zaidi ya miaka 12 katika afya ya mama na mtoto, afya ya uzazi wa vijana, kuzuia ukatili wa kijinsia, na mipango ya afya ya jamii. Analeta utaalamu mkubwa katika programu zinazolenga vijana.",
+            photo: drAgnes,
           },
           {
-            name: "Sarah Wanjiru",
-            role: "Meneja wa Ushiriki wa Jamii",
-            bio: "Sarah anajenga ushirikiano na kuimarisha mahusiano yetu na jamii za mitaa.",
-          },
-          {
-            name: "David Kimani",
-            role: "Meneja wa Uendeshaji",
-            bio: "David anahakikisha utoaji wa ufanisi wa programu zetu na kusimamia shughuli za shirika.",
+            name: "Dkt. Laura Urasa",
+            role: "Mwanzilishi",
+            credential: "Mtaalamu wa Afya ya Umma & SRH",
+            bio: "Dkt. Laura Urasa ni Daktari Mkuu mwenye uzoefu wa zaidi ya miaka 13 wa kimatibabu katika afya ya akili na magonjwa ya akili. Pia ni mtaalamu wa afya ya umma mwenye utaalamu katika Sera na Programu za Afya ya Uzazi na Uzazi.",
+            photo: drLaura,
           },
         ],
       },
@@ -174,7 +180,6 @@ export function AboutPage({ language }: AboutPageProps) {
 
   const t = translations[language];
 
-  // Animation variants
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -182,11 +187,7 @@ export function AboutPage({ language }: AboutPageProps) {
   };
 
   const staggerContainer = {
-    animate: {
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
+    animate: { transition: { staggerChildren: 0.15 } },
   };
 
   const scaleIn = {
@@ -197,7 +198,8 @@ export function AboutPage({ language }: AboutPageProps) {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+
+      {/* Hero */}
       <section className="relative bg-linear-to-br from-primary to-blue-600 text-white py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1
@@ -271,12 +273,8 @@ export function AboutPage({ language }: AboutPageProps) {
                   >
                     <Eye className="w-8 h-8 text-primary" />
                   </motion.div>
-                  <h3 className="text-2xl mb-4 text-primary">
-                    {t.vision.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {t.vision.content}
-                  </p>
+                  <h3 className="text-2xl mb-4 text-primary">{t.vision.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{t.vision.content}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -290,12 +288,8 @@ export function AboutPage({ language }: AboutPageProps) {
                   >
                     <Target className="w-8 h-8 text-secondary" />
                   </motion.div>
-                  <h3 className="text-2xl mb-4 text-primary">
-                    {t.mission.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {t.mission.content}
-                  </p>
+                  <h3 className="text-2xl mb-4 text-primary">{t.mission.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{t.mission.content}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -331,18 +325,10 @@ export function AboutPage({ language }: AboutPageProps) {
                       transition={{ duration: 0.5 }}
                       className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4"
                     >
-                      {index === 0 && (
-                        <Heart className="w-8 h-8 text-secondary" />
-                      )}
-                      {index === 1 && (
-                        <Award className="w-8 h-8 text-secondary" />
-                      )}
-                      {index === 2 && (
-                        <Target className="w-8 h-8 text-secondary" />
-                      )}
-                      {index === 3 && (
-                        <Eye className="w-8 h-8 text-secondary" />
-                      )}
+                      {index === 0 && <Heart className="w-8 h-8 text-secondary" />}
+                      {index === 1 && <Award className="w-8 h-8 text-secondary" />}
+                      {index === 2 && <Target className="w-8 h-8 text-secondary" />}
+                      {index === 3 && <Eye className="w-8 h-8 text-secondary" />}
                     </motion.div>
                     <h3 className="text-xl mb-3 text-primary">{value.title}</h3>
                     <p className="text-gray-600">{value.description}</p>
@@ -354,7 +340,7 @@ export function AboutPage({ language }: AboutPageProps) {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Team Section — 3 founders with real photos */}
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -364,32 +350,52 @@ export function AboutPage({ language }: AboutPageProps) {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl mb-4 text-primary">
-              {t.team.title}
-            </h2>
+            <h2 className="text-3xl md:text-4xl mb-4 text-primary">{t.team.title}</h2>
             <p className="text-xl text-gray-600">{t.team.subtitle}</p>
           </motion.div>
+
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             {t.team.members.map((member, index) => (
               <motion.div key={index} variants={scaleIn}>
-                <Card className="text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full">
-                  <CardContent className="p-6">
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-24 h-24 bg-linear-to-br from-primary to-secondary rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl"
+                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full overflow-hidden">
+                  {/* Photo */}
+                  <div className="relative h-64 overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10">
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                    {/* Gradient overlay at bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
+                  </div>
+
+                  <CardContent className="p-6 pt-4">
+                    {/* Role badge */}
+                    <span className="inline-block px-3 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary mb-3">
+                      {member.role}
+                    </span>
+
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">
+                      {member.name}
+                    </h3>
+                    <p
+                      className="text-sm font-medium mb-3"
+                      style={{
+                        background: "linear-gradient(135deg, #00f260 0%, #0575e6 50%, #1fa2ff 100%)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                      }}
                     >
-                      {member.name.charAt(0)}
-                    </motion.div>
-                    <h3 className="text-xl mb-1 text-primary">{member.name}</h3>
-                    <p className="text-secondary mb-3">{member.role}</p>
-                    <p className="text-sm text-gray-600">{member.bio}</p>
+                      {member.credential}
+                    </p>
+                    <p className="text-sm text-gray-600 leading-relaxed">{member.bio}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -397,9 +403,6 @@ export function AboutPage({ language }: AboutPageProps) {
           </motion.div>
         </div>
       </section>
-
-      {/* Testimonials Section */}
-      <Testimonials language={language} variant="compact" showTitle={true} />
 
       {/* Impact Stats */}
       <section className="py-16 bg-linear-to-r from-primary to-blue-600 text-white">

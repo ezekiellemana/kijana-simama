@@ -1,11 +1,14 @@
+import type { CSSProperties } from "react";
+import type { LucideIcon } from "lucide-react";
 import {
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
+  FacebookIcon,
+  TwitterIcon,
+  InstagramIcon,
+  LinkedinIcon,
   Mail,
   Phone,
   MapPin,
+  ArrowRight,
 } from "lucide-react";
 import { Logo } from "./Logo";
 
@@ -14,10 +17,46 @@ interface FooterProps {
   onNavigate: (page: string) => void;
 }
 
+interface NavLink {
+  id: string;
+  label: string;
+}
+
+interface SocialLink {
+  icon: LucideIcon;
+  href: string;
+  label: string;
+}
+
+interface Translations {
+  aboutText: string;
+  quickLinks: string;
+  home: string;
+  aboutUs: string;
+  services: string;
+  campaigns: string;
+  events: string;
+  gallery: string;
+  partners: string;
+  faqs: string;
+  getInvolved: string;
+  donate: string;
+  volunteer: string;
+  partner: string;
+  contact: string;
+  contactUs: string;
+  rights: string;
+  privacy: string;
+  terms: string;
+  address: string;
+  phone: string;
+  email: string;
+  tagline: string;
+}
+
 export function Footer({ language, onNavigate }: FooterProps) {
-  const translations = {
+  const translations: Record<"en" | "sw", Translations> = {
     en: {
-      about: "About Kijana Simama",
       aboutText:
         "Empowering youth to stand up and create positive change in their communities through education, mentorship, and opportunity.",
       quickLinks: "Quick Links",
@@ -26,19 +65,24 @@ export function Footer({ language, onNavigate }: FooterProps) {
       services: "Services",
       campaigns: "Campaigns",
       events: "Events",
-      contact: "Contact",
+      gallery: "Gallery",
+      partners: "Partners",
+      faqs: "FAQs",
       getInvolved: "Get Involved",
       donate: "Make a Donation",
       volunteer: "Volunteer",
       partner: "Become a Partner",
-      newsletter: "Newsletter",
+      contact: "Contact",
       contactUs: "Contact Us",
       rights: "All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
+      address: "Dar es Salaam, Tanzania",
+      phone: "+255 700 000 000",
+      email: "info@kijanasimama.org",
+      tagline: "Empowering Youth to Stand Tall",
     },
     sw: {
-      about: "Kuhusu Kijana Simama",
       aboutText:
         "Kuwapa nguvu vijana kusimama na kuunda mabadiliko mazuri katika jamii zao kupitia elimu, ushauri, na fursa.",
       quickLinks: "Viungo vya Haraka",
@@ -47,169 +91,250 @@ export function Footer({ language, onNavigate }: FooterProps) {
       services: "Huduma",
       campaigns: "Kampeni",
       events: "Matukio",
-      contact: "Wasiliana",
+      gallery: "Picha",
+      partners: "Washirika",
+      faqs: "Maswali",
       getInvolved: "Jiunga Nasi",
       donate: "Toa Mchango",
       volunteer: "Kuwa Mtoa Muda",
       partner: "Kuwa Mshirika",
-      newsletter: "Jarida",
+      contact: "Wasiliana",
       contactUs: "Wasiliana Nasi",
       rights: "Haki zote zimehifadhiwa.",
       privacy: "Sera ya Faragha",
       terms: "Masharti ya Huduma",
+      address: "Dar es Salaam, Tanzania",
+      phone: "+255 700 000 000",
+      email: "info@kijanasimama.org",
+      tagline: "Kuwapa Nguvu Vijana Kusimama Wima",
     },
   };
 
-  const t = translations[language];
+  const t: Translations = translations[language];
+
+  const gradientText: CSSProperties = {
+    background:
+      "linear-gradient(135deg, #00f260 0%, #0575e6 50%, #1fa2ff 100%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+  };
+
+  const quickLinks: NavLink[] = [
+    { id: "home", label: t.home },
+    { id: "about", label: t.aboutUs },
+    { id: "services", label: t.services },
+    { id: "campaigns", label: t.campaigns },
+    { id: "events", label: t.events },
+    { id: "gallery", label: t.gallery },
+    { id: "partners", label: t.partners },
+    { id: "faqs", label: t.faqs },
+  ];
+
+  const involvedLinks: NavLink[] = [
+    { id: "donate", label: t.donate },
+    { id: "contact", label: t.volunteer },
+    { id: "contact", label: t.partner },
+    { id: "contact", label: t.contact },
+  ];
+
+  const socials: SocialLink[] = [
+    { icon: FacebookIcon, href: "#", label: "Facebook" },
+    { icon: TwitterIcon, href: "#", label: "Twitter" },
+    { icon: InstagramIcon, href: "#", label: "Instagram" },
+    { icon: LinkedinIcon, href: "#", label: "LinkedIn" },
+  ];
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* About Section */}
-          <div className="lg:col-span-1">
-            <Logo variant="white" className="mb-4" />
-            <p className="text-sm leading-relaxed">{t.aboutText}</p>
-            <div className="flex gap-3 mt-6">
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
+    <footer className="relative bg-gray-950 text-gray-400 overflow-hidden">
+      {/* Top gradient accent bar */}
+      <div
+        className="h-1 w-full"
+        style={{
+          background:
+            "linear-gradient(90deg, #00f260 0%, #0575e6 50%, #1fa2ff 100%)",
+        }}
+      />
+
+      {/* Background glows */}
+      <div
+        className="absolute top-0 left-0 w-96 h-96 rounded-full opacity-5 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, #0575e6, transparent 70%)",
+          transform: "translate(-30%, -30%)",
+        }}
+      />
+      <div
+        className="absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-5 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, #00f260, transparent 70%)",
+          transform: "translate(30%, 30%)",
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-12">
+          {/* Brand Column */}
+          <div className="lg:col-span-4 flex flex-col gap-5">
+            <button
+              onClick={() => onNavigate("home")}
+              className="flex items-center gap-4 group w-fit focus:outline-none"
+            >
+              <Logo size="medium" />
+              <div className="flex flex-col items-start leading-snug">
+                <span
+                  className="text-xl font-extrabold tracking-tight"
+                  style={gradientText}
+                >
+                  Kijana Simama
+                </span>
+                <span className="text-xs text-gray-500 uppercase tracking-widest font-medium">
+                  {t.tagline}
+                </span>
+              </div>
+            </button>
+
+            <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
+              {t.aboutText}
+            </p>
+
+            {/* Social icons */}
+            <div className="flex gap-2 mt-1">
+              {socials.map((social: SocialLink) => {
+                const Icon: LucideIcon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="w-9 h-9 rounded-full bg-gray-800 hover:bg-primary flex items-center justify-center transition-all duration-200 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                  >
+                    <Icon className="w-4 h-4 text-gray-300" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-white mb-4">{t.quickLinks}</h3>
-            <ul className="space-y-2">
-              <li>
-                <button
-                  onClick={() => onNavigate("home")}
-                  className="hover:text-secondary transition-colors"
-                >
-                  {t.home}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate("about")}
-                  className="hover:text-secondary transition-colors"
-                >
-                  {t.aboutUs}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate("services")}
-                  className="hover:text-secondary transition-colors"
-                >
-                  {t.services}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate("campaigns")}
-                  className="hover:text-secondary transition-colors"
-                >
-                  {t.campaigns}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate("events")}
-                  className="hover:text-secondary transition-colors"
-                >
-                  {t.events}
-                </button>
-              </li>
+          <div className="lg:col-span-3">
+            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
+              {t.quickLinks}
+            </h3>
+            <ul className="space-y-2.5">
+              {quickLinks.map((link: NavLink) => (
+                <li key={link.id + link.label}>
+                  <button
+                    onClick={() => onNavigate(link.id)}
+                    className="group flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  >
+                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-secondary" />
+                    {link.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Get Involved */}
-          <div>
-            <h3 className="text-white mb-4">{t.getInvolved}</h3>
-            <ul className="space-y-2">
-              <li>
-                <button
-                  onClick={() => onNavigate("donate")}
-                  className="hover:text-secondary transition-colors"
-                >
-                  {t.donate}
-                </button>
-              </li>
-              <li>
-                <a href="#" className="hover:text-secondary transition-colors">
-                  {t.volunteer}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-secondary transition-colors">
-                  {t.partner}
-                </a>
-              </li>
+          <div className="lg:col-span-2">
+            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
+              {t.getInvolved}
+            </h3>
+            <ul className="space-y-2.5">
+              {involvedLinks.map((link: NavLink) => (
+                <li key={link.id + link.label}>
+                  <button
+                    onClick={() => onNavigate(link.id)}
+                    className="group flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  >
+                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-secondary" />
+                    {link.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h3 className="text-white mb-4">{t.contactUs}</h3>
-            <ul className="space-y-3">
+          <div className="lg:col-span-3">
+            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
+              {t.contactUs}
+            </h3>
+            <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                <span className="text-sm">Dar es Salaam, Tanzania</span>
+                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
+                  <MapPin className="w-4 h-4 text-secondary" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-0.5">
+                    Location
+                  </p>
+                  <span className="text-sm text-gray-300">{t.address}</span>
+                </div>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                <span className="text-sm">+255 700 000 000</span>
+                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4 text-secondary" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-0.5">
+                    Phone
+                  </p>
+                  <a
+                    href={`tel:${t.phone}`}
+                    className="text-sm text-gray-300 hover:text-white transition-colors"
+                  >
+                    {t.phone}
+                  </a>
+                </div>
               </li>
               <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                <span className="text-sm">info@kijanasimama.org</span>
+                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
+                  <Mail className="w-4 h-4 text-secondary" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-0.5">
+                    Email
+                  </p>
+                  <a
+                    href={`mailto:${t.email}`}
+                    className="text-sm text-gray-300 hover:text-white transition-colors"
+                  >
+                    {t.email}
+                  </a>
+                </div>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm">
-              © {new Date().getFullYear()} Kijana Simama. {t.rights}
-            </p>
-            <div className="flex gap-6">
-              <a
-                href="#"
-                className="text-sm hover:text-secondary transition-colors"
-              >
-                {t.privacy}
-              </a>
-              <a
-                href="#"
-                className="text-sm hover:text-secondary transition-colors"
-              >
-                {t.terms}
-              </a>
-            </div>
+        {/* Divider */}
+        <div className="h-px bg-gray-800 mb-6" />
+
+        {/* Bottom bar */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-xs text-gray-500">
+            © {new Date().getFullYear()}{" "}
+            <span className="font-semibold" style={gradientText}>
+              Kijana Simama
+            </span>
+            . {t.rights}
+          </p>
+          <div className="flex items-center gap-1 text-xs text-gray-500">
+            <a
+              href="#"
+              className="hover:text-white transition-colors px-3 py-1 rounded-full hover:bg-gray-800"
+            >
+              {t.privacy}
+            </a>
+            <span className="text-gray-700">·</span>
+            <a
+              href="#"
+              className="hover:text-white transition-colors px-3 py-1 rounded-full hover:bg-gray-800"
+            >
+              {t.terms}
+            </a>
           </div>
         </div>
       </div>
