@@ -172,23 +172,23 @@ export function Footer({ language, onNavigate }: FooterProps) {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-12">
+      <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 pt-10 sm:pt-12 md:pt-14 pb-6 sm:pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 mb-10 sm:mb-12">
           {/* Brand Column */}
-          <div className="lg:col-span-4 flex flex-col gap-5">
+          <div className="lg:col-span-4 flex flex-col gap-4 sm:gap-5">
             <button
               onClick={() => onNavigate("home")}
-              className="flex items-center gap-4 group w-fit focus:outline-none"
+              className="flex items-center gap-3 sm:gap-4 group w-fit focus:outline-none"
             >
-              <Logo size="medium" />
+              <Logo size="small" />
               <div className="flex flex-col items-start leading-snug">
                 <span
-                  className="text-xl font-extrabold tracking-tight"
+                  className="text-lg sm:text-xl font-extrabold tracking-tight"
                   style={gradientText}
                 >
                   Kijana Simama
                 </span>
-                <span className="text-xs text-gray-500 uppercase tracking-widest font-medium">
+                <span className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-medium">
                   {t.tagline}
                 </span>
               </div>
@@ -217,11 +217,11 @@ export function Footer({ language, onNavigate }: FooterProps) {
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-3">
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
+          <div className="sm:col-span-1 lg:col-span-3">
+            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4 sm:mb-5">
               {t.quickLinks}
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2 sm:space-y-2.5">
               {quickLinks.map((link: NavLink) => (
                 <li key={link.id + link.label}>
                   <button
@@ -237,11 +237,11 @@ export function Footer({ language, onNavigate }: FooterProps) {
           </div>
 
           {/* Get Involved */}
-          <div className="lg:col-span-2">
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
+          <div className="sm:col-span-1 lg:col-span-2">
+            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4 sm:mb-5">
               {t.getInvolved}
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2 sm:space-y-2.5">
               {involvedLinks.map((link: NavLink) => (
                 <li key={link.id + link.label}>
                   <button
@@ -257,12 +257,12 @@ export function Footer({ language, onNavigate }: FooterProps) {
           </div>
 
           {/* Contact Info */}
-          <div className="lg:col-span-3">
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
+          <div className="sm:col-span-2 lg:col-span-3">
+            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4 sm:mb-5">
               {t.contactUs}
             </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
+            <ul className="space-y-3 sm:space-y-4">
+              <li className="flex items-start gap-2 sm:gap-3">
                 <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
                   <MapPin className="w-4 h-4 text-secondary" />
                 </div>
@@ -273,7 +273,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
                   <span className="text-sm text-gray-300">{t.address}</span>
                 </div>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-2 sm:gap-3">
                 <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
                   <Phone className="w-4 h-4 text-secondary" />
                 </div>
@@ -289,7 +289,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
                   </a>
                 </div>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-2 sm:gap-3">
                 <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
                   <Mail className="w-4 h-4 text-secondary" />
                 </div>
@@ -313,7 +313,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
         <div className="h-px bg-gray-800 mb-6" />
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-3">
           <p className="text-xs text-gray-500">
             © {new Date().getFullYear()}{" "}
             <span className="font-semibold" style={gradientText}>

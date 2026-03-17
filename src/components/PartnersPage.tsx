@@ -450,8 +450,8 @@ export function PartnersPage({ language, onNavigate }: PartnersPageProps) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-linear-to-br from-primary to-blue-700 text-white py-20 animate-in fade-in duration-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-linear-to-br from-primary to-blue-700 text-white py-12 sm:py-16 md:py-20 animate-in fade-in duration-700">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <Handshake className="w-16 h-16 mx-auto mb-6 animate-in zoom-in duration-700 delay-200" />
             <h1 className="text-4xl md:text-6xl mb-6 animate-in slide-in-from-bottom-4 duration-700 delay-300">
@@ -468,9 +468,9 @@ export function PartnersPage({ language, onNavigate }: PartnersPageProps) {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-linear-to-br from-primary/5 to-secondary/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 bg-linear-to-br from-primary/5 to-secondary/5">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {Object.values(t.stats).map((stat, index) => (
               <Card
                 key={index}
@@ -490,9 +490,9 @@ export function PartnersPage({ language, onNavigate }: PartnersPageProps) {
       </section>
 
       {/* Partner Categories */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl text-center text-gray-900 mb-12">
+      <section className="py-12 sm:py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl text-center text-gray-900 mb-8 sm:mb-10 md:mb-12">
             {t.categories.title}
           </h2>
 
@@ -644,9 +644,9 @@ export function PartnersPage({ language, onNavigate }: PartnersPageProps) {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-linear-to-br from-gray-50 to-blue-50/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl text-center text-gray-900 mb-12">
+      <section className="py-12 sm:py-16 md:py-20 bg-linear-to-br from-gray-50 to-blue-50/50">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl text-center text-gray-900 mb-8 sm:mb-10 md:mb-12">
             {t.benefits.title}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -673,9 +673,9 @@ export function PartnersPage({ language, onNavigate }: PartnersPageProps) {
       </section>
 
       {/* Partnership Options */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+      <section className="py-12 sm:py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12">
             <h2 className="text-3xl md:text-4xl text-gray-900 mb-4">
               {t.partnership.title}
             </h2>
@@ -709,9 +709,9 @@ export function PartnersPage({ language, onNavigate }: PartnersPageProps) {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-linear-to-br from-primary/5 to-secondary/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl text-center text-gray-900 mb-12">
+      <section className="py-12 sm:py-16 md:py-20 bg-linear-to-br from-primary/5 to-secondary/5">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl text-center text-gray-900 mb-8 sm:mb-10 md:mb-12">
             {t.testimonials.title}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">

@@ -142,17 +142,19 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-linear-to-br from-primary to-blue-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl mb-4">{t.title}</h1>
+      <section className="bg-linear-to-br from-primary to-blue-600 text-white py-12 sm:py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4">
+            {t.title}
+          </h1>
           <p className="text-xl md:text-2xl text-blue-100">{t.subtitle}</p>
         </div>
       </section>
 
       {/* Contact Info & Form */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Information */}
             <div>
               <h2 className="text-3xl mb-6 text-primary">{t.info.title}</h2>

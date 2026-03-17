@@ -194,9 +194,9 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-linear-to-br from-secondary to-green-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center mb-4">
+      <section className="bg-linear-to-br from-secondary to-green-600 text-white py-12 sm:py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex items-center justify-center mb-3 sm:mb-4">
             <Heart className="w-12 h-12" />
           </div>
           <h1 className="text-4xl md:text-5xl mb-4 text-center">{t.title}</h1>
@@ -207,9 +207,9 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
       </section>
 
       {/* Impact Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl mb-4 text-center text-primary">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl mb-4 text-center text-primary">
             {t.impact.title}
           </h2>
           <p className="text-xl text-gray-600 text-center mb-12">
@@ -421,9 +421,9 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
       </section>
 
       {/* Other Ways to Support */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl mb-12 text-center text-primary">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl mb-8 sm:mb-10 md:mb-12 text-center text-primary">
             {t.otherWays.title}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

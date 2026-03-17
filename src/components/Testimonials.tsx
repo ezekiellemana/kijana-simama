@@ -165,8 +165,8 @@ export function Testimonials({
     variant === "compact" ? t.stories.slice(0, 3) : t.stories;
 
   return (
-    <div className="py-20 bg-linear-to-br from-primary/5 to-secondary/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-12 sm:py-16 md:py-20 bg-linear-to-br from-primary/5 to-secondary/5">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         {showTitle && (
           <div className="text-center mb-12 animate-in fade-in duration-700">
             <Quote className="w-12 h-12 text-primary mx-auto mb-4" />

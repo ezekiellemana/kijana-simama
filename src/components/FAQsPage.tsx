@@ -228,9 +228,9 @@ export function FAQsPage({ language }: FAQsPageProps) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-linear-to-br from-primary to-blue-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center mb-4">
+      <section className="bg-linear-to-br from-primary to-blue-600 text-white py-12 sm:py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex items-center justify-center mb-3 sm:mb-4">
             <HelpCircle className="w-12 h-12" />
           </div>
           <h1 className="text-4xl md:text-5xl mb-4 text-center">{t.title}</h1>

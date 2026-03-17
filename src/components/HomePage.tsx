@@ -187,7 +187,7 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
             className="w-full h-full object-cover"
           />
         </motion.div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
           <motion.div
             initial="initial"
             animate="animate"
@@ -196,20 +196,23 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
           >
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl md:text-6xl mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6"
             >
               {t.hero.title}
-              <span className="block text-secondary mt-2">
+              <span className="block text-secondary mt-1 sm:mt-2">
                 {t.hero.titleHighlight}
               </span>
             </motion.h1>
             <motion.p
               variants={fadeInUp}
-              className="text-xl md:text-2xl mb-8 text-gray-200"
+              className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-200"
             >
               {t.hero.subtitle}
             </motion.p>
-            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4"
+            >
               <Button
                 size="lg"
                 className="bg-secondary hover:bg-secondary/90 text-white transform hover:scale-105 transition-transform duration-200"
@@ -232,19 +235,19 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
       </section>
 
       {/* Mission Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="py-12 md:py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl mb-4 text-primary">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl mb-3 sm:mb-4 text-primary">
                 {t.mission.title}
               </h2>
-              <p className="text-xl text-secondary mb-6">
+              <p className="text-lg sm:text-xl text-secondary mb-4 sm:mb-6">
                 {t.mission.subtitle}
               </p>
               <p className="text-gray-600 leading-relaxed">
@@ -256,7 +259,7 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
-              className="relative h-96 rounded-lg overflow-hidden shadow-xl"
+              className="relative h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden shadow-xl"
             >
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1761666507437-9fb5a6ef7b0a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjB2b2x1bnRlZXJzJTIwaGVscGluZ3xlbnwxfHx8fDE3NjQyMjY2NjV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
@@ -269,14 +272,14 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
       </section>
 
       {/* Impact Stats */}
-      <section className="py-16 bg-linear-to-r from-primary to-blue-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-16 bg-linear-to-r from-primary to-blue-600 text-white">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl text-center mb-12"
+            className="text-2xl sm:text-3xl md:text-4xl text-center mb-8 sm:mb-10 md:mb-12"
           >
             {t.impact.title}
           </motion.h2>
@@ -285,88 +288,98 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4"
           >
             <motion.div
               variants={scaleIn}
               whileHover={{ scale: 1.05 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl mb-2 text-secondary">
+              <div className="text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2 text-secondary">
                 {t.impact.youthCount}
               </div>
-              <div className="text-lg">{t.impact.youth}</div>
+              <div className="text-sm sm:text-base lg:text-lg">
+                {t.impact.youth}
+              </div>
             </motion.div>
             <motion.div
               variants={scaleIn}
               whileHover={{ scale: 1.05 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl mb-2 text-secondary">
+              <div className="text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2 text-secondary">
                 {t.impact.programsCount}
               </div>
-              <div className="text-lg">{t.impact.programs}</div>
+              <div className="text-sm sm:text-base lg:text-lg">
+                {t.impact.programs}
+              </div>
             </motion.div>
             <motion.div
               variants={scaleIn}
               whileHover={{ scale: 1.05 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl mb-2 text-secondary">
+              <div className="text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2 text-secondary">
                 {t.impact.communitiesCount}
               </div>
-              <div className="text-lg">{t.impact.communities}</div>
+              <div className="text-sm sm:text-base lg:text-lg">
+                {t.impact.communities}
+              </div>
             </motion.div>
             <motion.div
               variants={scaleIn}
               whileHover={{ scale: 1.05 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl mb-2 text-secondary">
+              <div className="text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2 text-secondary">
                 {t.impact.volunteersCount}
               </div>
-              <div className="text-lg">{t.impact.volunteers}</div>
+              <div className="text-sm sm:text-base lg:text-lg">
+                {t.impact.volunteers}
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Featured Campaigns */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-10 md:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl mb-4 text-primary">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl mb-3 sm:mb-4 text-primary">
               {t.campaigns.title}
             </h2>
-            <p className="text-xl text-gray-600">{t.campaigns.subtitle}</p>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600">
+              {t.campaigns.subtitle}
+            </p>
           </motion.div>
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-10 md:mb-12"
           >
             <motion.div variants={fadeInUp}>
               <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full">
-                <div className="h-48 overflow-hidden">
+                <div className="h-40 sm:h-48 overflow-hidden">
                   <ImageWithFallback
                     src="https://images.unsplash.com/photo-1759922378123-a1f4f1e39bae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb24lMjBzdHVkZW50cyUyMGxlYXJuaW5nfGVufDF8fHx8MTc2NDI0NTExNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                     alt="Leadership"
                     className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl mb-3 text-primary">
+                <CardContent className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl mb-2 sm:mb-3 text-primary">
                     {t.campaigns.campaign1.title}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-sm sm:text-base text-gray-600">
                     {t.campaigns.campaign1.description}
                   </p>
                 </CardContent>
@@ -375,18 +388,18 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
 
             <motion.div variants={fadeInUp}>
               <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full">
-                <div className="h-48 overflow-hidden">
+                <div className="h-40 sm:h-48 overflow-hidden">
                   <ImageWithFallback
                     src="https://images.unsplash.com/photo-1759922378123-a1f4f1e39bae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb24lMjBzdHVkZW50cyUyMGxlYXJuaW5nfGVufDF8fHx8MTc2NDI0NTExNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                     alt="Education"
                     className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl mb-3 text-primary">
+                <CardContent className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl mb-2 sm:mb-3 text-primary">
                     {t.campaigns.campaign2.title}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-sm sm:text-base text-gray-600">
                     {t.campaigns.campaign2.description}
                   </p>
                 </CardContent>
@@ -395,18 +408,18 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
 
             <motion.div variants={fadeInUp}>
               <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full">
-                <div className="h-48 overflow-hidden">
+                <div className="h-40 sm:h-48 overflow-hidden">
                   <ImageWithFallback
                     src="https://images.unsplash.com/photo-1559315558-6fbcbd3cf22d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIweY91dGglMjBlbXBvd2VybWVudHxlbnwxfHx8fDE3NjQyNTg3Njl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                     alt="Skills Development"
                     className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl mb-3 text-primary">
+                <CardContent className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl mb-2 sm:mb-3 text-primary">
                     {t.campaigns.campaign3.title}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-sm sm:text-base text-gray-600">
                     {t.campaigns.campaign3.description}
                   </p>
                 </CardContent>
@@ -434,14 +447,14 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
       </section>
 
       {/* Core Values */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl text-center mb-12 text-primary"
+            className="text-2xl sm:text-3xl md:text-4xl text-center mb-8 sm:mb-10 md:mb-12 text-primary"
           >
             {t.values.title}
           </motion.h2>
@@ -450,54 +463,64 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
           >
             <motion.div
               variants={scaleIn}
               whileHover={{ y: -10 }}
-              className="text-center"
+              className="text-center p-4 sm:p-6"
             >
-              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transform hover:rotate-12 transition-transform duration-300">
-                <Users className="w-8 h-8 text-primary" />
+              <div className="bg-primary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
+                <Users className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
               </div>
-              <h3 className="text-xl mb-2">{t.values.empowerment}</h3>
-              <p className="text-gray-600">{t.values.empowermentDesc}</p>
+              <h3 className="text-lg sm:text-xl mb-2">
+                {t.values.empowerment}
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600">
+                {t.values.empowermentDesc}
+              </p>
             </motion.div>
 
             <motion.div
               variants={scaleIn}
               whileHover={{ y: -10 }}
-              className="text-center"
+              className="text-center p-4 sm:p-6"
             >
-              <div className="bg-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transform hover:rotate-12 transition-transform duration-300">
-                <Target className="w-8 h-8 text-secondary" />
+              <div className="bg-secondary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
+                <Target className="w-7 h-7 sm:w-8 sm:h-8 text-secondary" />
               </div>
-              <h3 className="text-xl mb-2">{t.values.integrity}</h3>
-              <p className="text-gray-600">{t.values.integrityDesc}</p>
+              <h3 className="text-lg sm:text-xl mb-2">{t.values.integrity}</h3>
+              <p className="text-sm sm:text-base text-gray-600">
+                {t.values.integrityDesc}
+              </p>
             </motion.div>
 
             <motion.div
               variants={scaleIn}
               whileHover={{ y: -10 }}
-              className="text-center"
+              className="text-center p-4 sm:p-6"
             >
-              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transform hover:rotate-12 transition-transform duration-300">
-                <Heart className="w-8 h-8 text-primary" />
+              <div className="bg-primary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
+                <Heart className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
               </div>
-              <h3 className="text-xl mb-2">{t.values.community}</h3>
-              <p className="text-gray-600">{t.values.communityDesc}</p>
+              <h3 className="text-lg sm:text-xl mb-2">{t.values.community}</h3>
+              <p className="text-sm sm:text-base text-gray-600">
+                {t.values.communityDesc}
+              </p>
             </motion.div>
 
             <motion.div
               variants={scaleIn}
               whileHover={{ y: -10 }}
-              className="text-center"
+              className="text-center p-4 sm:p-6"
             >
-              <div className="bg-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transform hover:rotate-12 transition-transform duration-300">
-                <Award className="w-8 h-8 text-secondary" />
+              <div className="bg-secondary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
+                <Award className="w-7 h-7 sm:w-8 sm:h-8 text-secondary" />
               </div>
-              <h3 className="text-xl mb-2">{t.values.excellence}</h3>
-              <p className="text-gray-600">{t.values.excellenceDesc}</p>
+              <h3 className="text-lg sm:text-xl mb-2">{t.values.excellence}</h3>
+              <p className="text-sm sm:text-base text-gray-600">
+                {t.values.excellenceDesc}
+              </p>
             </motion.div>
           </motion.div>
         </div>
@@ -507,8 +530,8 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
       <Testimonials language={language} />
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-linear-to-r from-primary to-blue-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-12 md:py-16 lg:py-24 bg-linear-to-r from-primary to-blue-600 text-white">
+        <div className="max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
