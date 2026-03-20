@@ -376,23 +376,23 @@ export function AboutPage({ language }: AboutPageProps) {
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           >
             {t.team.members.map((member, index) => (
               <motion.div key={index} variants={scaleIn}>
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full overflow-hidden">
                   {/* Photo */}
-                  <div className="relative h-64 overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10">
+                  <div className="relative aspect-[4/5] sm:aspect-square md:aspect-[3/4] lg:aspect-square overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10">
                     <img
                       src={member.photo}
                       alt={member.name}
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-cover"
                     />
                     {/* Gradient overlay at bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 h-12 sm:h-16 md:h-20 bg-gradient-to-t from-white to-transparent" />
                   </div>
 
-                  <CardContent className="p-6 pt-4">
+                  <CardContent className="p-4 sm:p-6">
                     {/* Role badge */}
                     <span className="inline-block px-3 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary mb-3">
                       {member.role}
@@ -418,43 +418,6 @@ export function AboutPage({ language }: AboutPageProps) {
                     </p>
                   </CardContent>
                 </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Impact Stats */}
-      <section className="py-10 sm:py-12 md:py-16 lg:py-24 bg-linear-to-r from-primary to-blue-600 text-white">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl mb-4">{t.impact.title}</h2>
-            <p className="text-xl text-blue-100">{t.impact.subtitle}</p>
-          </motion.div>
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-          >
-            {t.impact.stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                variants={scaleIn}
-                whileHover={{ scale: 1.1, y: -10 }}
-                className="text-center"
-              >
-                <div className="text-4xl md:text-5xl mb-2 text-secondary">
-                  {stat.number}
-                </div>
-                <div className="text-lg">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>

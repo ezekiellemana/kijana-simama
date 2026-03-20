@@ -206,33 +206,6 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
         </div>
       </section>
 
-      {/* Impact Section */}
-      <section className="py-10 sm:py-12 md:py-16 lg:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl mb-4 text-center text-primary">
-            {t.impact.title}
-          </h2>
-          <p className="text-xl text-gray-600 text-center mb-12">
-            {t.impact.description}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {t.impact.items.map((item, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-lg transition-shadow"
-              >
-                <CardContent className="p-6">
-                  <div className="text-3xl mb-3 text-secondary">
-                    {item.amount}
-                  </div>
-                  <p className="text-gray-600">{item.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Donation Form */}
       <section className="py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

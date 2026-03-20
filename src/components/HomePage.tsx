@@ -271,77 +271,6 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Impact Stats */}
-      <section className="py-12 md:py-16 bg-linear-to-r from-primary to-blue-600 text-white">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-3xl md:text-4xl text-center mb-8 sm:mb-10 md:mb-12"
-          >
-            {t.impact.title}
-          </motion.h2>
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4"
-          >
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ scale: 1.05 }}
-              className="text-center"
-            >
-              <div className="text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2 text-secondary">
-                {t.impact.youthCount}
-              </div>
-              <div className="text-sm sm:text-base lg:text-lg">
-                {t.impact.youth}
-              </div>
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ scale: 1.05 }}
-              className="text-center"
-            >
-              <div className="text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2 text-secondary">
-                {t.impact.programsCount}
-              </div>
-              <div className="text-sm sm:text-base lg:text-lg">
-                {t.impact.programs}
-              </div>
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ scale: 1.05 }}
-              className="text-center"
-            >
-              <div className="text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2 text-secondary">
-                {t.impact.communitiesCount}
-              </div>
-              <div className="text-sm sm:text-base lg:text-lg">
-                {t.impact.communities}
-              </div>
-            </motion.div>
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ scale: 1.05 }}
-              className="text-center"
-            >
-              <div className="text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2 text-secondary">
-                {t.impact.volunteersCount}
-              </div>
-              <div className="text-sm sm:text-base lg:text-lg">
-                {t.impact.volunteers}
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Featured Campaigns */}
       <section className="py-12 md:py-16 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
@@ -525,9 +454,6 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
           </motion.div>
         </div>
       </section>
-
-      {/* Testimonials */}
-      <Testimonials language={language} />
 
       {/* CTA Section */}
       <section className="py-12 md:py-16 lg:py-24 bg-linear-to-r from-primary to-blue-600 text-white">

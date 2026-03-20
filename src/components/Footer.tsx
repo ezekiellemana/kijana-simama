@@ -172,15 +172,17 @@ export function Footer({ language, onNavigate }: FooterProps) {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 pt-10 sm:pt-12 md:pt-14 pb-6 sm:pb-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 mb-10 sm:mb-12">
+      <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 pt-6 pb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-10 gap-6 mb-6">
           {/* Brand Column */}
-          <div className="lg:col-span-4 flex flex-col gap-4 sm:gap-5">
+          <div className="lg:col-span-3 flex flex-col gap-3">
             <button
               onClick={() => onNavigate("home")}
               className="flex items-center gap-3 sm:gap-4 group w-fit focus:outline-none"
             >
-              <Logo size="small" />
+              <div className="bg-white rounded-xl p-1.5">
+                <Logo size="small" />
+              </div>
               <div className="flex flex-col items-start leading-snug">
                 <span
                   className="text-lg sm:text-xl font-extrabold tracking-tight"
@@ -194,12 +196,12 @@ export function Footer({ language, onNavigate }: FooterProps) {
               </div>
             </button>
 
-            <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
+            <p className="text-xs leading-relaxed text-gray-400 max-w-xs">
               {t.aboutText}
             </p>
 
             {/* Social icons */}
-            <div className="flex gap-2 mt-1">
+            <div className="flex gap-1.5">
               {socials.map((social: SocialLink) => {
                 const Icon: LucideIcon = social.icon;
                 return (
@@ -216,39 +218,19 @@ export function Footer({ language, onNavigate }: FooterProps) {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="sm:col-span-1 lg:col-span-3">
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4 sm:mb-5">
-              {t.quickLinks}
-            </h3>
-            <ul className="space-y-2 sm:space-y-2.5">
-              {quickLinks.map((link: NavLink) => (
-                <li key={link.id + link.label}>
-                  <button
-                    onClick={() => onNavigate(link.id)}
-                    className="group flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors duration-200"
-                  >
-                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-secondary" />
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Get Involved */}
-          <div className="sm:col-span-1 lg:col-span-2">
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4 sm:mb-5">
+          <div className="sm:col-span-1 lg:col-span-3">
+            <h3 className="text-white font-semibold text-xs uppercase tracking-wider mb-3">
               {t.getInvolved}
             </h3>
-            <ul className="space-y-2 sm:space-y-2.5">
+            <ul className="space-y-1.5">
               {involvedLinks.map((link: NavLink) => (
                 <li key={link.id + link.label}>
                   <button
                     onClick={() => onNavigate(link.id)}
-                    className="group flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                    className="group flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors duration-200"
                   >
-                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-secondary" />
+                    <ArrowRight className="w-2.5 h-2.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-secondary" />
                     {link.label}
                   </button>
                 </li>
@@ -257,49 +239,49 @@ export function Footer({ language, onNavigate }: FooterProps) {
           </div>
 
           {/* Contact Info */}
-          <div className="sm:col-span-2 lg:col-span-3">
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4 sm:mb-5">
+          <div className="sm:col-span-2 lg:col-span-4">
+            <h3 className="text-white font-semibold text-xs uppercase tracking-wider mb-3">
               {t.contactUs}
             </h3>
-            <ul className="space-y-3 sm:space-y-4">
-              <li className="flex items-start gap-2 sm:gap-3">
-                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
-                  <MapPin className="w-4 h-4 text-secondary" />
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
+                  <MapPin className="w-3 h-3 text-secondary" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-0.5">
+                  <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-0.5">
                     Location
                   </p>
-                  <span className="text-sm text-gray-300">{t.address}</span>
+                  <span className="text-xs text-gray-300">{t.address}</span>
                 </div>
               </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
-                  <Phone className="w-4 h-4 text-secondary" />
+              <li className="flex items-start gap-2">
+                <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
+                  <Phone className="w-3 h-3 text-secondary" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-0.5">
+                  <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-0.5">
                     Phone
                   </p>
                   <a
                     href={`tel:${t.phone}`}
-                    className="text-sm text-gray-300 hover:text-white transition-colors"
+                    className="text-xs text-gray-300 hover:text-white transition-colors"
                   >
                     {t.phone}
                   </a>
                 </div>
               </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
-                  <Mail className="w-4 h-4 text-secondary" />
+              <li className="flex items-start gap-2">
+                <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
+                  <Mail className="w-3 h-3 text-secondary" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-0.5">
+                  <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-0.5">
                     Email
                   </p>
                   <a
                     href={`mailto:${t.email}`}
-                    className="text-sm text-gray-300 hover:text-white transition-colors"
+                    className="text-xs text-gray-300 hover:text-white transition-colors"
                   >
                     {t.email}
                   </a>
@@ -310,28 +292,28 @@ export function Footer({ language, onNavigate }: FooterProps) {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-gray-800 mb-6" />
+        <div className="h-px bg-gray-800 mb-4" />
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-3">
-          <p className="text-xs text-gray-500">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-1">
+          <p className="text-[10px] text-gray-500">
             © {new Date().getFullYear()}{" "}
             <span className="font-semibold" style={gradientText}>
               Kijana Simama
             </span>
             . {t.rights}
           </p>
-          <div className="flex items-center gap-1 text-xs text-gray-500">
+          <div className="flex items-center gap-1 text-[10px] text-gray-500">
             <a
               href="#"
-              className="hover:text-white transition-colors px-3 py-1 rounded-full hover:bg-gray-800"
+              className="hover:text-white transition-colors px-2 py-0.5 rounded-full hover:bg-gray-800"
             >
               {t.privacy}
             </a>
             <span className="text-gray-700">·</span>
             <a
               href="#"
-              className="hover:text-white transition-colors px-3 py-1 rounded-full hover:bg-gray-800"
+              className="hover:text-white transition-colors px-2 py-0.5 rounded-full hover:bg-gray-800"
             >
               {t.terms}
             </a>
