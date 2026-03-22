@@ -175,7 +175,10 @@ export function Footer({ language, onNavigate }: FooterProps) {
               <div className="flex flex-col items-start leading-snug">
                 <span
                   className="text-lg sm:text-xl font-extrabold tracking-tight"
-                  style={gradientText}
+                  style={{
+                    ...gradientText,
+                    fontFamily: "'Hachi Maru Pop', cursive",
+                  }}
                 >
                   Kijana Simama
                 </span>
@@ -290,7 +293,13 @@ export function Footer({ language, onNavigate }: FooterProps) {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-1">
           <p className="text-[10px] text-gray-500">
             © {new Date().getFullYear()}{" "}
-            <span className="font-semibold" style={gradientText}>
+            <span
+              className="font-semibold"
+              style={{
+                ...gradientText,
+                fontFamily: "'Hachi Maru Pop', cursive",
+              }}
+            >
               Kijana Simama
             </span>
             . {t.rights}

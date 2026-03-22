@@ -112,7 +112,10 @@ export function Navigation({
               <div className="flex flex-col items-start leading-snug">
                 <span
                   className="text-base sm:text-lg font-extrabold tracking-tight"
-                  style={gradientText}
+                  style={{
+                    ...gradientText,
+                    fontFamily: "'Hachi Maru Pop', cursive",
+                  }}
                 >
                   {t.orgName}
                 </span>
@@ -217,7 +220,10 @@ export function Navigation({
             <div className="flex flex-col leading-snug">
               <span
                 className="text-sm sm:text-base font-extrabold tracking-tight"
-                style={gradientText}
+                style={{
+                  ...gradientText,
+                  fontFamily: "'Hachi Maru Pop', cursive",
+                }}
               >
                 {t.orgName}
               </span>
