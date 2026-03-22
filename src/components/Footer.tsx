@@ -120,17 +120,6 @@ export function Footer({ language, onNavigate }: FooterProps) {
     backgroundClip: "text",
   };
 
-  const quickLinks: NavLink[] = [
-    { id: "home", label: t.home },
-    { id: "about", label: t.aboutUs },
-    { id: "services", label: t.services },
-    { id: "campaigns", label: t.campaigns },
-    { id: "events", label: t.events },
-    { id: "gallery", label: t.gallery },
-    { id: "partners", label: t.partners },
-    { id: "faqs", label: t.faqs },
-  ];
-
   const involvedLinks: NavLink[] = [
     { id: "donate", label: t.donate },
     { id: "contact", label: t.volunteer },

@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { Testimonials } from "./Testimonials";
 import heroImage from "../assets/heroImage.jpg";
 
 interface HomePageProps {

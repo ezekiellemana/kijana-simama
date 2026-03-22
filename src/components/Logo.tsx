@@ -1,5 +1,4 @@
 import logoImage from "../assets/logoImage.svg";
-import React from "react";
 
 interface LogoProps {
   size?: "small" | "medium" | "large";
@@ -7,10 +6,13 @@ interface LogoProps {
 }
 
 export function Logo({ size = "medium", className = "" }: LogoProps) {
-  const sizeMap: Record<string, { width: number; height: number; radius: number }> = {
-    small:  { width: 44,  height: 44,  radius: 10 },
-    medium: { width: 72,  height: 72,  radius: 14 },
-    large:  { width: 100, height: 100, radius: 18 },
+  const sizeMap: Record<
+    string,
+    { width: number; height: number; radius: number }
+  > = {
+    small: { width: 44, height: 44, radius: 10 },
+    medium: { width: 72, height: 72, radius: 14 },
+    large: { width: 100, height: 100, radius: 18 },
   };
 
   const { width, height, radius } = sizeMap[size];
