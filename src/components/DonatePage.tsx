@@ -283,9 +283,14 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                         variant={
                           selectedAmount === amount ? "default" : "outline"
                         }
+                        disabled={!!customAmount}
                         onClick={() => {
-                          setSelectedAmount(amount);
-                          setCustomAmount("");
+                          if (selectedAmount === amount) {
+                            setSelectedAmount("");
+                          } else {
+                            setSelectedAmount(amount);
+                            setCustomAmount("");
+                          }
                         }}
                         className={
                           selectedAmount === amount
@@ -333,14 +338,14 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                     <button
                       type="button"
                       onClick={() => setPaymentMethod("card")}
-                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center gap-2 ${
+                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center gap-2 relative ${
                         paymentMethod === "card"
                           ? "border-secondary bg-secondary/10"
                           : "border-gray-200 hover:border-gray-300"
                       }`}
                     >
                       {paymentMethod === "card" && (
-                        <CheckCircle className="w-5 h-5 text-secondary animate-bounce absolute" />
+                        <CheckCircle className="w-5 h-5 text-secondary animate-bounce absolute top-2 right-2" />
                       )}
                       <CreditCard
                         className={`w-6 h-6 ${paymentMethod === "card" ? "text-secondary" : "text-gray-500"}`}
@@ -354,14 +359,14 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                     <button
                       type="button"
                       onClick={() => setPaymentMethod("mpesa")}
-                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center gap-2 ${
+                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center gap-2 relative ${
                         paymentMethod === "mpesa"
                           ? "border-secondary bg-secondary/10"
                           : "border-gray-200 hover:border-gray-300"
                       }`}
                     >
                       {paymentMethod === "mpesa" && (
-                        <CheckCircle className="w-5 h-5 text-secondary animate-bounce absolute" />
+                        <CheckCircle className="w-5 h-5 text-secondary animate-bounce absolute top-2 right-2" />
                       )}
                       <Smartphone
                         className={`w-6 h-6 ${paymentMethod === "mpesa" ? "text-secondary" : "text-gray-500"}`}
@@ -375,14 +380,14 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                     <button
                       type="button"
                       onClick={() => setPaymentMethod("bank")}
-                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center gap-2 ${
+                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center gap-2 relative ${
                         paymentMethod === "bank"
                           ? "border-secondary bg-secondary/10"
                           : "border-gray-200 hover:border-gray-300"
                       }`}
                     >
                       {paymentMethod === "bank" && (
-                        <CheckCircle className="w-5 h-5 text-secondary animate-bounce absolute" />
+                        <CheckCircle className="w-5 h-5 text-secondary animate-bounce absolute top-2 right-2" />
                       )}
                       <Building2
                         className={`w-6 h-6 ${paymentMethod === "bank" ? "text-secondary" : "text-gray-500"}`}
