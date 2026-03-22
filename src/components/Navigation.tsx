@@ -116,7 +116,7 @@ export function Navigation({
                 >
                   {t.orgName}
                 </span>
-                <span className="text-xs font-medium text-gray-400 tracking-wide uppercase hidden sm:inline">
+                <span className="text-xs font-medium text-gray-400 tracking-wide uppercase">
                   {t.tagline}
                 </span>
               </div>
