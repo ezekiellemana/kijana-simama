@@ -394,62 +394,68 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
             variants={staggerContainer}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
           >
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ y: -10 }}
-              className="text-center p-4 sm:p-6"
-            >
-              <div className="bg-primary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
-                <Users className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
-              </div>
-              <h3 className="text-lg sm:text-xl mb-2">
-                {t.values.empowerment}
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600">
-                {t.values.empowermentDesc}
-              </p>
+            <motion.div variants={scaleIn}>
+              <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full text-center p-4 sm:p-6">
+                <CardContent className="p-0">
+                  <div className="bg-primary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
+                    <Users className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl mb-2">
+                    {t.values.empowerment}
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-600">
+                    {t.values.empowermentDesc}
+                  </p>
+                </CardContent>
+              </Card>
             </motion.div>
 
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ y: -10 }}
-              className="text-center p-4 sm:p-6"
-            >
-              <div className="bg-secondary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
-                <Target className="w-7 h-7 sm:w-8 sm:h-8 text-secondary" />
-              </div>
-              <h3 className="text-lg sm:text-xl mb-2">{t.values.integrity}</h3>
-              <p className="text-sm sm:text-base text-gray-600">
-                {t.values.integrityDesc}
-              </p>
+            <motion.div variants={scaleIn}>
+              <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full text-center p-4 sm:p-6">
+                <CardContent className="p-0">
+                  <div className="bg-secondary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
+                    <Target className="w-7 h-7 sm:w-8 sm:h-8 text-secondary" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl mb-2">
+                    {t.values.integrity}
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-600">
+                    {t.values.integrityDesc}
+                  </p>
+                </CardContent>
+              </Card>
             </motion.div>
 
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ y: -10 }}
-              className="text-center p-4 sm:p-6"
-            >
-              <div className="bg-primary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
-                <Heart className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
-              </div>
-              <h3 className="text-lg sm:text-xl mb-2">{t.values.community}</h3>
-              <p className="text-sm sm:text-base text-gray-600">
-                {t.values.communityDesc}
-              </p>
+            <motion.div variants={scaleIn}>
+              <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full text-center p-4 sm:p-6">
+                <CardContent className="p-0">
+                  <div className="bg-primary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
+                    <Heart className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl mb-2">
+                    {t.values.community}
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-600">
+                    {t.values.communityDesc}
+                  </p>
+                </CardContent>
+              </Card>
             </motion.div>
 
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ y: -10 }}
-              className="text-center p-4 sm:p-6"
-            >
-              <div className="bg-secondary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
-                <Award className="w-7 h-7 sm:w-8 sm:h-8 text-secondary" />
-              </div>
-              <h3 className="text-lg sm:text-xl mb-2">{t.values.excellence}</h3>
-              <p className="text-sm sm:text-base text-gray-600">
-                {t.values.excellenceDesc}
-              </p>
+            <motion.div variants={scaleIn}>
+              <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full text-center p-4 sm:p-6">
+                <CardContent className="p-0">
+                  <div className="bg-secondary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
+                    <Award className="w-7 h-7 sm:w-8 sm:h-8 text-secondary" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl mb-2">
+                    {t.values.excellence}
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-600">
+                    {t.values.excellenceDesc}
+                  </p>
+                </CardContent>
+              </Card>
             </motion.div>
           </motion.div>
         </div>

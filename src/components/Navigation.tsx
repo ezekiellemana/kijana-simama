@@ -106,7 +106,9 @@ export function Navigation({
               onClick={() => handleNavigate("home")}
               className="shrink-0 flex items-center gap-2 sm:gap-3 focus:outline-none group"
             >
-              <Logo size="small" />
+              <div className="ring-2 ring-primary ring-offset-2 rounded-xl">
+                <Logo size="small" />
+              </div>
               <div className="hidden md:flex flex-col items-start leading-snug">
                 <span
                   className="text-base sm:text-lg font-extrabold tracking-tight"

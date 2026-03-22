@@ -182,7 +182,21 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
 
   const t = translations[language];
 
-  const predefinedAmounts = ["25", "50", "100", "250"];
+  const predefinedAmounts = ["25000", "50000", "100000", "250000"];
+
+  // Format number with thousand separators for TZS
+  const formatTZS = (amount: string) => {
+    const num = parseInt(amount.replace(/,/g, ""), 10);
+    if (isNaN(num)) return amount;
+    return "TZS " + num.toLocaleString("en-US");
+  };
+
+  // Format input value as user types (add commas)
+  const formatInputAmount = (value: string) => {
+    const numericValue = value.replace(/[^0-9]/g, "");
+    if (!numericValue) return "";
+    return numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -220,25 +234,40 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                   <Label className="mb-3 block">
                     {t.donationForm.type.label}
                   </Label>
-                  <RadioGroup
-                    value={donationType}
-                    onValueChange={setDonationType}
-                  >
-                    <div className="flex gap-4">
-                      <div className="flex items-center space-x-2 flex-1">
-                        <RadioGroupItem value="one-time" id="one-time" />
-                        <Label htmlFor="one-time" className="cursor-pointer">
-                          {t.donationForm.type.oneTime}
-                        </Label>
-                      </div>
-                      <div className="flex items-center space-x-2 flex-1">
-                        <RadioGroupItem value="monthly" id="monthly" />
-                        <Label htmlFor="monthly" className="cursor-pointer">
-                          {t.donationForm.type.monthly}
-                        </Label>
-                      </div>
-                    </div>
-                  </RadioGroup>
+                  <div className="grid grid-cols-2 gap-4">
+                    <button
+                      type="button"
+                      onClick={() => setDonationType("one-time")}
+                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex items-center justify-center gap-2 ${
+                        donationType === "one-time"
+                          ? "border-secondary bg-secondary/10 text-secondary"
+                          : "border-gray-200 hover:border-gray-300"
+                      }`}
+                    >
+                      {donationType === "one-time" && (
+                        <CheckCircle className="w-5 h-5 animate-bounce" />
+                      )}
+                      <span className="font-medium">
+                        {t.donationForm.type.oneTime}
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setDonationType("monthly")}
+                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex items-center justify-center gap-2 ${
+                        donationType === "monthly"
+                          ? "border-secondary bg-secondary/10 text-secondary"
+                          : "border-gray-200 hover:border-gray-300"
+                      }`}
+                    >
+                      {donationType === "monthly" && (
+                        <CheckCircle className="w-5 h-5 animate-bounce" />
+                      )}
+                      <span className="font-medium">
+                        {t.donationForm.type.monthly}
+                      </span>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Amount Selection */}
@@ -260,11 +289,14 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                         }}
                         className={
                           selectedAmount === amount
-                            ? "bg-secondary hover:bg-secondary/90"
-                            : ""
+                            ? "bg-secondary hover:bg-secondary/90 relative"
+                            : "relative"
                         }
                       >
-                        ${amount}
+                        {selectedAmount === amount && (
+                          <CheckCircle className="w-4 h-4 mr-2 animate-bounce" />
+                        )}
+                        {formatTZS(amount)}
                       </Button>
                     ))}
                   </div>
@@ -272,17 +304,23 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                     <Label htmlFor="custom-amount">
                       {t.donationForm.amount.custom}
                     </Label>
-                    <Input
-                      id="custom-amount"
-                      type="number"
-                      placeholder={t.donationForm.amount.placeholder}
-                      value={customAmount}
-                      onChange={(e) => {
-                        setCustomAmount(e.target.value);
-                        setSelectedAmount("");
-                      }}
-                      className="mt-2"
-                    />
+                    <div className="relative">
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                        TZS
+                      </span>
+                      <Input
+                        id="custom-amount"
+                        type="text"
+                        placeholder="0,000"
+                        value={customAmount}
+                        onChange={(e) => {
+                          const formatted = formatInputAmount(e.target.value);
+                          setCustomAmount(formatted);
+                          setSelectedAmount("");
+                        }}
+                        className="mt-2 pl-14"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -291,43 +329,71 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                   <Label className="mb-3 block">
                     {t.donationForm.payment.label}
                   </Label>
-                  <RadioGroup
-                    value={paymentMethod}
-                    onValueChange={setPaymentMethod}
-                  >
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-2 border rounded-lg p-4 hover:bg-gray-50 cursor-pointer">
-                        <RadioGroupItem value="card" id="card" />
-                        <Label
-                          htmlFor="card"
-                          className="cursor-pointer flex items-center gap-2 flex-1"
-                        >
-                          <CreditCard className="w-5 h-5 text-secondary" />
-                          {t.donationForm.payment.card}
-                        </Label>
-                      </div>
-                      <div className="flex items-center space-x-2 border rounded-lg p-4 hover:bg-gray-50 cursor-pointer">
-                        <RadioGroupItem value="mpesa" id="mpesa" />
-                        <Label
-                          htmlFor="mpesa"
-                          className="cursor-pointer flex items-center gap-2 flex-1"
-                        >
-                          <Smartphone className="w-5 h-5 text-secondary" />
-                          {t.donationForm.payment.mpesa}
-                        </Label>
-                      </div>
-                      <div className="flex items-center space-x-2 border rounded-lg p-4 hover:bg-gray-50 cursor-pointer">
-                        <RadioGroupItem value="bank" id="bank" />
-                        <Label
-                          htmlFor="bank"
-                          className="cursor-pointer flex items-center gap-2 flex-1"
-                        >
-                          <Building2 className="w-5 h-5 text-secondary" />
-                          {t.donationForm.payment.bank}
-                        </Label>
-                      </div>
-                    </div>
-                  </RadioGroup>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod("card")}
+                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center gap-2 ${
+                        paymentMethod === "card"
+                          ? "border-secondary bg-secondary/10"
+                          : "border-gray-200 hover:border-gray-300"
+                      }`}
+                    >
+                      {paymentMethod === "card" && (
+                        <CheckCircle className="w-5 h-5 text-secondary animate-bounce absolute" />
+                      )}
+                      <CreditCard
+                        className={`w-6 h-6 ${paymentMethod === "card" ? "text-secondary" : "text-gray-500"}`}
+                      />
+                      <span
+                        className={`font-medium text-sm ${paymentMethod === "card" ? "text-secondary" : ""}`}
+                      >
+                        {t.donationForm.payment.card}
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod("mpesa")}
+                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center gap-2 ${
+                        paymentMethod === "mpesa"
+                          ? "border-secondary bg-secondary/10"
+                          : "border-gray-200 hover:border-gray-300"
+                      }`}
+                    >
+                      {paymentMethod === "mpesa" && (
+                        <CheckCircle className="w-5 h-5 text-secondary animate-bounce absolute" />
+                      )}
+                      <Smartphone
+                        className={`w-6 h-6 ${paymentMethod === "mpesa" ? "text-secondary" : "text-gray-500"}`}
+                      />
+                      <span
+                        className={`font-medium text-sm ${paymentMethod === "mpesa" ? "text-secondary" : ""}`}
+                      >
+                        {t.donationForm.payment.mpesa}
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod("bank")}
+                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center gap-2 ${
+                        paymentMethod === "bank"
+                          ? "border-secondary bg-secondary/10"
+                          : "border-gray-200 hover:border-gray-300"
+                      }`}
+                    >
+                      {paymentMethod === "bank" && (
+                        <CheckCircle className="w-5 h-5 text-secondary animate-bounce absolute" />
+                      )}
+                      <Building2
+                        className={`w-6 h-6 ${paymentMethod === "bank" ? "text-secondary" : "text-gray-500"}`}
+                      />
+                      <span
+                        className={`font-medium text-sm ${paymentMethod === "bank" ? "text-secondary" : ""}`}
+                      >
+                        {t.donationForm.payment.bank}
+                      </span>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Personal Information */}
@@ -377,10 +443,10 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                 {/* Submit Button */}
                 <Button
                   type="submit"
-                  className="w-full bg-secondary hover:bg-secondary/90"
+                  className="w-full bg-secondary hover:bg-secondary/90 text-lg py-6"
                   size="lg"
                 >
-                  <Heart className="mr-2 w-5 h-5" />
+                  <Heart className="mr-2 w-6 h-6 fill-white" />
                   {t.donationForm.submit}
                 </Button>
 
