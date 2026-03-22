@@ -1,4 +1,11 @@
 import { useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
 import { HomePage } from "./components/HomePage";
@@ -14,29 +21,15 @@ import { SuccessPage } from "./components/SuccessPage";
 import { NotFoundPage } from "./components/NotFoundPage";
 import { PartnersPage } from "./components/PartnersPage";
 
-type Page =
-  | "home"
-  | "about"
-  | "services"
-  | "campaigns"
-  | "events"
-  | "gallery"
-  | "donate"
-  | "contact"
-  | "faqs"
-  | "partners"
-  | "success-donation"
-  | "success-contact"
-  | "success-newsletter"
-  | "404";
 type Language = "en" | "sw";
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState<Page>("home");
+function AppContent() {
   const [language, setLanguage] = useState<Language>("en");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNavigate = (page: string) => {
-    setCurrentPage(page as Page);
+    navigate(`/${page === "home" ? "" : page}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -44,60 +37,8 @@ export default function App() {
     setLanguage((prev) => (prev === "en" ? "sw" : "en"));
   };
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case "success-donation":
-        return (
-          <SuccessPage
-            type="donation"
-            language={language}
-            onNavigate={handleNavigate}
-          />
-        );
-      case "success-contact":
-        return (
-          <SuccessPage
-            type="contact"
-            language={language}
-            onNavigate={handleNavigate}
-          />
-        );
-      case "success-newsletter":
-        return (
-          <SuccessPage
-            type="newsletter"
-            language={language}
-            onNavigate={handleNavigate}
-          />
-        );
-      case "404":
-        return <NotFoundPage language={language} onNavigate={handleNavigate} />;
-      case "home":
-        return <HomePage language={language} onNavigate={handleNavigate} />;
-      case "about":
-        return <AboutPage language={language} />;
-      case "services":
-        return <ServicesPage language={language} onNavigate={handleNavigate} />;
-      case "campaigns":
-        return (
-          <CampaignsPage language={language} onNavigate={handleNavigate} />
-        );
-      case "events":
-        return <EventsPage language={language} />;
-      case "gallery":
-        return <GalleryPage language={language} />;
-      case "donate":
-        return <DonatePage language={language} onNavigate={handleNavigate} />;
-      case "contact":
-        return <ContactPage language={language} onNavigate={handleNavigate} />;
-      case "faqs":
-        return <FAQsPage language={language} />;
-      case "partners":
-        return <PartnersPage language={language} onNavigate={handleNavigate} />;
-      default:
-        return <HomePage language={language} onNavigate={handleNavigate} />;
-    }
-  };
+  const currentPage =
+    location.pathname === "/" ? "home" : location.pathname.slice(1) || "home";
 
   const hideNavFooter =
     currentPage.startsWith("success-") || currentPage === "404";
@@ -112,10 +53,100 @@ export default function App() {
           onLanguageToggle={toggleLanguage}
         />
       )}
-      <main className="grow">{renderPage()}</main>
+      <main className="grow">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage language={language} onNavigate={handleNavigate} />
+            }
+          />
+          <Route path="/about" element={<AboutPage language={language} />} />
+          <Route
+            path="/services"
+            element={
+              <ServicesPage language={language} onNavigate={handleNavigate} />
+            }
+          />
+          <Route
+            path="/campaigns"
+            element={
+              <CampaignsPage language={language} onNavigate={handleNavigate} />
+            }
+          />
+          <Route path="/events" element={<EventsPage language={language} />} />
+          <Route
+            path="/gallery"
+            element={<GalleryPage language={language} />}
+          />
+          <Route
+            path="/donate"
+            element={
+              <DonatePage language={language} onNavigate={handleNavigate} />
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <ContactPage language={language} onNavigate={handleNavigate} />
+            }
+          />
+          <Route path="/faqs" element={<FAQsPage language={language} />} />
+          <Route
+            path="/partners"
+            element={
+              <PartnersPage language={language} onNavigate={handleNavigate} />
+            }
+          />
+          <Route
+            path="/success-donation"
+            element={
+              <SuccessPage
+                type="donation"
+                language={language}
+                onNavigate={handleNavigate}
+              />
+            }
+          />
+          <Route
+            path="/success-contact"
+            element={
+              <SuccessPage
+                type="contact"
+                language={language}
+                onNavigate={handleNavigate}
+              />
+            }
+          />
+          <Route
+            path="/success-newsletter"
+            element={
+              <SuccessPage
+                type="newsletter"
+                language={language}
+                onNavigate={handleNavigate}
+              />
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <NotFoundPage language={language} onNavigate={handleNavigate} />
+            }
+          />
+        </Routes>
+      </main>
       {!hideNavFooter && (
         <Footer language={language} onNavigate={handleNavigate} />
       )}
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
