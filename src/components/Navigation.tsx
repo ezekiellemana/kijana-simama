@@ -116,7 +116,10 @@ export function Navigation({
                 >
                   {t.orgName}
                 </span>
-                <span className="text-xs font-medium text-gray-400 tracking-wide uppercase">
+                <span
+                  className="text-xs font-medium text-gray-400 tracking-wide uppercase"
+                  style={{ fontFamily: "'Hachi Maru Pop', cursive" }}
+                >
                   {t.tagline}
                 </span>
               </div>
