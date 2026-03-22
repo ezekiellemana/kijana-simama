@@ -109,14 +109,14 @@ export function Navigation({
               <div className="ring-2 ring-primary ring-offset-2 rounded-xl">
                 <Logo size="small" />
               </div>
-              <div className="hidden md:flex flex-col items-start leading-snug">
+              <div className="flex flex-col items-start leading-snug">
                 <span
                   className="text-base sm:text-lg font-extrabold tracking-tight"
                   style={gradientText}
                 >
                   {t.orgName}
                 </span>
-                <span className="text-xs font-medium text-gray-400 tracking-wide uppercase">
+                <span className="text-xs font-medium text-gray-400 tracking-wide uppercase hidden sm:inline">
                   {t.tagline}
                 </span>
               </div>
