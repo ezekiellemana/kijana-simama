@@ -183,7 +183,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
                   Kijana Simama
                 </span>
                 <span
-                  className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-medium"
+                  className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-bold"
                   style={{ fontFamily: "'Hachi Maru Pop', cursive" }}
                 >
                   {t.tagline}

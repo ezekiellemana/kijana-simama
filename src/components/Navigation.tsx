@@ -120,7 +120,7 @@ export function Navigation({
                   {t.orgName}
                 </span>
                 <span
-                  className="text-xs font-medium text-gray-400 tracking-wide uppercase"
+                  className="text-xs font-bold text-gray-400 tracking-wide uppercase"
                   style={{ fontFamily: "'Hachi Maru Pop', cursive" }}
                 >
                   {t.tagline}
@@ -228,7 +228,7 @@ export function Navigation({
                 {t.orgName}
               </span>
               <span
-                className="text-[10px] sm:text-xs font-medium text-gray-400 tracking-wide uppercase"
+                className="text-[10px] sm:text-xs font-bold text-gray-400 tracking-wide uppercase"
                 style={{ fontFamily: "'Hachi Maru Pop', cursive" }}
               >
                 {t.tagline}
