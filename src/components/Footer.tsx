@@ -335,17 +335,17 @@ export function Footer({ language, onNavigate }: FooterProps) {
             </span>
             . {t.rights}
           </p>
-          <div className="flex items-center gap-1 text-xs text-gray-500">
+          <div className="flex items-center gap-3 text-xs text-gray-500">
             <a
               href="#"
-              className="hover:text-white transition-colors px-2 py-0.5 rounded-full hover:bg-gray-800"
+              className="hover:text-white transition-colors hover:underline"
             >
               {t.privacy}
             </a>
             <span className="text-gray-700">·</span>
             <a
               href="#"
-              className="hover:text-white transition-colors px-2 py-0.5 rounded-full hover:bg-gray-800"
+              className="hover:text-white transition-colors hover:underline"
             >
               {t.terms}
             </a>
