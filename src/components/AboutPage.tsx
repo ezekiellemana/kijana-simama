@@ -381,18 +381,15 @@ export function AboutPage({ language }: AboutPageProps) {
             {t.team.members.map((member, index) => (
               <motion.div key={index} variants={scaleIn}>
                 <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full overflow-hidden">
-                  {/* Photo */}
-                  <div className="relative aspect-[4/5] sm:aspect-square md:aspect-[3/4] lg:aspect-square overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10">
+                  <CardContent className="p-4 sm:p-6 flex flex-col items-center text-center">
+                  {/* Oval portrait photo */}
+                  <div className="w-32 h-40 rounded-full overflow-hidden mb-4 bg-linear-to-br from-primary/10 to-secondary/10 shrink-0">
                     <img
                       src={member.photo}
                       alt={member.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                     />
-                    {/* Gradient overlay at bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 h-12 sm:h-16 md:h-20 bg-gradient-to-t from-white to-transparent" />
                   </div>
-
-                  <CardContent className="p-4 sm:p-6">
                     {/* Role badge */}
                     <span className="inline-block px-3 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary mb-3">
                       {member.role}
@@ -413,7 +410,7 @@ export function AboutPage({ language }: AboutPageProps) {
                     >
                       {member.credential}
                     </p>
-                    <p className="text-sm text-gray-600 leading-relaxed">
+                    <p className="text-sm text-gray-600 leading-relaxed text-left">
                       {member.bio}
                     </p>
                   </CardContent>

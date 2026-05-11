@@ -286,7 +286,7 @@ export function EventsPage({ language }: EventsPageProps) {
               >
                 <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full">
                   <div className="grid grid-cols-1 md:grid-cols-2">
-                    <div className="relative h-64 md:h-auto overflow-hidden group">
+                    <div className="relative h-64 md:h-auto md:min-h-55 overflow-hidden group">
                       <ImageWithFallback
                         src={event.image}
                         alt={event.title}

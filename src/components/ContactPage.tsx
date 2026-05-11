@@ -44,7 +44,7 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
         },
         phone: {
           title: "Phone",
-          number: "+255 700 000 000",
+          number: "+255 713 415 316",
         },
         email: {
           title: "Email",
@@ -63,7 +63,7 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
         email: "Email Address",
         emailPlaceholder: "john@example.com",
         phone: "Phone Number",
-        phonePlaceholder: "+255 700 000 000",
+        phonePlaceholder: "+255 713 415 316",
         subject: "Subject",
         subjectPlaceholder: "How can we help you?",
         message: "Message",
@@ -89,7 +89,7 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
         },
         phone: {
           title: "Simu",
-          number: "+255 700 000 000",
+          number: "+255 713 415 316",
         },
         email: {
           title: "Barua Pepe",
@@ -108,7 +108,7 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
         email: "Barua Pepe",
         emailPlaceholder: "juma@example.com",
         phone: "Nambari ya Simu",
-        phonePlaceholder: "+255 700 000 000",
+        phonePlaceholder: "+255 713 415 316",
         subject: "Kichwa",
         subjectPlaceholder: "Tunaweza kukusaidia vipi?",
         message: "Ujumbe",

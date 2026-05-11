@@ -364,9 +364,9 @@ export function FAQsPage({ language }: FAQsPageProps) {
                       >
                         <span className="pr-4">{faq.question}</span>
                         {openIndex === faqIndex ? (
-                          <ChevronUp className="w-5 h-5 text-secondary flex-0" />
+                          <ChevronUp className="w-5 h-5 text-secondary shrink-0" />
                         ) : (
-                          <ChevronDown className="w-5 h-5 text-secondary flex--0" />
+                          <ChevronDown className="w-5 h-5 text-secondary shrink-0" />
                         )}
                       </button>
                       {openIndex === faqIndex && (

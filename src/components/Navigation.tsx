@@ -1,7 +1,7 @@
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X, Globe, ChevronDown } from "lucide-react";
 import { Logo } from "./Logo";
 import { Button } from "./ui/button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface NavigationProps {
   currentPage: string;
@@ -17,7 +17,9 @@ export function Navigation({
   onLanguageToggle,
 }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [moreMenuOpen, setMoreMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const moreRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -32,6 +34,17 @@ export function Navigation({
     };
   }, [mobileMenuOpen]);
 
+  useEffect(() => {
+    if (!moreMenuOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
+        setMoreMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [moreMenuOpen]);
+
   const translations = {
     en: {
       home: "Home",
@@ -44,6 +57,7 @@ export function Navigation({
       donate: "Donate",
       contact: "Contact",
       faqs: "FAQs",
+      more: "More",
       orgName: "Kijana Simama",
       tagline: "Empowering Youth to Stand Tall",
     },
@@ -58,6 +72,7 @@ export function Navigation({
       donate: "Changia",
       contact: "Wasiliana",
       faqs: "Maswali",
+      more: "Zaidi",
       orgName: "Kijana Simama",
       tagline: "Kuwapa Nguvu Vijana Kusimama Wima",
     },
@@ -65,22 +80,30 @@ export function Navigation({
 
   const t = translations[language];
 
-  const navItems = [
+  const primaryNavItems = [
     { id: "home", label: t.home },
     { id: "about", label: t.about },
     { id: "services", label: t.services },
     { id: "campaigns", label: t.campaigns },
     { id: "events", label: t.events },
+    { id: "contact", label: t.contact },
+  ];
+
+  const moreNavItems = [
     { id: "gallery", label: t.gallery },
     { id: "partners", label: t.partners },
-    { id: "contact", label: t.contact },
     { id: "faqs", label: t.faqs },
   ];
+
+  const allNavItems = [...primaryNavItems, ...moreNavItems];
 
   const handleNavigate = (page: string) => {
     onNavigate(page);
     setMobileMenuOpen(false);
+    setMoreMenuOpen(false);
   };
+
+  const isMoreActive = moreNavItems.some((item) => item.id === currentPage);
 
   const gradientText: React.CSSProperties = {
     background:
@@ -129,13 +152,13 @@ export function Navigation({
             </button>
 
             {/* Desktop nav */}
-            <div className="hidden lg:flex items-center gap-1">
-              {navItems.map((item) => (
+            <div className="hidden lg:flex items-center gap-0.5 xl:gap-1">
+              {primaryNavItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavigate(item.id)}
                   className={`
-                    px-3.5 py-1.5 text-sm font-medium rounded-full
+                    px-3 py-1.5 text-sm font-medium rounded-full
                     transition-all duration-200
                     ${
                       currentPage === item.id
@@ -147,6 +170,51 @@ export function Navigation({
                   {item.label}
                 </button>
               ))}
+
+              {/* More dropdown */}
+              <div ref={moreRef} className="relative">
+                <button
+                  onClick={() => setMoreMenuOpen((prev) => !prev)}
+                  className={`
+                    flex items-center gap-1 px-3 py-1.5 text-sm font-medium rounded-full
+                    transition-all duration-200
+                    ${
+                      isMoreActive
+                        ? "bg-primary text-white shadow-sm shadow-primary/30"
+                        : "text-gray-600 hover:bg-gray-100 hover:text-primary"
+                    }
+                  `}
+                >
+                  {t.more}
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                      moreMenuOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {moreMenuOpen && (
+                  <div className="absolute top-full right-0 mt-2 w-44 bg-white rounded-xl shadow-xl border border-gray-100 py-1 z-50">
+                    {moreNavItems.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => handleNavigate(item.id)}
+                        className={`
+                          w-full text-left px-4 py-2.5 text-sm font-medium
+                          transition-colors duration-150
+                          ${
+                            currentPage === item.id
+                              ? "bg-primary/10 text-primary"
+                              : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                          }
+                        `}
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Right side */}
@@ -205,7 +273,7 @@ export function Navigation({
 
       {/* Mobile sidebar */}
       <aside
-        className={`fixed top-0 right-0 h-full w-[280px] sm:w-72 bg-white z-50 lg:hidden flex flex-col
+        className={`fixed top-0 right-0 h-full w-70 sm:w-72 bg-white z-50 lg:hidden flex flex-col
           shadow-2xl transition-transform duration-300 ease-in-out ${
             mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
@@ -246,7 +314,7 @@ export function Navigation({
 
         {/* Nav items */}
         <div className="flex-1 overflow-y-auto py-3 px-2 sm:px-3 smooth-scroll">
-          {navItems.map((item) => (
+          {allNavItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavigate(item.id)}

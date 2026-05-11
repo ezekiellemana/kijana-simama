@@ -52,6 +52,9 @@ interface Translations {
   phone: string;
   email: string;
   tagline: string;
+  locationLabel: string;
+  phoneLabel: string;
+  emailLabel: string;
 }
 
 export function Footer({ language, onNavigate }: FooterProps) {
@@ -78,9 +81,12 @@ export function Footer({ language, onNavigate }: FooterProps) {
       privacy: "Privacy Policy",
       terms: "Terms of Service",
       address: "Dar es Salaam, Tanzania",
-      phone: "+255 700 000 000",
+      phone: "+255 713 415 316",
       email: "info@kijanasimama.org",
       tagline: "Empowering Youth to Stand Tall",
+      locationLabel: "Location",
+      phoneLabel: "Phone",
+      emailLabel: "Email",
     },
     sw: {
       aboutText:
@@ -104,9 +110,12 @@ export function Footer({ language, onNavigate }: FooterProps) {
       privacy: "Sera ya Faragha",
       terms: "Masharti ya Huduma",
       address: "Dar es Salaam, Tanzania",
-      phone: "+255 700 000 000",
+      phone: "+255 713 415 316",
       email: "info@kijanasimama.org",
       tagline: "Kuwapa Nguvu Vijana Kusimama Wima",
+      locationLabel: "Mahali",
+      phoneLabel: "Simu",
+      emailLabel: "Barua Pepe",
     },
   };
 
@@ -245,7 +254,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
                 </div>
                 <div>
                   <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-0.5">
-                    Location
+                    {t.locationLabel}
                   </p>
                   <span className="text-xs text-gray-300">{t.address}</span>
                 </div>
@@ -256,7 +265,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
                 </div>
                 <div>
                   <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-0.5">
-                    Phone
+                    {t.phoneLabel}
                   </p>
                   <a
                     href={`tel:${t.phone}`}
@@ -272,7 +281,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
                 </div>
                 <div>
                   <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-0.5">
-                    Email
+                    {t.emailLabel}
                   </p>
                   <a
                     href={`mailto:${t.email}`}

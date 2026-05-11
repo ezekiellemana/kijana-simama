@@ -454,7 +454,7 @@ export function PartnersPage({ language, onNavigate }: PartnersPageProps) {
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <Handshake className="w-16 h-16 mx-auto mb-6 animate-in zoom-in duration-700 delay-200" />
-            <h1 className="text-4xl md:text-6xl mb-6 animate-in slide-in-from-bottom-4 duration-700 delay-300">
+            <h1 className="text-4xl md:text-5xl mb-6 animate-in slide-in-from-bottom-4 duration-700 delay-300">
               {t.hero.title}
             </h1>
             <p className="text-xl md:text-2xl mb-4 opacity-90 animate-in slide-in-from-bottom-4 duration-700 delay-400">
