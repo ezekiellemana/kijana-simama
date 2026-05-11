@@ -105,14 +105,6 @@ export function Navigation({
 
   const isMoreActive = moreNavItems.some((item) => item.id === currentPage);
 
-  const gradientText: React.CSSProperties = {
-    background:
-      "linear-gradient(135deg, #00f260 0%, #0575e6 50%, #1fa2ff 100%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundClip: "text",
-  };
-
   return (
     <>
       <nav
