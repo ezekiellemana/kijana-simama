@@ -193,11 +193,11 @@ export function Footer({ language, onNavigate }: FooterProps) {
       />
 
       {/* Main content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-4 sm:pb-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10 mb-6 sm:mb-10">
 
           {/* Column 1 — Brand */}
-          <div className="flex flex-col gap-5 sm:col-span-2 lg:col-span-1">
+          <div className="flex flex-col gap-4 col-span-2 lg:col-span-1">
             <button
               onClick={() => onNavigate("home")}
               className="flex items-center gap-3 group w-fit focus:outline-none"
@@ -224,7 +224,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
               </div>
             </button>
 
-            <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
+            <p className="hidden sm:block text-sm leading-relaxed text-gray-400 max-w-xs">
               {t.aboutText}
             </p>
 
@@ -267,7 +267,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
           </div>
 
           {/* Column 4 — Contact Us */}
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <SectionHeader title={t.contactUs} />
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
