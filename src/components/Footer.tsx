@@ -121,13 +121,20 @@ export function Footer({ language, onNavigate }: FooterProps) {
 
   const t: Translations = translations[language];
 
-  const gradientText: CSSProperties = {
-    background:
-      "linear-gradient(135deg, #00f260 0%, #0575e6 50%, #1fa2ff 100%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundClip: "text",
+  const gradientBar: CSSProperties = {
+    background: "linear-gradient(90deg, #00f260 0%, #0575e6 50%, #1fa2ff 100%)",
   };
+
+  const quickNavLinks: NavLink[] = [
+    { id: "home", label: t.home },
+    { id: "about", label: t.aboutUs },
+    { id: "services", label: t.services },
+    { id: "campaigns", label: t.campaigns },
+    { id: "events", label: t.events },
+    { id: "gallery", label: t.gallery },
+    { id: "partners", label: t.partners },
+    { id: "faqs", label: t.faqs },
+  ];
 
   const involvedLinks: NavLink[] = [
     { id: "donate", label: t.donate },
@@ -143,18 +150,33 @@ export function Footer({ language, onNavigate }: FooterProps) {
     { icon: LinkedinIcon, href: "#", label: "LinkedIn" },
   ];
 
+  const SectionHeader = ({ title }: { title: string }) => (
+    <div className="flex items-center gap-2 mb-5">
+      <div className="w-1 h-4 bg-secondary rounded-full shrink-0" />
+      <h3 className="text-white font-semibold text-xs uppercase tracking-wider">
+        {title}
+      </h3>
+    </div>
+  );
+
+  const LinkItem = ({ id, label }: NavLink) => (
+    <li>
+      <button
+        onClick={() => onNavigate(id)}
+        className="group flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors duration-200"
+      >
+        <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-secondary shrink-0" />
+        {label}
+      </button>
+    </li>
+  );
+
   return (
     <footer className="relative bg-gray-950 text-gray-400 overflow-hidden">
       {/* Top gradient accent bar */}
-      <div
-        className="h-1 w-full"
-        style={{
-          background:
-            "linear-gradient(90deg, #00f260 0%, #0575e6 50%, #1fa2ff 100%)",
-        }}
-      />
+      <div className="h-1 w-full" style={gradientBar} />
 
-      {/* Background glows */}
+      {/* Background glow decorations */}
       <div
         className="absolute top-0 left-0 w-96 h-96 rounded-full opacity-5 pointer-events-none"
         style={{
@@ -170,20 +192,22 @@ export function Footer({ language, onNavigate }: FooterProps) {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 pt-6 pb-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-10 gap-6 mb-6">
-          {/* Brand Column */}
-          <div className="lg:col-span-3 flex flex-col gap-3">
+      {/* Main content */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+
+          {/* Column 1 — Brand */}
+          <div className="flex flex-col gap-5 sm:col-span-2 lg:col-span-1">
             <button
               onClick={() => onNavigate("home")}
-              className="flex items-center gap-3 sm:gap-4 group w-fit focus:outline-none"
+              className="flex items-center gap-3 group w-fit focus:outline-none"
             >
-              <div className="bg-white rounded-xl p-1.5">
+              <div className="bg-white rounded-xl p-1.5 shrink-0">
                 <Logo size="small" />
               </div>
               <div className="flex flex-col items-start leading-snug">
                 <span
-                  className="text-lg sm:text-xl font-extrabold tracking-tight"
+                  className="text-lg font-extrabold tracking-tight"
                   style={{
                     color: "white",
                     fontFamily: "'Hachi Maru Pop', cursive",
@@ -192,7 +216,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
                   Kijana Simama
                 </span>
                 <span
-                  className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-bold"
+                  className="text-[10px] text-gray-500 uppercase tracking-widest font-bold"
                   style={{ fontFamily: "'Hachi Maru Pop', cursive" }}
                 >
                   {t.tagline}
@@ -200,12 +224,12 @@ export function Footer({ language, onNavigate }: FooterProps) {
               </div>
             </button>
 
-            <p className="text-xs leading-relaxed text-gray-400 max-w-xs">
+            <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
               {t.aboutText}
             </p>
 
             {/* Social icons */}
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               {socials.map((social: SocialLink) => {
                 const Icon: LucideIcon = social.icon;
                 return (
@@ -213,7 +237,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-9 h-9 rounded-full bg-gray-800 hover:bg-primary flex items-center justify-center transition-all duration-200 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                    className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary flex items-center justify-center transition-all duration-200 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
                   >
                     <Icon className="w-4 h-4 text-gray-300" />
                   </a>
@@ -222,70 +246,68 @@ export function Footer({ language, onNavigate }: FooterProps) {
             </div>
           </div>
 
-          {/* Get Involved */}
-          <div className="sm:col-span-1 lg:col-span-3">
-            <h3 className="text-white font-semibold text-xs uppercase tracking-wider mb-3">
-              {t.getInvolved}
-            </h3>
-            <ul className="space-y-1.5">
-              {involvedLinks.map((link: NavLink) => (
-                <li key={link.id + link.label}>
-                  <button
-                    onClick={() => onNavigate(link.id)}
-                    className="group flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors duration-200"
-                  >
-                    <ArrowRight className="w-2.5 h-2.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-secondary" />
-                    {link.label}
-                  </button>
-                </li>
+          {/* Column 2 — Quick Links */}
+          <div>
+            <SectionHeader title={t.quickLinks} />
+            <ul className="space-y-2.5">
+              {quickNavLinks.map((link) => (
+                <LinkItem key={link.id} {...link} />
               ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div className="sm:col-span-2 lg:col-span-4">
-            <h3 className="text-white font-semibold text-xs uppercase tracking-wider mb-3">
-              {t.contactUs}
-            </h3>
-            <ul className="space-y-2">
-              <li className="flex items-start gap-2">
-                <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
-                  <MapPin className="w-3 h-3 text-secondary" />
+          {/* Column 3 — Get Involved */}
+          <div>
+            <SectionHeader title={t.getInvolved} />
+            <ul className="space-y-2.5">
+              {involvedLinks.map((link, i) => (
+                <LinkItem key={`${link.id}-${i}`} {...link} />
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4 — Contact Us */}
+          <div>
+            <SectionHeader title={t.contactUs} />
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin className="w-4 h-4 text-secondary" />
                 </div>
                 <div>
-                  <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-0.5">
+                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-0.5">
                     {t.locationLabel}
                   </p>
-                  <span className="text-xs text-gray-300">{t.address}</span>
+                  <span className="text-sm text-gray-300">{t.address}</span>
                 </div>
               </li>
-              <li className="flex items-start gap-2">
-                <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
-                  <Phone className="w-3 h-3 text-secondary" />
+              <li className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0 mt-0.5">
+                  <Phone className="w-4 h-4 text-secondary" />
                 </div>
                 <div>
-                  <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-0.5">
+                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-0.5">
                     {t.phoneLabel}
                   </p>
                   <a
                     href={`tel:${t.phone}`}
-                    className="text-xs text-gray-300 hover:text-white transition-colors"
+                    className="text-sm text-gray-300 hover:text-white transition-colors"
                   >
                     {t.phone}
                   </a>
                 </div>
               </li>
-              <li className="flex items-start gap-2">
-                <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center shrink-0">
-                  <Mail className="w-3 h-3 text-secondary" />
+              <li className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0 mt-0.5">
+                  <Mail className="w-4 h-4 text-secondary" />
                 </div>
                 <div>
-                  <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-0.5">
+                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-0.5">
                     {t.emailLabel}
                   </p>
                   <a
                     href={`mailto:${t.email}`}
-                    className="text-xs text-gray-300 hover:text-white transition-colors"
+                    className="text-sm text-gray-300 hover:text-white transition-colors break-all"
                   >
                     {t.email}
                   </a>
@@ -296,11 +318,11 @@ export function Footer({ language, onNavigate }: FooterProps) {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-gray-800 mb-4" />
+        <div className="h-px bg-gray-800 mb-5" />
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-1">
-          <p className="text-[10px] text-gray-500">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-2">
+          <p className="text-xs text-gray-500">
             © {new Date().getFullYear()}{" "}
             <span
               className="font-semibold"
@@ -313,7 +335,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
             </span>
             . {t.rights}
           </p>
-          <div className="flex items-center gap-1 text-[10px] text-gray-500">
+          <div className="flex items-center gap-1 text-xs text-gray-500">
             <a
               href="#"
               className="hover:text-white transition-colors px-2 py-0.5 rounded-full hover:bg-gray-800"
