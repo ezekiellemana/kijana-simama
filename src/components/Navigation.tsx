@@ -136,7 +136,7 @@ export function Navigation({
                 <span
                   className="text-base sm:text-lg font-extrabold tracking-tight"
                   style={{
-                    ...gradientText,
+                    color: "black",
                     fontFamily: "'Hachi Maru Pop', cursive",
                   }}
                 >
@@ -289,7 +289,7 @@ export function Navigation({
               <span
                 className="text-sm sm:text-base font-extrabold tracking-tight"
                 style={{
-                  ...gradientText,
+                  color: "black",
                   fontFamily: "'Hachi Maru Pop', cursive",
                 }}
               >

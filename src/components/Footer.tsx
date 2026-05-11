@@ -185,7 +185,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
                 <span
                   className="text-lg sm:text-xl font-extrabold tracking-tight"
                   style={{
-                    ...gradientText,
+                    color: "white",
                     fontFamily: "'Hachi Maru Pop', cursive",
                   }}
                 >
@@ -305,7 +305,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
             <span
               className="font-semibold"
               style={{
-                ...gradientText,
+                color: "white",
                 fontFamily: "'Hachi Maru Pop', cursive",
               }}
             >
