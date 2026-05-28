@@ -29,6 +29,7 @@ export function AnimatedSection({
           setTimeout(() => {
             setIsVisible(true);
           }, delay);
+          observer.disconnect();
         }
       },
       {
@@ -41,11 +42,7 @@ export function AnimatedSection({
       observer.observe(ref.current);
     }
 
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
+    return () => observer.disconnect();
   }, [delay]);
 
   const animationClasses = {

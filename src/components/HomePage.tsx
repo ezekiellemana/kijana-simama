@@ -1,4 +1,4 @@
-import { ArrowRight, Users, Target, Heart, Award } from "lucide-react";
+import { ArrowRight, Users, Target, Heart, Award, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
@@ -172,12 +172,12 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-linear-to-br from-blue-900 via-blue-800 to-blue-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/40"></div>
+      <section className="relative bg-blue-950 text-white overflow-hidden">
+        {/* Hero background image */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
           className="absolute inset-0"
         >
           <img
@@ -185,8 +185,10 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
             alt="Youth empowerment"
             className="w-full h-full object-cover"
           />
+          {/* Gradient overlay — keeps text readable while showing the image */}
+          <div className="absolute inset-0 bg-linear-to-r from-blue-950/90 via-blue-900/70 to-blue-900/40" />
         </motion.div>
-        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-20 md:py-28 lg:py-36">
           <motion.div
             initial="initial"
             animate="animate"
@@ -267,6 +269,57 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
               />
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Impact Stats Section */}
+      <section className="py-12 md:py-16 lg:py-20 bg-primary relative overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-white/20 blur-3xl" />
+          <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-secondary/30 blur-3xl" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-10 md:mb-14"
+          >
+            <span className="inline-flex items-center gap-2 bg-white/10 text-white text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+              <TrendingUp className="w-3.5 h-3.5" />
+              {t.impact.title}
+            </span>
+          </motion.div>
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
+          >
+            {[
+              { count: t.impact.youthCount, label: t.impact.youth, icon: Users },
+              { count: t.impact.programsCount, label: t.impact.programs, icon: Target },
+              { count: t.impact.communitiesCount, label: t.impact.communities, icon: Heart },
+              { count: t.impact.volunteersCount, label: t.impact.volunteers, icon: Award },
+            ].map(({ count, label, icon: Icon }) => (
+              <motion.div
+                key={label}
+                variants={scaleIn}
+                className="flex flex-col items-center text-center group"
+              >
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-4 group-hover:bg-secondary/30 transition-colors duration-300">
+                  <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                </div>
+                <span className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-1">
+                  {count}
+                </span>
+                <span className="text-sm sm:text-base text-blue-200 font-medium">{label}</span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -393,69 +446,24 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
             variants={staggerContainer}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
           >
-            <motion.div variants={scaleIn}>
-              <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full text-center p-4 sm:p-6">
-                <CardContent className="p-0">
-                  <div className="bg-primary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
-                    <Users className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl mb-2">
-                    {t.values.empowerment}
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-600">
-                    {t.values.empowermentDesc}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={scaleIn}>
-              <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full text-center p-4 sm:p-6">
-                <CardContent className="p-0">
-                  <div className="bg-secondary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
-                    <Target className="w-7 h-7 sm:w-8 sm:h-8 text-secondary" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl mb-2">
-                    {t.values.integrity}
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-600">
-                    {t.values.integrityDesc}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={scaleIn}>
-              <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full text-center p-4 sm:p-6">
-                <CardContent className="p-0">
-                  <div className="bg-primary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
-                    <Heart className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl mb-2">
-                    {t.values.community}
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-600">
-                    {t.values.communityDesc}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={scaleIn}>
-              <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full text-center p-4 sm:p-6">
-                <CardContent className="p-0">
-                  <div className="bg-secondary/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
-                    <Award className="w-7 h-7 sm:w-8 sm:h-8 text-secondary" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl mb-2">
-                    {t.values.excellence}
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-600">
-                    {t.values.excellenceDesc}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
+            {[
+              { icon: Users, color: "primary", title: t.values.empowerment, desc: t.values.empowermentDesc },
+              { icon: Target, color: "secondary", title: t.values.integrity, desc: t.values.integrityDesc },
+              { icon: Heart, color: "primary", title: t.values.community, desc: t.values.communityDesc },
+              { icon: Award, color: "secondary", title: t.values.excellence, desc: t.values.excellenceDesc },
+            ].map(({ icon: Icon, color, title, desc }) => (
+              <motion.div key={title} variants={scaleIn}>
+                <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full text-center p-4 sm:p-6">
+                  <CardContent className="p-0">
+                    <div className={`bg-${color}/10 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transition-transform duration-300 group-hover:rotate-12`}>
+                      <Icon className={`w-7 h-7 sm:w-8 sm:h-8 text-${color}`} />
+                    </div>
+                    <h3 className="text-lg sm:text-xl mb-2">{title}</h3>
+                    <p className="text-sm sm:text-base text-gray-600">{desc}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>

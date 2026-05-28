@@ -236,15 +236,13 @@
     line-height: 1.6;
   }
 
-  /* Touch-friendly interactive elements */
+  /* Touch-friendly interactive elements — only standalone tap targets, not inline anchors */
   button,
-  a,
   input,
   textarea,
   select,
   [role="button"] {
     min-height: var(--min-touch-target);
-    min-width: var(--min-touch-target);
   }
 
   /* Improve focus states for accessibility */
@@ -363,11 +361,6 @@
       line-height: 1.5;
     }
   }
-}
-
-html {
-  font-size: var(--font-size);
-  scroll-behavior: smooth;
 }
 
 /* Custom Animations */
@@ -510,11 +503,16 @@ html {
 
 /* Smooth transitions for interactive elements */
 button,
-a,
+a {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+}
+
 input,
 textarea,
 select {
-  transition: all 0.2s ease-in-out;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 /* Hover lift effect */

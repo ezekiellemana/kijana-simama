@@ -185,27 +185,29 @@ export function Navigation({
                   />
                 </button>
 
-                {moreMenuOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-44 bg-white rounded-xl shadow-xl border border-gray-100 py-1 z-50">
-                    {moreNavItems.map((item) => (
-                      <button
-                        key={item.id}
-                        onClick={() => handleNavigate(item.id)}
-                        className={`
-                          w-full text-left px-4 py-2.5 text-sm font-medium
-                          transition-colors duration-150
-                          ${
-                            currentPage === item.id
-                              ? "bg-primary/10 text-primary"
-                              : "text-gray-700 hover:bg-gray-50 hover:text-primary"
-                          }
-                        `}
-                      >
-                        {item.label}
-                      </button>
-                    ))}
-                  </div>
-                )}
+                <div
+                  className={`absolute top-full right-0 mt-2 w-44 bg-white rounded-xl shadow-xl border border-gray-100 py-1 z-50
+                    transition-all duration-200 origin-top-right
+                    ${moreMenuOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"}`}
+                >
+                  {moreNavItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => handleNavigate(item.id)}
+                      className={`
+                        w-full text-left px-4 py-2.5 text-sm font-medium
+                        transition-colors duration-150
+                        ${
+                          currentPage === item.id
+                            ? "bg-primary/10 text-primary"
+                            : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                        }
+                      `}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
