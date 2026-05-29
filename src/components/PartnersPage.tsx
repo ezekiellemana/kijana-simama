@@ -24,10 +24,10 @@ export function PartnersPage({ language, onNavigate }: PartnersPageProps) {
           "We are grateful to our partners and sponsors who share our vision of empowering young people to reach their full potential.",
       },
       stats: {
-        partners: { value: "50+", label: "Active Partners" },
+        partners: { value: "00", label: "Active Partners" },
         years: { value: "8+", label: "Years of Partnership" },
         projects: { value: "120+", label: "Joint Projects" },
-        beneficiaries: { value: "10K+", label: "Youth Impacted" },
+        beneficiaries: { value: "00", label: "Youth Impacted" },
       },
       categories: {
         title: "Our Partner Categories",
@@ -238,10 +238,10 @@ export function PartnersPage({ language, onNavigate }: PartnersPageProps) {
           "Tunashukuru washirika na wafadhili wetu wanaoshiriki dira yetu ya kuwapa nguvu vijana kufikia uwezo wao kamili.",
       },
       stats: {
-        partners: { value: "50+", label: "Washirika Hai" },
+        partners: { value: "00", label: "Washirika Hai" },
         years: { value: "8+", label: "Miaka ya Ushirikiano" },
         projects: { value: "120+", label: "Miradi ya Pamoja" },
-        beneficiaries: { value: "10K+", label: "Vijana Walionufaika" },
+        beneficiaries: { value: "00", label: "Vijana Walionufaika" },
       },
       categories: {
         title: "Aina za Washirika Wetu",

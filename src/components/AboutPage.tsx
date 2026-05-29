@@ -7,6 +7,7 @@ import aboutImage from "../assets/about.jpg";
 import drSyangu from "../assets/team/dr_syangu.png";
 import drAgnes from "../assets/team/dr_agnes.jpeg";
 import drLaura from "../assets/team/dr_laura.jpeg";
+import vivianMacha from "../assets/team/vivian_macha.png";
 
 interface AboutPageProps {
   language: "en" | "sw";
@@ -81,6 +82,13 @@ export function AboutPage({ language }: AboutPageProps) {
             credential: "Public Health & SRH Specialist",
             bio: "Dr. Laura Urasa is a Senior Medical Doctor with over 13 years of clinical experience in mental health and psychiatry. She is also a public health professional with expertise in Sexual and Reproductive Health Policy and Programming, applying her experience to strengthen school- and community-based interventions.",
             photo: drLaura,
+          },
+          {
+            name: "Vivian Macha",
+            role: "Founder",
+            credential: "Human Resources and Administration",
+            bio: "Vivian Macha is an experienced Human Resources and Administration professional with over 15 years of expertise in HR management, employee relations, administration, recruitment, policy implementation, and organizational development. As a Founder of Kijana Simama, she applies strong leadership, people management, and policy development skills to promote youth wellbeing and empowerment through impactful community initiatives.",
+            photo: vivianMacha,
           },
         ],
       },
@@ -162,6 +170,13 @@ export function AboutPage({ language }: AboutPageProps) {
             credential: "Mtaalamu wa Afya ya Umma & SRH",
             bio: "Dkt. Laura Urasa ni Daktari Mkuu mwenye uzoefu wa zaidi ya miaka 13 wa kimatibabu katika afya ya akili na magonjwa ya akili. Pia ni mtaalamu wa afya ya umma mwenye utaalamu katika Sera na Programu za Afya ya Uzazi na Uzazi.",
             photo: drLaura,
+          },
+          {
+            name: "Vivian Macha",
+            role: "Mwanzilishi",
+            credential: "Rasilimali Watu na Utawala",
+            bio: "Vivian Macha ni mtaalamu mwenye uzoefu wa Rasilimali Watu na Utawala kwa zaidi ya miaka 15 katika usimamizi wa HR, mahusiano ya wafanyakazi, utawala, uajiri, utekelezaji wa sera, na maendeleo ya taasisi. Kama mmoja wa waanzilishi wa Kijana Simama, anatumia uongozi, usimamizi wa watu, na uandaaji wa sera kuimarisha ustawi na uwezeshaji wa vijana kupitia mipango yenye athari kwa jamii.",
+            photo: vivianMacha,
           },
         ],
       },
@@ -376,7 +391,7 @@ export function AboutPage({ language }: AboutPageProps) {
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
           >
             {t.team.members.map((member, index) => (
               <motion.div key={index} variants={scaleIn}>
@@ -384,11 +399,21 @@ export function AboutPage({ language }: AboutPageProps) {
                   <CardContent className="p-4 sm:p-6 flex flex-col items-center text-center">
                   {/* Oval portrait photo */}
                   <div className="w-32 h-40 rounded-full overflow-hidden mb-4 bg-linear-to-br from-primary/10 to-secondary/10 shrink-0">
-                    <img
-                      src={member.photo}
-                      alt={member.name}
-                      className="w-full h-full object-cover object-top"
-                    />
+                    {member.photo ? (
+                      <img
+                        src={member.photo}
+                        alt={member.name}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-primary text-2xl font-semibold">
+                        {member.name
+                          .split(" ")
+                          .map((part) => part[0])
+                          .join("")
+                          .slice(0, 2)}
+                      </div>
+                    )}
                   </div>
                     {/* Role badge */}
                     <span className="inline-block px-3 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary mb-3">
