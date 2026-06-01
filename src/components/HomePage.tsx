@@ -30,13 +30,13 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
       impact: {
         title: "Our Impact",
         youth: "Youth Empowered",
-        youthCount: "5,000+",
+        youthCount: "",
         programs: "Active Programs",
-        programsCount: "25+",
+        programsCount: "",
         communities: "Communities Reached",
-        communitiesCount: "50+",
+        communitiesCount: "",
         volunteers: "Volunteers",
-        volunteersCount: "200+",
+        volunteersCount: "",
       },
       campaigns: {
         title: "Featured Campaigns",
@@ -96,13 +96,13 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
       impact: {
         title: "Athari Yetu",
         youth: "Vijana Waliopewa Nguvu",
-        youthCount: "5,000+",
+        youthCount: "",
         programs: "Programu Zinazoendelea",
-        programsCount: "25+",
+        programsCount: "",
         communities: "Jamii Zilizofikwa",
-        communitiesCount: "50+",
+        communitiesCount: "",
         volunteers: "Wajitoleaji",
-        volunteersCount: "200+",
+        volunteersCount: "",
       },
       campaigns: {
         title: "Kampeni Zilizoangaziwa",
@@ -313,9 +313,11 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-4 group-hover:bg-secondary/30 transition-colors duration-300">
                   <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                 </div>
-                <span className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-1">
-                  {count}
-                </span>
+                {count ? (
+                  <span className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-1">
+                    {count}
+                  </span>
+                ) : null}
                 <span className="text-sm sm:text-base text-blue-200 font-medium">{label}</span>
               </motion.div>
             ))}
