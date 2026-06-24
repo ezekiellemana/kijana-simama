@@ -389,10 +389,10 @@ export function AboutPage({ language }: AboutPageProps) {
           )}
         </div>
         <div className="min-w-0">
-          <p className="truncate text-sm font-bold text-gray-950 transition-colors group-hover:text-primary">
+          <p className="truncate text-sm font-bold leading-tight text-gray-950 transition-colors group-hover:text-primary">
             {member.name}
           </p>
-          <p className="text-xs font-semibold text-secondary">{member.role}</p>
+          <p className="text-xs font-semibold leading-snug text-secondary">{member.role}</p>
           <p className="line-clamp-1 text-xs text-gray-500">
             {member.credential}
           </p>
@@ -528,7 +528,7 @@ export function AboutPage({ language }: AboutPageProps) {
             >
               <Users className="h-7 w-7" />
             </motion.div>
-            <h2 className="text-3xl md:text-4xl mb-3 text-primary">
+            <h2 className="text-3xl font-bold md:text-4xl mb-3 text-primary">
               {t.team.title}
             </h2>
             <p className="mx-auto max-w-2xl text-base sm:text-lg text-gray-600">
@@ -576,7 +576,7 @@ export function AboutPage({ language }: AboutPageProps) {
                             <Icon className="h-5 w-5" />
                           </div>
                           <div className="min-w-0">
-                            <h3 className="text-xl font-bold text-gray-950">
+                            <h3 className="text-lg font-bold text-gray-950 sm:text-xl">
                               {layer.title}
                             </h3>
                             <p className="mt-1 text-sm text-gray-600">
@@ -696,6 +696,7 @@ export function AboutPage({ language }: AboutPageProps) {
     </div>
   );
 }
+
 
 
 

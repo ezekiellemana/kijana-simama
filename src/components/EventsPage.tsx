@@ -22,7 +22,7 @@ export function EventsPage({ language }: EventsPageProps) {
       events: [
         {
           id: 1,
-          title: "Suicide Prevention Awareness Campaign Workshop",
+          title: "Suicide Prevention Awareness Workshop",
           date: "October 2026",
           time: "To be announced",
           location: "Partner Schools",
@@ -33,7 +33,7 @@ export function EventsPage({ language }: EventsPageProps) {
         },
         {
           id: 2,
-          title: "Mental Health Awareness Session",
+          title: "Mental Health Awareness Seminar",
           date: "October 2026",
           time: "To be announced",
           location: "Partner Schools and Youth Spaces",
@@ -220,3 +220,4 @@ export function EventsPage({ language }: EventsPageProps) {
     </div>
   );
 }
+
