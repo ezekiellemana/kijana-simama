@@ -92,7 +92,7 @@ export function AboutPage({ language }: AboutPageProps) {
           "Executive Team profiles will be added once the full list is confirmed.",
         members: [
           {
-            name: "Dr. Syangu E. Mkony",
+            name: "Dr. Syangu Mkony",
             role: "Founder",
             credential: "Psychiatrist & Public Health Specialist",
             bio: "Dr. Syangu Mkony is dedicated to advancing adolescent mental health, sexual and reproductive health, and psychosocial wellbeing through school- and community-based interventions in Tanzania. Through Kijana Simama, she champions youth empowerment, early talent nurturing, and resilient, healthy futures for young people.",
@@ -106,10 +106,10 @@ export function AboutPage({ language }: AboutPageProps) {
             photo: drAgnes,
           },
           {
-            name: "Dr. Laura Urasa",
+            name: "Dr. Laura Urassa",
             role: "Founder",
             credential: "Public Health & SRH Specialist",
-            bio: "Dr. Laura Urasa is a Senior Medical Doctor with over 13 years of clinical experience in mental health and psychiatry. She is also a public health professional with expertise in Sexual and Reproductive Health Policy and Programming, applying her experience to strengthen school- and community-based interventions.",
+            bio: "Dr. Laura Urassa is a Senior Medical Doctor with over 13 years of clinical experience in mental health and psychiatry. She is also a public health professional with expertise in Sexual and Reproductive Health Policy and Programming, applying her experience to strengthen school- and community-based interventions.",
             photo: drLaura,
           },
           {
@@ -156,10 +156,10 @@ export function AboutPage({ language }: AboutPageProps) {
             bio: "Dr. Godwin Mwisomba serves as a board member, contributing oversight and guidance to support Kijana Simama's mission and programs.",
           },
           {
-            name: "Mr. Ezekiel Imana",
+            name: "Mr. Ezekiel Lemana",
             role: "Member",
             credential: "Board of Directors",
-            bio: "Mr. Ezekiel Imana serves as a board member, supporting governance, digital implementation, and organizational growth for Kijana Simama.",
+            bio: "Mr. Ezekiel Lemana serves as a board member, supporting governance, digital implementation, and organizational growth for Kijana Simama.",
           },
         ],
       },
@@ -232,7 +232,7 @@ export function AboutPage({ language }: AboutPageProps) {
           "Taarifa za Executive Team zitaongezwa baada ya orodha kamili kuthibitishwa.",
         members: [
           {
-            name: "Dkt. Syangu E. Mkony",
+            name: "Dkt. Syangu Mkony",
             role: "Mwanzilishi",
             credential: "Daktari wa Akili & Mtaalamu wa Afya ya Umma",
             bio: "Dkt. Syangu Mkony amejitolea kuendeleza afya ya akili ya vijana, afya ya uzazi na uzazi, na ustawi wa kisaikolojia kupitia mipango ya shule na jamii Tanzania. Kupitia Kijana Simama, anaunga mkono uwezeshaji wa vijana na mustakabali wenye afya.",
@@ -246,10 +246,10 @@ export function AboutPage({ language }: AboutPageProps) {
             photo: drAgnes,
           },
           {
-            name: "Dkt. Laura Urasa",
+            name: "Dkt. Laura Urassa",
             role: "Mwanzilishi",
             credential: "Mtaalamu wa Afya ya Umma & SRH",
-            bio: "Dkt. Laura Urasa ni Daktari Mkuu mwenye uzoefu wa zaidi ya miaka 13 wa kimatibabu katika afya ya akili na magonjwa ya akili. Pia ni mtaalamu wa afya ya umma mwenye utaalamu katika Sera na Programu za Afya ya Uzazi na Uzazi.",
+            bio: "Dkt. Laura Urassa ni Daktari Mkuu mwenye uzoefu wa zaidi ya miaka 13 wa kimatibabu katika afya ya akili na magonjwa ya akili. Pia ni mtaalamu wa afya ya umma mwenye utaalamu katika Sera na Programu za Afya ya Uzazi na Uzazi.",
             photo: drLaura,
           },
           {
@@ -296,10 +296,10 @@ export function AboutPage({ language }: AboutPageProps) {
             bio: "Dr. Godwin Mwisomba ni mjumbe wa bodi anayechangia usimamizi na mwongozo wa kusaidia dhamira na programu za Kijana Simama.",
           },
           {
-            name: "Mr. Ezekiel Imana",
+            name: "Mr. Ezekiel Lemana",
             role: "Member",
             credential: "Board of Directors",
-            bio: "Mr. Ezekiel Imana ni mjumbe wa bodi anayesaidia katika governance, utekelezaji wa kidijitali, na ukuaji wa taasisi ya Kijana Simama.",
+            bio: "Mr. Ezekiel Lemana ni mjumbe wa bodi anayesaidia katika governance, utekelezaji wa kidijitali, na ukuaji wa taasisi ya Kijana Simama.",
           },
         ],
       },
@@ -699,4 +699,5 @@ export function AboutPage({ language }: AboutPageProps) {
     </div>
   );
 }
+
 
