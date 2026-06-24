@@ -1,6 +1,14 @@
-import { Award, Eye, Heart, Target } from "lucide-react";
+import { useState } from "react";
+import { BriefcaseBusiness, Crown, Eye, Network, Target, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "./ui/dialog";
 import aboutImage from "../assets/studentsImage.jpg";
 
 // Team photos — copy these from outputs to src/assets/team/
@@ -14,7 +22,17 @@ interface AboutPageProps {
   language: "en" | "sw";
 }
 
+type TeamMember = {
+  name: string;
+  role: string;
+  credential: string;
+  bio: string;
+  photo?: string;
+};
+
 export function AboutPage({ language }: AboutPageProps) {
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
   const translations = {
     en: {
       title: "About Kijana Simama",
@@ -61,7 +79,17 @@ export function AboutPage({ language }: AboutPageProps) {
       },
       team: {
         title: "Our Team",
-        subtitle: "Meet the founders behind Kijana Simama",
+        subtitle: "A simple leadership tree for Kijana Simama",
+        tapHint: "Tap a member to view full details",
+        layers: {
+          founders: "Founders Council",
+          board: "Board of Directors",
+          executive: "Executive Team",
+        },
+        boardSummary:
+          "The Board provides governance, accountability, and strategic oversight.",
+        executiveSummary:
+          "Executive Team profiles will be added once the full list is confirmed.",
         members: [
           {
             name: "Dr. Syangu E. Mkony",
@@ -97,6 +125,41 @@ export function AboutPage({ language }: AboutPageProps) {
             credential: "Educator",
             bio: "Sophia S. Nyakitagara is a dedicated educator, philologist, and entrepreneur with over 12 years of experience teaching Kiswahili Language and Literature to secondary school students. She brings expertise in adolescent development, guidance and counselling, conflict resolution, and youth mentorship, contributing to life-skills development and supportive environments for adolescents.",
             photo: sophiaNyakitagara,
+          },
+        ],
+        boardMembers: [
+          {
+            name: "Dr. Syangu Mkony",
+            role: "Interim Chairperson",
+            credential: "Board of Directors",
+            bio: "Dr. Syangu Mkony provides interim board leadership and strategic guidance for Kijana Simama's adolescent wellbeing, school-based mental health, and youth empowerment work.",
+            photo: drSyangu,
+          },
+          {
+            name: "Dr. Laura Urassa",
+            role: "Interim Treasurer",
+            credential: "Board of Directors",
+            bio: "Dr. Laura Urassa supports financial oversight and governance as Interim Treasurer, helping strengthen accountability and responsible stewardship of Kijana Simama resources.",
+            photo: drLaura,
+          },
+          {
+            name: "Dr. Agnes Kosia",
+            role: "Interim Board Secretary",
+            credential: "Board of Directors",
+            bio: "Dr. Agnes Kosia supports board coordination, documentation, and governance processes as Interim Board Secretary.",
+            photo: drAgnes,
+          },
+          {
+            name: "Dr. Godwin Mwisomba",
+            role: "Member",
+            credential: "Board of Directors",
+            bio: "Dr. Godwin Mwisomba serves as a board member, contributing oversight and guidance to support Kijana Simama's mission and programs.",
+          },
+          {
+            name: "Mr. Ezekiel Imana",
+            role: "Member",
+            credential: "Board of Directors",
+            bio: "Mr. Ezekiel Imana serves as a board member, supporting governance, digital implementation, and organizational growth for Kijana Simama.",
           },
         ],
       },
@@ -156,7 +219,17 @@ export function AboutPage({ language }: AboutPageProps) {
       },
       team: {
         title: "Timu Yetu",
-        subtitle: "Kutana na waanzilishi wa Kijana Simama",
+        subtitle: "Muundo rahisi wa uongozi wa Kijana Simama",
+        tapHint: "Gusa jina la mwanatimu kuona maelezo kamili",
+        layers: {
+          founders: "Founders Council",
+          board: "Board of Directors",
+          executive: "Executive Team",
+        },
+        boardSummary:
+          "Board inasimamia uongozi, uwajibikaji, na mwelekeo wa kimkakati.",
+        executiveSummary:
+          "Taarifa za Executive Team zitaongezwa baada ya orodha kamili kuthibitishwa.",
         members: [
           {
             name: "Dkt. Syangu E. Mkony",
@@ -194,6 +267,41 @@ export function AboutPage({ language }: AboutPageProps) {
             photo: sophiaNyakitagara,
           },
         ],
+        boardMembers: [
+          {
+            name: "Dkt. Syangu Mkony",
+            role: "Interim Chairperson",
+            credential: "Board of Directors",
+            bio: "Dkt. Syangu Mkony anatoa uongozi wa muda wa bodi na mwongozo wa kimkakati kwa kazi za Kijana Simama katika ustawi wa vijana, afya ya akili, na uwezeshaji wa vijana mashuleni.",
+            photo: drSyangu,
+          },
+          {
+            name: "Dkt. Laura Urassa",
+            role: "Interim Treasurer",
+            credential: "Board of Directors",
+            bio: "Dkt. Laura Urassa anasaidia usimamizi wa fedha na uwajibikaji kama Interim Treasurer, akiimarisha matumizi sahihi ya rasilimali za Kijana Simama.",
+            photo: drLaura,
+          },
+          {
+            name: "Dkt. Agnes Kosia",
+            role: "Interim Board Secretary",
+            credential: "Board of Directors",
+            bio: "Dkt. Agnes Kosia anasaidia uratibu wa bodi, kumbukumbu, na taratibu za kiutawala kama Interim Board Secretary.",
+            photo: drAgnes,
+          },
+          {
+            name: "Dr. Godwin Mwisomba",
+            role: "Member",
+            credential: "Board of Directors",
+            bio: "Dr. Godwin Mwisomba ni mjumbe wa bodi anayechangia usimamizi na mwongozo wa kusaidia dhamira na programu za Kijana Simama.",
+          },
+          {
+            name: "Mr. Ezekiel Imana",
+            role: "Member",
+            credential: "Board of Directors",
+            bio: "Mr. Ezekiel Imana ni mjumbe wa bodi anayesaidia katika governance, utekelezaji wa kidijitali, na ukuaji wa taasisi ya Kijana Simama.",
+          },
+        ],
       },
       impact: {
         title: "Athari Yetu",
@@ -220,16 +328,68 @@ export function AboutPage({ language }: AboutPageProps) {
     animate: { transition: { staggerChildren: 0.15 } },
   };
 
-  const scaleIn = {
-    initial: { opacity: 0, scale: 0.9 },
-    animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.5, ease: "easeOut" },
-  };
+  const teamLayers = [
+    {
+      title: t.team.layers.founders,
+      icon: Crown,
+      members: t.team.members,
+      summary: t.team.subtitle,
+    },
+    {
+      title: t.team.layers.board,
+      icon: Network,
+      members: t.team.boardMembers,
+      summary: t.team.boardSummary,
+    },
+    {
+      title: t.team.layers.executive,
+      icon: BriefcaseBusiness,
+      members: [],
+      summary: t.team.executiveSummary,
+    },
+  ];
+
+  const renderMemberButton = (member: TeamMember) => (
+    <button
+      key={`${member.name}-${member.role}`}
+      onClick={() => setSelectedMember(member)}
+      className="w-full rounded-lg border border-gray-200 bg-white p-3 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
+    >
+      <div className="flex items-center gap-3">
+        <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-primary/10">
+          {member.photo ? (
+            <img
+              src={member.photo}
+              alt={member.name}
+              className="h-full w-full object-cover object-top"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-sm font-semibold text-primary">
+              {member.name
+                .split(" ")
+                .map((part) => part[0])
+                .join("")
+                .slice(0, 2)}
+            </div>
+          )}
+        </div>
+        <div className="min-w-0">
+          <p className="truncate text-sm font-bold text-gray-950">
+            {member.name}
+          </p>
+          <p className="text-xs font-medium text-secondary">{member.role}</p>
+          <p className="line-clamp-1 text-xs text-gray-500">
+            {member.credential}
+          </p>
+        </div>
+      </div>
+    </button>
+  );
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative bg-linear-to-br from-primary to-blue-600 text-white py-12 sm:py-16 md:py-20 overflow-hidden">
+      <section className="relative bg-linear-to-br from-primary to-blue-600 text-white py-10 sm:py-12 md:py-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -251,7 +411,7 @@ export function AboutPage({ language }: AboutPageProps) {
       </section>
 
       {/* Our Story */}
-      <section className="py-10 sm:py-12 md:py-16 lg:py-24">
+      <section className="py-8 sm:py-10 md:py-12">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <motion.div
@@ -270,7 +430,7 @@ export function AboutPage({ language }: AboutPageProps) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
-              className="relative h-96 rounded-lg overflow-hidden shadow-xl"
+              className="relative hidden h-72 rounded-lg overflow-hidden shadow-xl sm:block md:h-80"
             >
               <img
                 src={aboutImage}
@@ -283,7 +443,7 @@ export function AboutPage({ language }: AboutPageProps) {
       </section>
 
       {/* Vision & Mission */}
-      <section className="py-10 sm:py-12 md:py-16 lg:py-24 bg-gray-50">
+      <section className="py-8 sm:py-10 md:py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <motion.div
             initial="initial"
@@ -294,7 +454,7 @@ export function AboutPage({ language }: AboutPageProps) {
           >
             <motion.div variants={fadeInUp}>
               <Card className="h-full hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <CardContent className="p-8">
+                <CardContent className="p-5 sm:p-6">
                   <motion.div
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.5 }}
@@ -313,7 +473,7 @@ export function AboutPage({ language }: AboutPageProps) {
             </motion.div>
             <motion.div variants={fadeInUp}>
               <Card className="h-full hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <CardContent className="p-8">
+                <CardContent className="p-5 sm:p-6">
                   <motion.div
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.5 }}
@@ -334,95 +494,116 @@ export function AboutPage({ language }: AboutPageProps) {
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="py-10 sm:py-12 md:py-16 lg:py-24">
+      {/* Team Section */}
+      <section className="py-8 sm:py-10 md:py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl text-center mb-12 text-primary"
+            className="text-center mb-8"
           >
-            {t.values.title}
-          </motion.h2>
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+              <Users className="h-7 w-7 text-primary" />
+            </div>
+            <h2 className="text-3xl md:text-4xl mb-3 text-primary">
+              {t.team.title}
+            </h2>
+            <p className="mx-auto max-w-2xl text-base sm:text-lg text-gray-600">
+              {t.team.subtitle}
+            </p>
+            <p className="mt-2 text-sm font-medium text-secondary">
+              {t.team.tapHint}
+            </p>
+          </motion.div>
+
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="relative mx-auto max-w-5xl space-y-5"
           >
-            {t.values.items.map((value, index) => (
-              <motion.div key={index} variants={scaleIn}>
-                <Card className="text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full">
-                  <CardContent className="p-6">
-                    <motion.div
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.5 }}
-                      className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4"
-                    >
-                      {index === 0 && (
-                        <Heart className="w-8 h-8 text-secondary" />
-                      )}
-                      {index === 1 && (
-                        <Award className="w-8 h-8 text-secondary" />
-                      )}
-                      {index === 2 && (
-                        <Target className="w-8 h-8 text-secondary" />
-                      )}
-                      {index === 3 && (
-                        <Eye className="w-8 h-8 text-secondary" />
-                      )}
-                    </motion.div>
-                    <h3 className="text-xl mb-3 text-primary">{value.title}</h3>
-                    <p className="text-gray-600">{value.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            <div className="absolute left-5 top-8 bottom-8 hidden w-px bg-primary/20 sm:block" />
+            {teamLayers.map((layer, index) => {
+              const Icon = layer.icon;
+              return (
+                <motion.div
+                  key={layer.title}
+                  variants={fadeInUp}
+                  className="relative"
+                >
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-[2.75rem_1fr] sm:gap-5">
+                    <div className="hidden sm:flex h-11 w-11 items-center justify-center rounded-full border-4 border-gray-50 bg-primary text-white shadow-md">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <Card className="overflow-hidden border-gray-200 shadow-sm">
+                      <CardContent className="p-4 sm:p-5">
+                        <div className="mb-4 flex items-start gap-3">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary sm:hidden">
+                            <Icon className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <p className="text-xs font-semibold uppercase tracking-widest text-secondary">
+                              Layer {index + 1}
+                            </p>
+                            <h3 className="text-xl font-bold text-gray-950">
+                              {layer.title}
+                            </h3>
+                            <p className="mt-1 text-sm text-gray-600">
+                              {layer.summary}
+                            </p>
+                          </div>
+                        </div>
+                        {layer.members.length > 0 ? (
+                          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                            {layer.members.map(renderMemberButton)}
+                          </div>
+                        ) : (
+                          <div className="rounded-lg border border-dashed border-gray-300 bg-white/70 p-4 text-sm font-medium text-gray-600">
+                            {layer.summary}
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-10 sm:py-12 md:py-16 lg:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl mb-4 text-primary">
-              {t.team.title}
-            </h2>
-            <p className="text-xl text-gray-600">{t.team.subtitle}</p>
-          </motion.div>
-
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6 md:gap-8"
-          >
-            {t.team.members.map((member, index) => (
-              <motion.div key={index} variants={scaleIn}>
-                <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full overflow-hidden">
-                  <CardContent className="p-4 sm:p-6 flex flex-col items-center text-center">
-                  {/* Oval portrait photo */}
-                  <div className="w-32 h-40 rounded-full overflow-hidden mb-4 bg-linear-to-br from-primary/10 to-secondary/10 shrink-0">
-                    {member.photo ? (
+      <Dialog
+        open={!!selectedMember}
+        onOpenChange={(open) => !open && setSelectedMember(null)}
+      >
+        <DialogContent className="max-h-[88vh] overflow-y-auto border-white/40 bg-white/95 p-0 shadow-2xl backdrop-blur-xl sm:max-w-xl">
+          {selectedMember && (
+            <div>
+              <div className="bg-linear-to-br from-primary to-blue-600 px-5 py-6 text-white sm:px-6">
+                <DialogHeader>
+                  <DialogTitle className="pr-8 text-2xl leading-tight text-white">
+                    {selectedMember.name}
+                  </DialogTitle>
+                  <DialogDescription className="text-blue-100">
+                    {selectedMember.role} - {selectedMember.credential}
+                  </DialogDescription>
+                </DialogHeader>
+              </div>
+              <div className="px-5 py-5 sm:px-6">
+                <div className="mb-5 flex items-center gap-4">
+                  <div className="h-20 w-20 shrink-0 overflow-hidden rounded-full bg-primary/10">
+                    {selectedMember.photo ? (
                       <img
-                        src={member.photo}
-                        alt={member.name}
-                        className="w-full h-full object-cover object-top"
+                        src={selectedMember.photo}
+                        alt={selectedMember.name}
+                        className="h-full w-full object-cover object-top"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-primary text-2xl font-semibold">
-                        {member.name
+                      <div className="flex h-full w-full items-center justify-center text-xl font-bold text-primary">
+                        {selectedMember.name
                           .split(" ")
                           .map((part) => part[0])
                           .join("")
@@ -430,36 +611,23 @@ export function AboutPage({ language }: AboutPageProps) {
                       </div>
                     )}
                   </div>
-                    {/* Role badge */}
-                    <span className="inline-block px-3 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary mb-3">
-                      {member.role}
-                    </span>
-
-                    <h3 className="text-xl font-bold text-gray-900 mb-1">
-                      {member.name}
-                    </h3>
-                    <p
-                      className="text-sm font-medium mb-3"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, #00f260 0%, #0575e6 50%, #1fa2ff 100%)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
-                      }}
-                    >
-                      {member.credential}
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-widest text-secondary">
+                      {selectedMember.role}
                     </p>
-                    <p className="text-sm text-gray-600 leading-relaxed text-left">
-                      {member.bio}
+                    <p className="text-base font-bold text-gray-950">
+                      {selectedMember.credential}
                     </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+                  </div>
+                </div>
+                <p className="text-sm leading-relaxed text-gray-700 sm:text-base">
+                  {selectedMember.bio}
+                </p>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
