@@ -194,13 +194,20 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
           className="absolute inset-0"
         >
           {heroSlides.map((slide, index) => (
-            <img
+            <motion.img
               key={slide.src}
               src={slide.src}
               alt={slide.alt}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === activeSlide ? "opacity-100" : "opacity-0"
-              }`}
+              initial={false}
+              animate={{
+                opacity: index === activeSlide ? 1 : 0,
+                scale: index === activeSlide ? 1 : 1.08,
+              }}
+              transition={{
+                opacity: { duration: 1, ease: "easeInOut" },
+                scale: { duration: 4.5, ease: "easeOut" },
+              }}
+              className="absolute inset-0 w-full h-full object-cover"
             />
           ))}
           {/* Gradient overlay — keeps text readable while showing the image */}
