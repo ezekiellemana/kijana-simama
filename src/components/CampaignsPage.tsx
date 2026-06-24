@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { Progress } from "./ui/progress";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import educationImage from "../assets/educationImage.jpg";
 import mentorChildImage from "../assets/mentorChildImage.jpg";
@@ -21,7 +20,7 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
   const translations = {
     en: {
       title: "Our Campaigns & Projects",
-      subtitle: "Initiatives creating lasting impact in communities",
+      subtitle: "Active, completed, and upcoming initiatives for adolescents",
       categories: {
         all: "All Campaigns",
         active: "Active",
@@ -31,84 +30,71 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
       campaigns: [
         {
           id: 1,
-          title: "Youth Leadership Summit 2024",
-          category: "active",
-          description:
-            "A three-day intensive program bringing together 200 young leaders from across Tanzania for training, networking, and action planning.",
-          image: studentsImage,
-          location: "Dar es Salaam, Tanzania",
-          date: "Jan - Mar 2024",
-          beneficiaries: "200+ Youth",
-          progress: 65,
+          title: "Simama na Elimu Initiative",
           status: "active",
+          description:
+            "Supporting learning and resilience among adolescents through school-based education support, mentorship, and essential learning materials.",
+          image: studentsImage,
+          location: "Partner Schools",
+          date: "Active",
+          beneficiaries: "Adolescents",
         },
         {
           id: 2,
-          title: "Education Access Initiative",
-          category: "active",
-          description:
-            "Providing scholarships and learning materials to 500 underprivileged students across 10 communities.",
-          image: educationImage,
-          location: "Multiple Locations",
-          date: "Ongoing",
-          beneficiaries: "500+ Students",
-          progress: 80,
+          title: "Binti Jiamini Campaign",
           status: "active",
+          description:
+            "A dignity and menstrual health campaign with the message Hedhi sio kikwazo, providing dignity kits and practical education support for girls.",
+          image: educationImage,
+          location: "Schools and Communities",
+          date: "Active",
+          beneficiaries: "Girls and Adolescents",
         },
         {
           id: 3,
-          title: "Digital Skills Training Program",
-          category: "active",
-          description:
-            "Teaching coding, digital marketing, and graphic design to 150 youth over 6 months.",
-          image:
-            "https://images.unsplash.com/photo-1762158007836-25d13ab34c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3Jrc2hvcCUyMHRyYWluaW5nfGVufDF8fHx8MTc2NDE4NjA5OHww&ixlib=rb-4.1.0&q=80&w=1080",
-          location: "Dar es Salaam Tech Hub",
-          date: "Feb - Jul 2024",
-          beneficiaries: "150+ Youth",
-          progress: 45,
+          title: "Sauti Yetu Mashuleni",
           status: "active",
+          description:
+            "A youth voice initiative collecting student recommendations on health and wellbeing through guided school dialogue and suggestion channels.",
+          image: mentorChildImage,
+          location: "Secondary Schools",
+          date: "Active",
+          beneficiaries: "Students",
         },
         {
           id: 4,
-          title: "Community Clean-Up Campaign",
-          category: "completed",
+          title: "Afya Yetu, Future Yetu",
+          status: "upcoming",
           description:
-            "Engaged 300 youth volunteers in environmental conservation activities across 5 communities.",
+            "An upcoming campaign for strong minds, informed choices, and brighter futures through youth wellbeing and health awareness activities.",
           image:
-            "https://images.unsplash.com/photo-1761666507437-9fb5a6ef7b0a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjB2b2x1bnRlZXJzJTIwaGVscGluZ3xlbnwxfHx8fDE3NjQyMjY2NjV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-          location: "Dar es Salaam Region",
-          date: "Nov 2023",
-          beneficiaries: "300+ Volunteers",
-          progress: 100,
-          status: "completed",
+            "https://images.unsplash.com/photo-1762158007836-25d13ab34c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHx3b3Jrc2hvcCUyMHRyYWluaW5nfGVufDF8fHx8MTc2NDE4NjA5OHww&ixlib=rb-4.1.0&q=80&w=1080",
+          location: "Schools and Youth Spaces",
+          date: "Upcoming",
+          beneficiaries: "Youth",
         },
         {
           id: 5,
-          title: "Girls in STEM Initiative",
-          category: "completed",
+          title: "Jijali Campaign",
+          status: "upcoming",
           description:
-            "Empowered 100 young girls with science, technology, engineering, and mathematics skills.",
+            "A school-based hygiene and mental wellbeing campaign for adolescents, focused on self-care, confidence, and healthy routines.",
           image: mentorChildImage,
-          location: "Multiple Schools",
-          date: "Sep - Dec 2023",
-          beneficiaries: "100+ Girls",
-          progress: 100,
-          status: "completed",
+          location: "Schools",
+          date: "Upcoming",
+          beneficiaries: "Adolescents",
         },
         {
           id: 6,
-          title: "Youth Entrepreneurship Bootcamp",
-          category: "upcoming",
-          description:
-            "A 4-week intensive program teaching business skills and providing seed funding for youth startups.",
-          image:
-            "https://images.unsplash.com/photo-1759922378187-11a435837df8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZW50b3JzaGlwJTIwcHJvZ3JhbXxlbnwxfHx8fDE3NjQyMjg3MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-          location: "Dar es Salaam",
-          date: "Apr - May 2024",
-          beneficiaries: "80+ Aspiring Entrepreneurs",
-          progress: 0,
+          title: "Sauti za Vijana 2026",
           status: "upcoming",
+          description:
+            "A youth policy dialogue for health, wellbeing, and opportunities, creating space for young people to contribute practical recommendations.",
+          image:
+            "https://images.unsplash.com/photo-1759922378187-11a435837df8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtZW50b3JzaGlwJTIwcHJvZ3JhbXxlbnwxfHx8fDE3NjQyMjg3MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          location: "Dar es Salaam",
+          date: "2026",
+          beneficiaries: "Youth Representatives",
         },
       ],
       statusLabels: {
@@ -116,13 +102,12 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
         completed: "Completed",
         upcoming: "Upcoming",
       },
-      progress: "Progress",
       learnMore: "Learn More",
       support: "Support This Campaign",
     },
     sw: {
       title: "Kampeni na Miradi Yetu",
-      subtitle: "Mipango inayounda athari ya kudumu katika jamii",
+      subtitle: "Mipango inayoendelea, iliyokamilika, na inayokuja kwa vijana",
       categories: {
         all: "Kampeni Zote",
         active: "Zinazoendelea",
@@ -132,84 +117,71 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
       campaigns: [
         {
           id: 1,
-          title: "Mkutano wa Uongozi wa Vijana 2024",
-          category: "active",
-          description:
-            "Programu ya siku tatu ya kina inayoleta pamoja viongozi vijana 200 kutoka Tanzania nzima kwa mafunzo, upatanishi, na upangaji wa hatua.",
-          image: studentsImage,
-          location: "Dar es Salaam, Tanzania",
-          date: "Jan - Mar 2024",
-          beneficiaries: "Vijana 200+",
-          progress: 65,
+          title: "Simama na Elimu Initiative",
           status: "active",
+          description:
+            "Mpango wa kusaidia ujifunzaji na ustahimilivu wa vijana balehe kupitia msaada wa elimu, ushauri, na vifaa muhimu vya kujifunzia.",
+          image: studentsImage,
+          location: "Shule Washirika",
+          date: "Inaendelea",
+          beneficiaries: "Vijana Balehe",
         },
         {
           id: 2,
-          title: "Mpango wa Upatikanaji wa Elimu",
-          category: "active",
-          description:
-            "Kutoa ufadhili na vifaa vya kujifunzia kwa wanafunzi 500 wasiostawi katika jamii 10.",
-          image: educationImage,
-          location: "Maeneo Mengi",
-          date: "Inaendelea",
-          beneficiaries: "Wanafunzi 500+",
-          progress: 80,
+          title: "Binti Jiamini Campaign",
           status: "active",
+          description:
+            "Kampeni ya staha na afya ya hedhi yenye ujumbe Hedhi sio kikwazo, ikitoa dignity kits na elimu ya vitendo kwa wasichana.",
+          image: educationImage,
+          location: "Shule na Jamii",
+          date: "Inaendelea",
+          beneficiaries: "Wasichana na Vijana Balehe",
         },
         {
           id: 3,
-          title: "Programu ya Mafunzo ya Ujuzi wa Kidijitali",
-          category: "active",
-          description:
-            "Kufundisha usimbaji, uuzaji wa kidijitali, na ubunifu wa picha kwa vijana 150 kwa miezi 6.",
-          image:
-            "https://images.unsplash.com/photo-1762158007836-25d13ab34c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3Jrc2hvcCUyMHRyYWluaW5nfGVufDF8fHx8MTc2NDE4NjA5OHww&ixlib=rb-4.1.0&q=80&w=1080",
-          location: "Kituo cha Teknolojia Dar es Salaam",
-          date: "Feb - Jul 2024",
-          beneficiaries: "Vijana 150+",
-          progress: 45,
+          title: "Sauti Yetu Mashuleni",
           status: "active",
+          description:
+            "Mpango wa sauti ya vijana unaokusanya mapendekezo ya wanafunzi kuhusu afya na ustawi kupitia majadiliano ya shule na njia za kutoa maoni.",
+          image: mentorChildImage,
+          location: "Shule za Sekondari",
+          date: "Inaendelea",
+          beneficiaries: "Wanafunzi",
         },
         {
           id: 4,
-          title: "Kampeni ya Usafi wa Jamii",
-          category: "completed",
+          title: "Afya Yetu, Future Yetu",
+          status: "upcoming",
           description:
-            "Kushirikisha wafadhili vijana 300 katika shughuli za uhifadhi wa mazingira katika jamii 5.",
+            "Kampeni ijayo ya akili imara, maamuzi sahihi, na mustakabali bora kupitia shughuli za afya na ustawi wa vijana.",
           image:
-            "https://images.unsplash.com/photo-1761666507437-9fb5a6ef7b0a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjB2b2x1bnRlZXJzJTIwaGVscGluZ3xlbnwxfHx8fDE3NjQyMjY2NjV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-          location: "Mkoa wa Dar es Salaam",
-          date: "Nov 2023",
-          beneficiaries: "Wafadhili 300+",
-          progress: 100,
-          status: "completed",
+            "https://images.unsplash.com/photo-1762158007836-25d13ab34c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHx3b3Jrc2hvcCUyMHRyYWluaW5nfGVufDF8fHx8MTc2NDE4NjA5OHww&ixlib=rb-4.1.0&q=80&w=1080",
+          location: "Shule na Maeneo ya Vijana",
+          date: "Ijayo",
+          beneficiaries: "Vijana",
         },
         {
           id: 5,
-          title: "Mpango wa Wasichana katika STEM",
-          category: "completed",
+          title: "Jijali Campaign",
+          status: "upcoming",
           description:
-            "Kuwapa nguvu wasichana vijana 100 kwa ujuzi wa sayansi, teknolojia, uhandisi, na hisabati.",
+            "Kampeni ya shule kuhusu usafi na ustawi wa akili kwa vijana balehe, ikilenga kujijali, kujiamini, na tabia bora za afya.",
           image: mentorChildImage,
-          location: "Shule Mbalimbali",
-          date: "Sep - Dec 2023",
-          beneficiaries: "Wasichana 100+",
-          progress: 100,
-          status: "completed",
+          location: "Shule",
+          date: "Ijayo",
+          beneficiaries: "Vijana Balehe",
         },
         {
           id: 6,
-          title: "Bootcamp ya Ujasiriamali wa Vijana",
-          category: "upcoming",
-          description:
-            "Programu ya wiki 4 ya kina inayofundisha ujuzi wa biashara na kutoa ufadhili wa awali kwa biashara za vijana.",
-          image:
-            "https://images.unsplash.com/photo-1759922378187-11a435837df8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZW50b3JzaGlwJTIwcHJvZ3JhbXxlbnwxfHx8fDE3NjQyMjg3MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-          location: "Dar es Salaam",
-          date: "Apr - May 2024",
-          beneficiaries: "Wajasiriamali 80+ Wanaotarajia",
-          progress: 0,
+          title: "Sauti za Vijana 2026",
           status: "upcoming",
+          description:
+            "Jukwaa la mazungumzo ya sera kwa vijana kuhusu afya, ustawi, na fursa, likitoa nafasi kwa vijana kuwasilisha mapendekezo ya vitendo.",
+          image:
+            "https://images.unsplash.com/photo-1759922378187-11a435837df8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtZW50b3JzaGlwJTIwcHJvZ3JhbXxlbnwxfHx8fDE3NjQyMjg3MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          location: "Dar es Salaam",
+          date: "2026",
+          beneficiaries: "Wawakilishi wa Vijana",
         },
       ],
       statusLabels: {
@@ -217,35 +189,25 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
         completed: "Imekamilika",
         upcoming: "Ijayo",
       },
-      progress: "Maendeleo",
       learnMore: "Jifunze Zaidi",
       support: "Unga Mkono Kampeni Hii",
     },
   };
 
   const t = translations[language];
-
   const filteredCampaigns =
     selectedCategory === "all"
       ? t.campaigns
-      : t.campaigns.filter((c) => c.status === selectedCategory);
+      : t.campaigns.filter((campaign) => campaign.status === selectedCategory);
 
   const getStatusColor = (status: string) => {
-    switch (status) {
-      case "active":
-        return "bg-secondary text-white";
-      case "completed":
-        return "bg-primary text-white";
-      case "upcoming":
-        return "bg-gray-500 text-white";
-      default:
-        return "bg-gray-200";
-    }
+    if (status === "active") return "bg-secondary text-white";
+    if (status === "completed") return "bg-primary text-white";
+    return "bg-gray-500 text-white";
   };
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
       <section className="bg-linear-to-br from-primary to-blue-600 text-white py-12 sm:py-16 md:py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <motion.h1
@@ -267,7 +229,6 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
         </div>
       </section>
 
-      {/* Category Filter */}
       <section className="py-6 sm:py-8 bg-gray-50 border-b">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <motion.div
@@ -281,11 +242,7 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
                 key={key}
                 variant={selectedCategory === key ? "default" : "outline"}
                 onClick={() => setSelectedCategory(key)}
-                className={`transform hover:scale-105 transition-transform duration-200 ${
-                  selectedCategory === key
-                    ? "bg-primary hover:bg-primary/90"
-                    : ""
-                }`}
+                className={selectedCategory === key ? "bg-primary hover:bg-primary/90" : ""}
               >
                 {label}
               </Button>
@@ -294,7 +251,6 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
         </div>
       </section>
 
-      {/* Campaigns Grid */}
       <section className="py-10 sm:py-12 md:py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <motion.div
@@ -320,23 +276,17 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
                     />
                     <div className="absolute top-4 right-4">
                       <Badge className={getStatusColor(campaign.status)}>
-                        {
-                          t.statusLabels[
-                            campaign.status as keyof typeof t.statusLabels
-                          ]
-                        }
+                        {t.statusLabels[campaign.status as keyof typeof t.statusLabels]}
                       </Badge>
                     </div>
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="text-xl mb-3 text-primary">
-                      {campaign.title}
-                    </h3>
+                    <h3 className="text-xl mb-3 text-primary">{campaign.title}</h3>
                     <p className="text-gray-600 mb-4 line-clamp-3">
                       {campaign.description}
                     </p>
 
-                    <div className="space-y-2 mb-4">
+                    <div className="space-y-2 mb-6">
                       <div className="flex items-center gap-2 text-sm text-gray-600">
                         <MapPin className="w-4 h-4 text-secondary" />
                         {campaign.location}
@@ -351,30 +301,16 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
                       </div>
                     </div>
 
-                    {campaign.status === "active" && (
-                      <div className="mb-4">
-                        <div className="flex justify-between text-sm text-gray-600 mb-2">
-                          <span>{t.progress}</span>
-                          <span>{campaign.progress}%</span>
-                        </div>
-                        <Progress value={campaign.progress} className="h-2" />
-                      </div>
-                    )}
-
-                    {campaign.status === "completed" && (
+                    {campaign.status === "completed" ? (
                       <div className="flex items-center gap-2 text-secondary mb-4">
                         <CheckCircle className="w-5 h-5" />
-                        <span className="text-sm">
-                          {t.statusLabels.completed}
-                        </span>
+                        <span className="text-sm">{t.statusLabels.completed}</span>
                       </div>
-                    )}
-
-                    {campaign.status === "upcoming" && (
+                    ) : (
                       <div className="flex items-center gap-2 text-gray-500 mb-4">
                         <TrendingUp className="w-5 h-5" />
                         <span className="text-sm">
-                          {t.statusLabels.upcoming}
+                          {t.statusLabels[campaign.status as keyof typeof t.statusLabels]}
                         </span>
                       </div>
                     )}
@@ -382,13 +318,13 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
                     <div className="flex gap-2">
                       <Button
                         variant="outline"
-                        className="flex-1 border-primary text-primary hover:bg-primary hover:text-white transform hover:scale-105 transition-transform duration-200"
+                        className="flex-1 border-primary text-primary hover:bg-primary hover:text-white"
                       >
                         {t.learnMore}
                       </Button>
                       {campaign.status !== "completed" && (
                         <Button
-                          className="flex-1 bg-secondary hover:bg-secondary/90 transform hover:scale-105 transition-transform duration-200"
+                          className="flex-1 bg-secondary hover:bg-secondary/90"
                           onClick={() => onNavigate("donate")}
                         >
                           {t.support}

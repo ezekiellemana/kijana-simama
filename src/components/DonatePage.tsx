@@ -24,8 +24,8 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
 
   const translations = {
     en: {
-      title: "Support Our Mission",
-      subtitle: "Your donation helps empower youth and transform communities",
+      title: "Get Involved",
+      subtitle: "Donate, volunteer, partner, or organize a fundraiser with us",
       impact: {
         title: "Your Impact",
         description:
@@ -70,9 +70,9 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
         personal: {
           title: "Your Information",
           name: "Full Name",
-          namePlaceholder: "John Doe",
+          namePlaceholder: "Your full name",
           email: "Email Address",
-          emailPlaceholder: "john@example.com",
+          emailPlaceholder: "you@example.com",
           phone: "Phone Number",
           phonePlaceholder: "+255 713 415 316",
         },
@@ -83,27 +83,27 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
         title: "Other Ways to Support",
         volunteer: {
           title: "Volunteer",
-          description: "Give your time and skills to support our programs.",
+          description: "Share your information and we will match your skills with the right youth program.",
         },
         partner: {
           title: "Corporate Partnership",
-          description: "Partner with us for greater community impact.",
+          description: "Share your organization information so we can explore cooperation and partnership.",
         },
         fundraise: {
-          title: "Organize Fundraiser",
-          description: "Start your own fundraising campaign for our cause.",
+          title: "Organize Fundraising",
+          description: "Tell us about your organization and the fundraising idea you want to lead.",
         },
       },
       donors: {
-        title: "Thank You to Our Donors",
+        title: "Reports & Publications",
         description:
-          "We are grateful for the generous support from individuals and organizations who believe in our mission.",
+          "Program reports and publications will be shared here as Kijana Simama activities are implemented and documented.",
       },
     },
     sw: {
-      title: "Unga Mkono Dhamira Yetu",
+      title: "Shiriki Nasi",
       subtitle:
-        "Mchango wako unasaidia kuwapa nguvu vijana na kubadilisha jamii",
+        "Changia, jitolee, shirikiana nasi, au andaa uchangishaji fedha",
       impact: {
         title: "Athari Yako",
         description: "Kila mchango unafanya tofauti katika maisha ya vijana.",
@@ -147,9 +147,9 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
         personal: {
           title: "Maelezo Yako",
           name: "Jina Kamili",
-          namePlaceholder: "Juma Waweru",
+          namePlaceholder: "Jina lako kamili",
           email: "Barua Pepe",
-          emailPlaceholder: "juma@example.com",
+          emailPlaceholder: "wewe@example.com",
           phone: "Nambari ya Simu",
           phonePlaceholder: "+255 713 415 316",
         },
@@ -160,21 +160,21 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
         title: "Njia Nyingine za Kusaidia",
         volunteer: {
           title: "Kujitolea",
-          description: "Toa muda na ujuzi wako kusaidia programu zetu.",
+          description: "Tuma taarifa zako ili tuunganishe ujuzi wako na programu inayofaa kwa vijana.",
         },
         partner: {
           title: "Ushirikiano wa Kampuni",
-          description: "Shirikiana nasi kwa athari kubwa ya jamii.",
+          description: "Tuma taarifa za taasisi yako ili tujadili ushirikiano unaowezekana.",
         },
         fundraise: {
-          title: "Andaa Kampeni ya Kukusanya Fedha",
-          description: "Anza kampeni yako ya kukusanya fedha kwa sababu yetu.",
+          title: "Andaa Uchangishaji Fedha",
+          description: "Tuambie kuhusu taasisi yako na wazo la uchangishaji fedha unalotaka kuongoza.",
         },
       },
       donors: {
-        title: "Asante kwa Wafadhili Wetu",
+        title: "Ripoti na Machapisho",
         description:
-          "Tunashukuru msaada mkarimu kutoka kwa watu binafsi na mashirika yanayoamini katika dhamira yetu.",
+          "Ripoti za programu na machapisho yatawekwa hapa baada ya shughuli za Kijana Simama kutekelezwa na kuandikwa.",
       },
     },
   };
@@ -484,8 +484,9 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                 <Button
                   variant="outline"
                   className="border-primary text-primary hover:bg-primary hover:text-white"
+                  onClick={() => onNavigate?.("contact")}
                 >
-                  Learn More
+                  {language === "en" ? "Share Your Information" : "Tuma Taarifa Zako"}
                 </Button>
               </CardContent>
             </Card>
@@ -504,8 +505,9 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                 <Button
                   variant="outline"
                   className="border-primary text-primary hover:bg-primary hover:text-white"
+                  onClick={() => onNavigate?.("partners")}
                 >
-                  Learn More
+                  {language === "en" ? "Share Organization Info" : "Tuma Taarifa za Taasisi"}
                 </Button>
               </CardContent>
             </Card>
@@ -524,8 +526,9 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                 <Button
                   variant="outline"
                   className="border-primary text-primary hover:bg-primary hover:text-white"
+                  onClick={() => onNavigate?.("contact")}
                 >
-                  Learn More
+                  {language === "en" ? "Tell Us Your Idea" : "Tuambie Wazo Lako"}
                 </Button>
               </CardContent>
             </Card>
