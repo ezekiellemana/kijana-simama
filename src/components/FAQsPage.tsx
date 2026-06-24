@@ -1,4 +1,5 @@
 import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { useState } from "react";
 
@@ -225,14 +226,60 @@ export function FAQsPage({ language }: FAQsPageProps) {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const renderFAQCard = (
+    faq: { question: string; answer: string },
+    faqIndex: number,
+  ) => (
+    <motion.div
+      key={faqIndex}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+    >
+      <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <CardContent className="p-0">
+          <button
+            onClick={() => toggleFAQ(faqIndex)}
+            className="w-full p-6 flex justify-between items-center hover:bg-gray-50 transition-colors text-left"
+          >
+            <span className="pr-4 font-semibold text-gray-950">
+              {faq.question}
+            </span>
+            {openIndex === faqIndex ? (
+              <ChevronUp className="w-5 h-5 text-secondary shrink-0" />
+            ) : (
+              <ChevronDown className="w-5 h-5 text-secondary shrink-0" />
+            )}
+          </button>
+          {openIndex === faqIndex && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              transition={{ duration: 0.25 }}
+              className="px-6 pb-6 text-gray-700 leading-relaxed"
+            >
+              {faq.answer}
+            </motion.div>
+          )}
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="bg-linear-to-br from-primary to-blue-600 text-white py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-          <div className="flex items-center justify-center mb-3 sm:mb-4">
+          <motion.div
+            initial={{ scale: 0.85, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center justify-center mb-3 sm:mb-4"
+          >
             <HelpCircle className="w-12 h-12" />
-          </div>
+          </motion.div>
           <h1 className="text-4xl md:text-5xl mb-4 text-center">{t.title}</h1>
           <p className="text-xl md:text-2xl text-blue-100 text-center">
             {t.subtitle}
@@ -250,26 +297,7 @@ export function FAQsPage({ language }: FAQsPageProps) {
             </h2>
             <div className="space-y-4">
               {t.faqs.general.map((faq, index) => (
-                <Card key={index} className="overflow-hidden">
-                  <CardContent className="p-0">
-                    <button
-                      onClick={() => toggleFAQ(index)}
-                      className="w-full p-6 flex justify-between items-center hover:bg-gray-50 transition-colors text-left"
-                    >
-                      <span className="pr-4">{faq.question}</span>
-                      {openIndex === index ? (
-                        <ChevronUp className="w-5 h-5 text-secondary shrink-0" />
-                      ) : (
-                        <ChevronDown className="w-5 h-5 text-secondary shrink-0" />
-                      )}
-                    </button>
-                    {openIndex === index && (
-                      <div className="px-6 pb-6 text-gray-600">
-                        {faq.answer}
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
+                renderFAQCard(faq, index)
               ))}
             </div>
           </div>
@@ -283,26 +311,7 @@ export function FAQsPage({ language }: FAQsPageProps) {
               {t.faqs.programs.map((faq, index) => {
                 const faqIndex = t.faqs.general.length + index;
                 return (
-                  <Card key={faqIndex} className="overflow-hidden">
-                    <CardContent className="p-0">
-                      <button
-                        onClick={() => toggleFAQ(faqIndex)}
-                        className="w-full p-6 flex justify-between items-center hover:bg-gray-50 transition-colors text-left"
-                      >
-                        <span className="pr-4">{faq.question}</span>
-                        {openIndex === faqIndex ? (
-                          <ChevronUp className="w-5 h-5 text-secondary shrink-0" />
-                        ) : (
-                          <ChevronDown className="w-5 h-5 text-secondary shrink-0" />
-                        )}
-                      </button>
-                      {openIndex === faqIndex && (
-                        <div className="px-6 pb-6 text-gray-600">
-                          {faq.answer}
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
+                  renderFAQCard(faq, faqIndex)
                 );
               })}
             </div>
@@ -318,26 +327,7 @@ export function FAQsPage({ language }: FAQsPageProps) {
                 const faqIndex =
                   t.faqs.general.length + t.faqs.programs.length + index;
                 return (
-                  <Card key={faqIndex} className="overflow-hidden">
-                    <CardContent className="p-0">
-                      <button
-                        onClick={() => toggleFAQ(faqIndex)}
-                        className="w-full p-6 flex justify-between items-center hover:bg-gray-50 transition-colors text-left"
-                      >
-                        <span className="pr-4">{faq.question}</span>
-                        {openIndex === faqIndex ? (
-                          <ChevronUp className="w-5 h-5 text-secondary shrink-0" />
-                        ) : (
-                          <ChevronDown className="w-5 h-5 text-secondary shrink-0" />
-                        )}
-                      </button>
-                      {openIndex === faqIndex && (
-                        <div className="px-6 pb-6 text-gray-600">
-                          {faq.answer}
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
+                  renderFAQCard(faq, faqIndex)
                 );
               })}
             </div>
@@ -356,26 +346,7 @@ export function FAQsPage({ language }: FAQsPageProps) {
                   t.faqs.volunteer.length +
                   index;
                 return (
-                  <Card key={faqIndex} className="overflow-hidden">
-                    <CardContent className="p-0">
-                      <button
-                        onClick={() => toggleFAQ(faqIndex)}
-                        className="w-full p-6 flex justify-between items-center hover:bg-gray-50 transition-colors text-left"
-                      >
-                        <span className="pr-4">{faq.question}</span>
-                        {openIndex === faqIndex ? (
-                          <ChevronUp className="w-5 h-5 text-secondary shrink-0" />
-                        ) : (
-                          <ChevronDown className="w-5 h-5 text-secondary shrink-0" />
-                        )}
-                      </button>
-                      {openIndex === faqIndex && (
-                        <div className="px-6 pb-6 text-gray-600">
-                          {faq.answer}
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
+                  renderFAQCard(faq, faqIndex)
                 );
               })}
             </div>

@@ -24,10 +24,10 @@ export function PartnersPage({ language, onNavigate }: PartnersPageProps) {
           "We are grateful to our partners and sponsors who share our vision of empowering young people to reach their full potential.",
       },
       stats: {
-        partners: { value: "00", label: "Active Partners" },
-        years: { value: "8+", label: "Years of Partnership" },
-        projects: { value: "120+", label: "Joint Projects" },
-        beneficiaries: { value: "00", label: "Youth Impacted" },
+        partners: { value: "", label: "Active Partners" },
+        years: { value: "", label: "Years of Partnership" },
+        projects: { value: "", label: "Joint Projects" },
+        beneficiaries: { value: "", label: "Youth Impacted" },
       },
       benefits: {
         title: "Why Partner With Us?",
@@ -124,10 +124,10 @@ export function PartnersPage({ language, onNavigate }: PartnersPageProps) {
           "Tunashukuru washirika na wafadhili wetu wanaoshiriki dira yetu ya kuwapa nguvu vijana kufikia uwezo wao kamili.",
       },
       stats: {
-        partners: { value: "00", label: "Washirika Hai" },
-        years: { value: "8+", label: "Miaka ya Ushirikiano" },
-        projects: { value: "120+", label: "Miradi ya Pamoja" },
-        beneficiaries: { value: "00", label: "Vijana Walionufaika" },
+        partners: { value: "", label: "Washirika Hai" },
+        years: { value: "", label: "Miaka ya Ushirikiano" },
+        projects: { value: "", label: "Miradi ya Pamoja" },
+        beneficiaries: { value: "", label: "Vijana Walionufaika" },
       },
       benefits: {
         title: "Kwa Nini Kushirikiana Nasi?",
@@ -250,9 +250,11 @@ export function PartnersPage({ language, onNavigate }: PartnersPageProps) {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <CardContent className="p-6 text-center">
-                  <div className="text-4xl md:text-5xl text-primary mb-2">
-                    {stat.value}
-                  </div>
+                  {stat.value ? (
+                    <div className="text-4xl md:text-5xl text-primary mb-2">
+                      {stat.value}
+                    </div>
+                  ) : null}
                   <div className="text-gray-600">{stat.label}</div>
                 </CardContent>
               </Card>

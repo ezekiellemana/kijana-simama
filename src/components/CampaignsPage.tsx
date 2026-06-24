@@ -21,45 +21,43 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
   const translations = {
     en: {
       title: "Our Campaigns & Projects",
-      subtitle: "Active, completed, and upcoming initiatives for adolescents",
+      subtitle: "Upcoming initiatives for adolescents",
       categories: {
         all: "All Campaigns",
-        active: "Active",
-        completed: "Completed",
         upcoming: "Upcoming",
       },
       campaigns: [
         {
           id: 1,
           title: "Simama na Elimu Initiative",
-          status: "active",
+          status: "upcoming",
           description:
             "Supporting learning and resilience among adolescents through school-based education support, mentorship, and essential learning materials.",
           image: studentsImage,
           location: "Partner Schools",
-          date: "Active",
+          date: "Upcoming",
           beneficiaries: "Adolescents",
         },
         {
           id: 2,
           title: "Binti Jiamini Campaign",
-          status: "active",
+          status: "upcoming",
           description:
             "A dignity and menstrual health campaign with the message Hedhi sio kikwazo, providing dignity kits and practical education support for girls.",
           image: educationImage,
           location: "Schools and Communities",
-          date: "Active",
+          date: "Upcoming",
           beneficiaries: "Girls and Adolescents",
         },
         {
           id: 3,
           title: "Sauti Yetu Mashuleni",
-          status: "active",
+          status: "upcoming",
           description:
             "A youth voice initiative collecting student recommendations on health and wellbeing through guided school dialogue and suggestion channels.",
           image: mentorChildImage,
           location: "Secondary Schools",
-          date: "Active",
+          date: "Upcoming",
           beneficiaries: "Students",
         },
         {
@@ -78,7 +76,7 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
           title: "Jijali Campaign",
           status: "upcoming",
           description:
-            "A school-based hygiene and mental wellbeing campaign for adolescents, focused on self-care, confidence, and healthy routines.",
+            "A school-based health and mental wellbeing campaign for adolescents, focused on self-care, confidence, and healthy routines.",
           image: mentorChildImage,
           location: "Schools",
           date: "Upcoming",
@@ -106,45 +104,43 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
     },
     sw: {
       title: "Kampeni na Miradi Yetu",
-      subtitle: "Mipango inayoendelea, iliyokamilika, na inayokuja kwa vijana",
+      subtitle: "Mipango inayokuja kwa vijana",
       categories: {
         all: "Kampeni Zote",
-        active: "Zinazoendelea",
-        completed: "Zilizokamilika",
         upcoming: "Zijazo",
       },
       campaigns: [
         {
           id: 1,
           title: "Simama na Elimu Initiative",
-          status: "active",
+          status: "upcoming",
           description:
             "Mpango wa kusaidia ujifunzaji na ustahimilivu wa vijana balehe kupitia msaada wa elimu, ushauri, na vifaa muhimu vya kujifunzia.",
           image: studentsImage,
           location: "Shule Washirika",
-          date: "Inaendelea",
+          date: "Ijayo",
           beneficiaries: "Vijana Balehe",
         },
         {
           id: 2,
           title: "Binti Jiamini Campaign",
-          status: "active",
+          status: "upcoming",
           description:
             "Kampeni ya staha na afya ya hedhi yenye ujumbe Hedhi sio kikwazo, ikitoa dignity kits na elimu ya vitendo kwa wasichana.",
           image: educationImage,
           location: "Shule na Jamii",
-          date: "Inaendelea",
+          date: "Ijayo",
           beneficiaries: "Wasichana na Vijana Balehe",
         },
         {
           id: 3,
           title: "Sauti Yetu Mashuleni",
-          status: "active",
+          status: "upcoming",
           description:
             "Mpango wa sauti ya vijana unaokusanya mapendekezo ya wanafunzi kuhusu afya na ustawi kupitia majadiliano ya shule na njia za kutoa maoni.",
           image: mentorChildImage,
           location: "Shule za Sekondari",
-          date: "Inaendelea",
+          date: "Ijayo",
           beneficiaries: "Wanafunzi",
         },
         {
@@ -163,7 +159,7 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
           title: "Jijali Campaign",
           status: "upcoming",
           description:
-            "Kampeni ya shule kuhusu usafi na ustawi wa akili kwa vijana balehe, ikilenga kujijali, kujiamini, na tabia bora za afya.",
+            "Kampeni ya shule kuhusu afya na ustawi wa akili kwa vijana balehe, ikilenga kujijali, kujiamini, na tabia bora za afya.",
           image: mentorChildImage,
           location: "Shule",
           date: "Ijayo",

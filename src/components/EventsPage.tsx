@@ -61,7 +61,7 @@ export function EventsPage({ language }: EventsPageProps) {
           location: "Dar es Salaam",
           attendees: "Adolescents and young people",
           description:
-            "Simama Kijedha is a practical training on money habits, saving, planning, and everyday financial confidence for young people.",
+            "Simama Kifedha is a practical training on money habits, saving, planning, and everyday financial confidence for young people.",
           image: familyImage,
         },
       ],
@@ -113,7 +113,7 @@ export function EventsPage({ language }: EventsPageProps) {
           location: "Dar es Salaam",
           attendees: "Vijana balehe na vijana",
           description:
-            "Simama Kijedha ni mafunzo ya vitendo kuhusu tabia za fedha, kuweka akiba, kupanga matumizi, na kujiamini kifedha kwa vijana.",
+            "Simama Kifedha ni mafunzo ya vitendo kuhusu tabia za fedha, kuweka akiba, kupanga matumizi, na kujiamini kifedha kwa vijana.",
           image: familyImage,
         },
       ],
