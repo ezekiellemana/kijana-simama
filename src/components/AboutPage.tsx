@@ -553,7 +553,7 @@ export function AboutPage({ language }: AboutPageProps) {
               transition={{ duration: 0.9, ease: "easeOut" }}
               className="absolute left-5 top-8 bottom-8 hidden w-px origin-top bg-linear-to-b from-primary via-secondary to-blue-300 sm:block"
             />
-            {teamLayers.map((layer, index) => {
+            {teamLayers.map((layer) => {
               const Icon = layer.icon;
               return (
                 <motion.div
@@ -576,9 +576,6 @@ export function AboutPage({ language }: AboutPageProps) {
                             <Icon className="h-5 w-5" />
                           </div>
                           <div className="min-w-0">
-                            <p className="text-xs font-semibold uppercase tracking-widest text-secondary">
-                              Layer {index + 1}
-                            </p>
                             <h3 className="text-xl font-bold text-gray-950">
                               {layer.title}
                             </h3>
@@ -699,5 +696,7 @@ export function AboutPage({ language }: AboutPageProps) {
     </div>
   );
 }
+
+
 
 
