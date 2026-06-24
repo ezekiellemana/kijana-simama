@@ -1,13 +1,14 @@
 import { Award, Eye, Heart, Target } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
-import aboutImage from "../assets/about.jpg";
+import aboutImage from "../assets/studentsImage.jpg";
 
 // Team photos — copy these from outputs to src/assets/team/
 import drSyangu from "../assets/team/dr_syangu.png";
 import drAgnes from "../assets/team/dr_agnes.jpeg";
 import drLaura from "../assets/team/dr_laura.jpeg";
 import vivianMacha from "../assets/team/vivian_macha.png";
+import sophiaNyakitagara from "../assets/team/sophia_nyakitagara.png";
 
 interface AboutPageProps {
   language: "en" | "sw";
@@ -89,6 +90,13 @@ export function AboutPage({ language }: AboutPageProps) {
             credential: "Human Resources and Administration",
             bio: "Vivian Macha is an experienced Human Resources and Administration professional with over 15 years of expertise in HR management, employee relations, administration, recruitment, policy implementation, and organizational development. As a Founder of Kijana Simama, she applies strong leadership, people management, and policy development skills to promote youth wellbeing and empowerment through impactful community initiatives.",
             photo: vivianMacha,
+          },
+          {
+            name: "Sophia S. Nyakitagara",
+            role: "Founder",
+            credential: "Educator",
+            bio: "Sophia S. Nyakitagara is a dedicated educator, philologist, and entrepreneur with over 12 years of experience teaching Kiswahili Language and Literature to secondary school students. She brings expertise in adolescent development, guidance and counselling, conflict resolution, and youth mentorship, contributing to life-skills development and supportive environments for adolescents.",
+            photo: sophiaNyakitagara,
           },
         ],
       },
@@ -177,6 +185,13 @@ export function AboutPage({ language }: AboutPageProps) {
             credential: "Rasilimali Watu na Utawala",
             bio: "Vivian Macha ni mtaalamu mwenye uzoefu wa Rasilimali Watu na Utawala kwa zaidi ya miaka 15 katika usimamizi wa HR, mahusiano ya wafanyakazi, utawala, uajiri, utekelezaji wa sera, na maendeleo ya taasisi. Kama mmoja wa waanzilishi wa Kijana Simama, anatumia uongozi, usimamizi wa watu, na uandaaji wa sera kuimarisha ustawi na uwezeshaji wa vijana kupitia mipango yenye athari kwa jamii.",
             photo: vivianMacha,
+          },
+          {
+            name: "Sophia S. Nyakitagara",
+            role: "Mwanzilishi",
+            credential: "Mwalimu",
+            bio: "Sophia S. Nyakitagara ni mwalimu, mtaalamu wa lugha, na mjasiriamali mwenye uzoefu wa zaidi ya miaka 12 katika kufundisha Lugha na Fasihi ya Kiswahili kwa wanafunzi wa sekondari. Ana uzoefu katika makuzi ya vijana, unasihi na ushauri, utatuzi wa migogoro, na uongozi wa vijana, akichangia maendeleo ya stadi za maisha na mazingira salama kwa vijana.",
+            photo: sophiaNyakitagara,
           },
         ],
       },
@@ -370,7 +385,7 @@ export function AboutPage({ language }: AboutPageProps) {
         </div>
       </section>
 
-      {/* Team Section — 3 founders with real photos */}
+      {/* Team Section */}
       <section className="py-10 sm:py-12 md:py-16 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <motion.div
@@ -391,7 +406,7 @@ export function AboutPage({ language }: AboutPageProps) {
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6 md:gap-8"
           >
             {t.team.members.map((member, index) => (
               <motion.div key={index} variants={scaleIn}>
