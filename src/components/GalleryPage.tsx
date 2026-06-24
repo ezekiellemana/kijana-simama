@@ -4,7 +4,6 @@ import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import heroImage from "../assets/heroImage.jpg";
-import aboutImage from "../assets/about.jpg";
 import educationImage from "../assets/educationImage.jpg";
 import mentorChildImage from "../assets/mentorChildImage.jpg";
 import familyImage from "../assets/familyImage.jpg";
@@ -47,7 +46,7 @@ export function GalleryPage({ language }: GalleryPageProps) {
         },
         {
           id: 3,
-          src: aboutImage,
+          src: familyImage,
           alt: "Community Service",
           category: "community",
         },
@@ -71,19 +70,19 @@ export function GalleryPage({ language }: GalleryPageProps) {
         },
         {
           id: 7,
-          src: "https://images.unsplash.com/photo-1762158007836-25d13ab34c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3Jrc2hvcCUyMHRyYWluaW5nfGVufDF8fHx8MTc2NDE4NjA5OHww&ixlib=rb-4.1.0&q=80&w=1080",
+          src: educationImage,
           alt: "Workshop Training",
           category: "events",
         },
         {
           id: 8,
-          src: "https://images.unsplash.com/photo-1758599668338-4c55a3bd0ce0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2b2x1bnRlZXIlMjBhY3Rpdml0eXxlbnwxfHx8fDE3NjQyNTkxMDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          src: mentorChildImage,
           alt: "Volunteer Activity",
           category: "community",
         },
         {
           id: 9,
-          src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25mZXJlbmNlJTIwZXZlbnR8ZW58MXx8fHwxNzY0MTUyODExfDA&ixlib=rb-4.1.0&q=80&w=1080",
+          src: studentsImage,
           alt: "Conference Event",
           category: "events",
         },
@@ -114,7 +113,7 @@ export function GalleryPage({ language }: GalleryPageProps) {
         },
         {
           id: 3,
-          src: aboutImage,
+          src: familyImage,
           alt: "Huduma ya Jamii",
           category: "community",
         },
@@ -138,19 +137,19 @@ export function GalleryPage({ language }: GalleryPageProps) {
         },
         {
           id: 7,
-          src: "https://images.unsplash.com/photo-1762158007836-25d13ab34c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3Jrc2hvcCUyMHRyYWluaW5nfGVufDF8fHx8MTc2NDE4NjA5OHww&ixlib=rb-4.1.0&q=80&w=1080",
+          src: educationImage,
           alt: "Mafunzo ya Warsha",
           category: "events",
         },
         {
           id: 8,
-          src: "https://images.unsplash.com/photo-1758599668338-4c55a3bd0ce0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2b2x1bnRlZXIlMjBhY3Rpdml0eXxlbnwxfHx8fDE3NjQyNTkxMDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          src: mentorChildImage,
           alt: "Shughuli za Kujitolea",
           category: "community",
         },
         {
           id: 9,
-          src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25mZXJlbmNlJTIwZXZlbnR8ZW58MXx8fHwxNzY0MTUyODExfDA&ixlib=rb-4.1.0&q=80&w=1080",
+          src: studentsImage,
           alt: "Tukio la Mkutano",
           category: "events",
         },
@@ -307,3 +306,4 @@ export function GalleryPage({ language }: GalleryPageProps) {
     </div>
   );
 }
+

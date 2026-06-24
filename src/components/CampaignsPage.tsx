@@ -5,6 +5,7 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import educationImage from "../assets/educationImage.jpg";
+import familyImage from "../assets/familyImage.jpg";
 import mentorChildImage from "../assets/mentorChildImage.jpg";
 import studentsImage from "../assets/studentsImage.jpg";
 import { useState } from "react";
@@ -67,8 +68,7 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
           status: "upcoming",
           description:
             "An upcoming campaign for strong minds, informed choices, and brighter futures through youth wellbeing and health awareness activities.",
-          image:
-            "https://images.unsplash.com/photo-1762158007836-25d13ab34c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHx3b3Jrc2hvcCUyMHRyYWluaW5nfGVufDF8fHx8MTc2NDE4NjA5OHww&ixlib=rb-4.1.0&q=80&w=1080",
+          image: familyImage,
           location: "Schools and Youth Spaces",
           date: "Upcoming",
           beneficiaries: "Youth",
@@ -90,8 +90,7 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
           status: "upcoming",
           description:
             "A youth policy dialogue for health, wellbeing, and opportunities, creating space for young people to contribute practical recommendations.",
-          image:
-            "https://images.unsplash.com/photo-1759922378187-11a435837df8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtZW50b3JzaGlwJTIwcHJvZ3JhbXxlbnwxfHx8fDE3NjQyMjg3MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          image: studentsImage,
           location: "Dar es Salaam",
           date: "2026",
           beneficiaries: "Youth Representatives",
@@ -154,8 +153,7 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
           status: "upcoming",
           description:
             "Kampeni ijayo ya akili imara, maamuzi sahihi, na mustakabali bora kupitia shughuli za afya na ustawi wa vijana.",
-          image:
-            "https://images.unsplash.com/photo-1762158007836-25d13ab34c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHx3b3Jrc2hvcCUyMHRyYWluaW5nfGVufDF8fHx8MTc2NDE4NjA5OHww&ixlib=rb-4.1.0&q=80&w=1080",
+          image: familyImage,
           location: "Shule na Maeneo ya Vijana",
           date: "Ijayo",
           beneficiaries: "Vijana",
@@ -177,8 +175,7 @@ export function CampaignsPage({ language, onNavigate }: CampaignsPageProps) {
           status: "upcoming",
           description:
             "Jukwaa la mazungumzo ya sera kwa vijana kuhusu afya, ustawi, na fursa, likitoa nafasi kwa vijana kuwasilisha mapendekezo ya vitendo.",
-          image:
-            "https://images.unsplash.com/photo-1759922378187-11a435837df8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtZW50b3JzaGlwJTIwcHJvZ3JhbXxlbnwxfHx8fDE3NjQyMjg3MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          image: studentsImage,
           location: "Dar es Salaam",
           date: "2026",
           beneficiaries: "Wawakilishi wa Vijana",

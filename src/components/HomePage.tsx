@@ -1,14 +1,35 @@
+import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
-import heroImage from "../assets/heroImage.jpg";
+import educationImage from "../assets/educationImage.jpg";
+import familyImage from "../assets/familyImage.jpg";
+import mentorChildImage from "../assets/mentorChildImage.jpg";
+import studentsImage from "../assets/studentsImage.jpg";
 
 interface HomePageProps {
   language: "en" | "sw";
   onNavigate: (page: string) => void;
 }
 
+const heroSlides = [
+  { src: studentsImage, alt: "Students at a school campaign" },
+  { src: educationImage, alt: "Education support campaign" },
+  { src: mentorChildImage, alt: "Youth wellbeing mentorship" },
+  { src: familyImage, alt: "Community youth support" },
+];
+
 export function HomePage({ language, onNavigate }: HomePageProps) {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 4500);
+
+    return () => window.clearInterval(intervalId);
+  }, [heroSlides.length]);
+
   const translations = {
     en: {
       hero: {
@@ -172,11 +193,16 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="absolute inset-0"
         >
-          <img
-            src={heroImage}
-            alt="Youth empowerment"
-            className="w-full h-full object-cover"
-          />
+          {heroSlides.map((slide, index) => (
+            <img
+              key={slide.src}
+              src={slide.src}
+              alt={slide.alt}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                index === activeSlide ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          ))}
           {/* Gradient overlay — keeps text readable while showing the image */}
           <div className="absolute inset-0 bg-linear-to-r from-blue-950/90 via-blue-900/70 to-blue-900/40" />
         </motion.div>
