@@ -327,7 +327,16 @@ export function AboutPage({ language }: AboutPageProps) {
   const staggerContainer = {
     animate: { transition: { staggerChildren: 0.15 } },
   };
+  const treeLayerVariants = {
+    initial: { opacity: 0, x: -24, scale: 0.98 },
+    animate: { opacity: 1, x: 0, scale: 1 },
+    transition: { duration: 0.55, ease: "easeOut" },
+  };
 
+  const memberVariants = {
+    initial: { opacity: 0, y: 18, scale: 0.96 },
+    animate: { opacity: 1, y: 0, scale: 1 },
+  };
   const teamLayers = [
     {
       title: t.team.layers.founders,
@@ -349,14 +358,20 @@ export function AboutPage({ language }: AboutPageProps) {
     },
   ];
 
-  const renderMemberButton = (member: TeamMember) => (
-    <button
+  const renderMemberButton = (member: TeamMember, memberIndex = 0) => (
+    <motion.button
       key={`${member.name}-${member.role}`}
+      variants={memberVariants}
+      transition={{ duration: 0.35, delay: memberIndex * 0.03, ease: "easeOut" }}
+      whileHover={{ y: -4, scale: 1.015 }}
+      whileTap={{ scale: 0.97 }}
       onClick={() => setSelectedMember(member)}
-      className="w-full rounded-lg border border-gray-200 bg-white p-3 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
+      className="group relative w-full overflow-hidden rounded-2xl border border-primary/10 bg-white p-3 text-left shadow-sm shadow-primary/5 transition-colors duration-300 hover:border-primary/35 hover:bg-blue-50/40 hover:shadow-xl hover:shadow-primary/10"
     >
-      <div className="flex items-center gap-3">
-        <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-primary/10">
+      <div className="absolute inset-y-3 left-0 w-1 rounded-r-full bg-linear-to-b from-primary via-secondary to-blue-400 opacity-60 transition-all duration-300 group-hover:opacity-100" />
+      <div className="absolute -right-8 -top-8 h-20 w-20 rounded-full bg-primary/10 blur-2xl transition-transform duration-500 group-hover:scale-150" />
+      <div className="relative flex items-center gap-3 pl-1">
+        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-2xl bg-primary/10 ring-2 ring-white shadow-md transition-transform duration-300 group-hover:rotate-2 group-hover:scale-105">
           {member.photo ? (
             <img
               src={member.photo}
@@ -364,7 +379,7 @@ export function AboutPage({ language }: AboutPageProps) {
               className="h-full w-full object-cover object-top"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center text-sm font-semibold text-primary">
+            <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-primary/15 to-secondary/15 text-sm font-semibold text-primary">
               {member.name
                 .split(" ")
                 .map((part) => part[0])
@@ -374,18 +389,17 @@ export function AboutPage({ language }: AboutPageProps) {
           )}
         </div>
         <div className="min-w-0">
-          <p className="truncate text-sm font-bold text-gray-950">
+          <p className="truncate text-sm font-bold text-gray-950 transition-colors group-hover:text-primary">
             {member.name}
           </p>
-          <p className="text-xs font-medium text-secondary">{member.role}</p>
+          <p className="text-xs font-semibold text-secondary">{member.role}</p>
           <p className="line-clamp-1 text-xs text-gray-500">
             {member.credential}
           </p>
         </div>
       </div>
-    </button>
+    </motion.button>
   );
-
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
@@ -495,8 +509,9 @@ export function AboutPage({ language }: AboutPageProps) {
       </section>
 
       {/* Team Section */}
-      <section className="py-8 sm:py-10 md:py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gray-50 py-8 sm:py-10 md:py-12">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.10),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(20,184,166,0.12),transparent_30%)]" />
+        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -504,16 +519,22 @@ export function AboutPage({ language }: AboutPageProps) {
             transition={{ duration: 0.5 }}
             className="text-center mb-8"
           >
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-              <Users className="h-7 w-7 text-primary" />
-            </div>
+            <motion.div
+              initial={{ scale: 0.85, rotate: -8 }}
+              whileInView={{ scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 160, damping: 14 }}
+              className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-primary shadow-xl shadow-primary/10 ring-1 ring-primary/10"
+            >
+              <Users className="h-7 w-7" />
+            </motion.div>
             <h2 className="text-3xl md:text-4xl mb-3 text-primary">
               {t.team.title}
             </h2>
             <p className="mx-auto max-w-2xl text-base sm:text-lg text-gray-600">
               {t.team.subtitle}
             </p>
-            <p className="mt-2 text-sm font-medium text-secondary">
+            <p className="mt-2 text-sm font-semibold text-secondary">
               {t.team.tapHint}
             </p>
           </motion.div>
@@ -525,26 +546,36 @@ export function AboutPage({ language }: AboutPageProps) {
             variants={staggerContainer}
             className="relative mx-auto max-w-5xl space-y-5"
           >
-            <div className="absolute left-5 top-8 bottom-8 hidden w-px bg-primary/20 sm:block" />
+            <motion.div
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              className="absolute left-5 top-8 bottom-8 hidden w-px origin-top bg-linear-to-b from-primary via-secondary to-blue-300 sm:block"
+            />
             {teamLayers.map((layer, index) => {
               const Icon = layer.icon;
               return (
                 <motion.div
                   key={layer.title}
-                  variants={fadeInUp}
+                  variants={treeLayerVariants}
                   className="relative"
                 >
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-[2.75rem_1fr] sm:gap-5">
-                    <div className="hidden sm:flex h-11 w-11 items-center justify-center rounded-full border-4 border-gray-50 bg-primary text-white shadow-md">
+                    <motion.div
+                      whileHover={{ scale: 1.08, rotate: 4 }}
+                      className="relative hidden h-11 w-11 items-center justify-center rounded-2xl border-4 border-gray-50 bg-primary text-white shadow-lg shadow-primary/20 sm:flex"
+                    >
+                      <span className="absolute left-full top-1/2 hidden h-px w-5 bg-primary/30 sm:block" />
                       <Icon className="h-5 w-5" />
-                    </div>
-                    <Card className="overflow-hidden border-gray-200 shadow-sm">
+                    </motion.div>
+                    <Card className="overflow-hidden border-white/70 bg-white/90 shadow-xl shadow-primary/5 backdrop-blur">
                       <CardContent className="p-4 sm:p-5">
                         <div className="mb-4 flex items-start gap-3">
-                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary sm:hidden">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary sm:hidden">
                             <Icon className="h-5 w-5" />
                           </div>
-                          <div>
+                          <div className="min-w-0">
                             <p className="text-xs font-semibold uppercase tracking-widest text-secondary">
                               Layer {index + 1}
                             </p>
@@ -557,13 +588,21 @@ export function AboutPage({ language }: AboutPageProps) {
                           </div>
                         </div>
                         {layer.members.length > 0 ? (
-                          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                          <motion.div
+                            variants={staggerContainer}
+                            className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+                          >
                             {layer.members.map(renderMemberButton)}
-                          </div>
+                          </motion.div>
                         ) : (
-                          <div className="rounded-lg border border-dashed border-gray-300 bg-white/70 p-4 text-sm font-medium text-gray-600">
+                          <motion.div
+                            initial={{ opacity: 0.6 }}
+                            animate={{ opacity: [0.65, 1, 0.65] }}
+                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                            className="rounded-2xl border border-dashed border-primary/25 bg-white/70 p-4 text-sm font-medium text-gray-600"
+                          >
                             {layer.summary}
-                          </div>
+                          </motion.div>
                         )}
                       </CardContent>
                     </Card>
@@ -574,27 +613,42 @@ export function AboutPage({ language }: AboutPageProps) {
           </motion.div>
         </div>
       </section>
-
       <Dialog
         open={!!selectedMember}
         onOpenChange={(open) => !open && setSelectedMember(null)}
       >
-        <DialogContent className="max-h-[88vh] overflow-y-auto border-white/40 bg-white/95 p-0 shadow-2xl backdrop-blur-xl sm:max-w-xl">
+        <DialogContent className="max-h-[90vh] overflow-hidden border-white/50 bg-white/90 p-0 shadow-2xl shadow-primary/20 backdrop-blur-2xl sm:max-w-2xl">
           {selectedMember && (
-            <div>
-              <div className="bg-linear-to-br from-primary to-blue-600 px-5 py-6 text-white sm:px-6">
-                <DialogHeader>
-                  <DialogTitle className="pr-8 text-2xl leading-tight text-white">
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative max-h-[90vh] overflow-y-auto"
+            >
+              <div className="relative overflow-hidden bg-linear-to-br from-primary via-blue-600 to-secondary px-5 pb-20 pt-7 text-white sm:px-7">
+                <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-white/15 blur-2xl" />
+                <div className="absolute -bottom-20 left-8 h-40 w-40 rounded-full bg-secondary/30 blur-2xl" />
+                <DialogHeader className="relative text-left">
+                  <p className="mb-2 w-fit rounded-full border border-white/25 bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-blue-50 backdrop-blur">
+                    {selectedMember.role}
+                  </p>
+                  <DialogTitle className="pr-12 text-2xl leading-tight text-white sm:text-3xl">
                     {selectedMember.name}
                   </DialogTitle>
-                  <DialogDescription className="text-blue-100">
-                    {selectedMember.role} - {selectedMember.credential}
+                  <DialogDescription className="max-w-lg text-sm leading-relaxed text-blue-50 sm:text-base">
+                    {selectedMember.credential}
                   </DialogDescription>
                 </DialogHeader>
               </div>
-              <div className="px-5 py-5 sm:px-6">
-                <div className="mb-5 flex items-center gap-4">
-                  <div className="h-20 w-20 shrink-0 overflow-hidden rounded-full bg-primary/10">
+
+              <div className="relative px-5 pb-6 sm:px-7">
+                <motion.div
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: 0.1 }}
+                  className="-mt-14 mb-5 flex flex-col gap-4 rounded-3xl border border-white/70 bg-white/95 p-4 shadow-xl shadow-primary/10 backdrop-blur sm:flex-row sm:items-end"
+                >
+                  <div className="h-28 w-28 shrink-0 overflow-hidden rounded-3xl bg-primary/10 ring-4 ring-white shadow-lg">
                     {selectedMember.photo ? (
                       <img
                         src={selectedMember.photo}
@@ -602,7 +656,7 @@ export function AboutPage({ language }: AboutPageProps) {
                         className="h-full w-full object-cover object-top"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center text-xl font-bold text-primary">
+                      <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-primary/15 to-secondary/15 text-3xl font-bold text-primary">
                         {selectedMember.name
                           .split(" ")
                           .map((part) => part[0])
@@ -611,23 +665,38 @@ export function AboutPage({ language }: AboutPageProps) {
                       </div>
                     )}
                   </div>
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-widest text-secondary">
+                  <div className="min-w-0 pb-1">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+                      Leadership Profile
+                    </p>
+                    <h3 className="mt-1 text-xl font-bold text-gray-950">
+                      {selectedMember.name}
+                    </h3>
+                    <p className="text-sm font-semibold text-primary">
                       {selectedMember.role}
                     </p>
-                    <p className="text-base font-bold text-gray-950">
-                      {selectedMember.credential}
-                    </p>
                   </div>
-                </div>
-                <p className="text-sm leading-relaxed text-gray-700 sm:text-base">
-                  {selectedMember.bio}
-                </p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: 0.18 }}
+                  className="rounded-3xl border border-primary/10 bg-linear-to-br from-blue-50 via-white to-emerald-50 p-5 shadow-inner"
+                >
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-secondary">
+                    Full Details
+                  </p>
+                  <p className="text-sm leading-relaxed text-gray-700 sm:text-base">
+                    {selectedMember.bio}
+                  </p>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           )}
         </DialogContent>
       </Dialog>
     </div>
   );
 }
+
