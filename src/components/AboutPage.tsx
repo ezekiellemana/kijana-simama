@@ -88,7 +88,7 @@ export function AboutPage({ language }: AboutPageProps) {
       },
       team: {
         title: "Our Team",
-        subtitle: "A simple leadership tree for Kijana Simama",
+        subtitle: "",
         tapHint:
           "Tap a leadership group to view members, then tap a member for full details",
         groupCta: "Tap to view",
@@ -233,7 +233,7 @@ export function AboutPage({ language }: AboutPageProps) {
       },
       team: {
         title: "Timu Yetu",
-        subtitle: "Muundo rahisi wa uongozi wa Kijana Simama",
+        subtitle: "",
         tapHint:
           "Gusa kundi la uongozi kuona wanachama, kisha gusa jina kupata maelezo kamili",
         groupCta: "Gusa kuona",
@@ -553,9 +553,6 @@ export function AboutPage({ language }: AboutPageProps) {
             <h2 className="text-3xl font-bold md:text-4xl mb-3 text-primary">
               {t.team.title}
             </h2>
-            <p className="mx-auto max-w-2xl text-base sm:text-lg text-gray-600">
-              {t.team.subtitle}
-            </p>
             <p className="mt-2 text-sm font-semibold text-secondary">
               {t.team.tapHint}
             </p>
@@ -615,9 +612,11 @@ export function AboutPage({ language }: AboutPageProps) {
                                   : t.team.comingSoon}
                               </span>
                             </div>
-                            <p className="mt-1 text-sm leading-relaxed text-gray-600">
-                              {layer.summary}
-                            </p>
+                            {layer.summary && (
+                              <p className="mt-1 text-sm leading-relaxed text-gray-600">
+                                {layer.summary}
+                              </p>
+                            )}
                             <p className="mt-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
                               {isOpen ? t.team.hideCta : t.team.groupCta}
                             </p>
@@ -758,6 +757,7 @@ export function AboutPage({ language }: AboutPageProps) {
     </div>
   );
 }
+
 
 
 
