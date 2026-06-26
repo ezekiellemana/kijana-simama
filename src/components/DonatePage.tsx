@@ -94,11 +94,6 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
           description: "Tell us about your organization and the fundraising idea you want to lead.",
         },
       },
-      donors: {
-        title: "Reports & Publications",
-        description:
-          "Program reports and publications will be shared here as Kijana Simama activities are implemented and documented.",
-      },
     },
     sw: {
       title: "Shiriki Nasi",
@@ -170,11 +165,6 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
           title: "Andaa Uchangishaji Fedha",
           description: "Tuambie kuhusu taasisi yako na wazo la uchangishaji fedha unalotaka kuongoza.",
         },
-      },
-      donors: {
-        title: "Ripoti na Machapisho",
-        description:
-          "Ripoti za programu na machapisho yatawekwa hapa baada ya shughuli za Kijana Simama kutekelezwa na kuandikwa.",
       },
     },
   };
@@ -536,13 +526,6 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
         </div>
       </section>
 
-      {/* Thank You Section */}
-      <section className="py-16 bg-primary text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl mb-4">{t.donors.title}</h2>
-          <p className="text-xl text-blue-100">{t.donors.description}</p>
-        </div>
-      </section>
     </div>
   );
 }
