@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { BriefcaseBusiness, Crown, Eye, Network, Target, Users } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  ChevronDown,
+  Crown,
+  Eye,
+  Network,
+  Target,
+  Users,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import {
@@ -32,6 +40,7 @@ type TeamMember = {
 
 export function AboutPage({ language }: AboutPageProps) {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+  const [openTeamLayer, setOpenTeamLayer] = useState<string | null>(null);
 
   const translations = {
     en: {
@@ -80,7 +89,12 @@ export function AboutPage({ language }: AboutPageProps) {
       team: {
         title: "Our Team",
         subtitle: "A simple leadership tree for Kijana Simama",
-        tapHint: "Tap a member to view full details",
+        tapHint:
+          "Tap a leadership group to view members, then tap a member for full details",
+        groupCta: "Tap to view",
+        hideCta: "Tap to close",
+        memberLabel: "members",
+        comingSoon: "Coming soon",
         layers: {
           founders: "Founders Council",
           board: "Board of Directors",
@@ -220,7 +234,12 @@ export function AboutPage({ language }: AboutPageProps) {
       team: {
         title: "Timu Yetu",
         subtitle: "Muundo rahisi wa uongozi wa Kijana Simama",
-        tapHint: "Gusa jina la mwanatimu kuona maelezo kamili",
+        tapHint:
+          "Gusa kundi la uongozi kuona wanachama, kisha gusa jina kupata maelezo kamili",
+        groupCta: "Gusa kuona",
+        hideCta: "Gusa kufunga",
+        memberLabel: "wanachama",
+        comingSoon: "Inakuja",
         layers: {
           founders: "Founders Council",
           board: "Board of Directors",
@@ -339,18 +358,21 @@ export function AboutPage({ language }: AboutPageProps) {
   };
   const teamLayers = [
     {
+      id: "founders",
       title: t.team.layers.founders,
       icon: Crown,
       members: t.team.members,
       summary: t.team.subtitle,
     },
     {
+      id: "board",
       title: t.team.layers.board,
       icon: Network,
       members: t.team.boardMembers,
       summary: t.team.boardSummary,
     },
     {
+      id: "executive",
       title: t.team.layers.executive,
       icon: BriefcaseBusiness,
       members: [],
@@ -555,6 +577,7 @@ export function AboutPage({ language }: AboutPageProps) {
             />
             {teamLayers.map((layer) => {
               const Icon = layer.icon;
+              const isOpen = openTeamLayer === layer.id;
               return (
                 <motion.div
                   key={layer.title}
@@ -569,29 +592,66 @@ export function AboutPage({ language }: AboutPageProps) {
                       <span className="absolute left-full top-1/2 hidden h-px w-5 bg-primary/30 sm:block" />
                       <Icon className="h-5 w-5" />
                     </motion.div>
-                    <Card className="overflow-hidden border-white/70 bg-white/90 shadow-xl shadow-primary/5 backdrop-blur">
-                      <CardContent className="p-4 sm:p-5">
-                        <div className="mb-4 flex items-start gap-3">
+                    <Card className="overflow-hidden border-white/70 bg-white/90 shadow-xl shadow-primary/5 backdrop-blur transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
+                      <CardContent className="p-0">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setOpenTeamLayer(isOpen ? null : layer.id)
+                          }
+                          className="group flex w-full items-start justify-between gap-4 p-4 text-left transition-colors duration-300 hover:bg-blue-50/60 sm:p-5"
+                        >
                           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary sm:hidden">
                             <Icon className="h-5 w-5" />
                           </div>
-                          <div className="min-w-0">
-                            <h3 className="text-lg font-bold text-gray-950 sm:text-xl">
-                              {layer.title}
-                            </h3>
-                            <p className="mt-1 text-sm text-gray-600">
+                          <div className="min-w-0 flex-1">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <h3 className="text-lg font-bold text-gray-950 transition-colors group-hover:text-primary sm:text-xl">
+                                {layer.title}
+                              </h3>
+                              <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-bold text-primary">
+                                {layer.members.length > 0
+                                  ? `${layer.members.length} ${t.team.memberLabel}`
+                                  : t.team.comingSoon}
+                              </span>
+                            </div>
+                            <p className="mt-1 text-sm leading-relaxed text-gray-600">
                               {layer.summary}
                             </p>
+                            <p className="mt-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
+                              {isOpen ? t.team.hideCta : t.team.groupCta}
+                            </p>
                           </div>
-                        </div>
-                        {layer.members.length > 0 ? (
-                          <motion.div
-                            variants={staggerContainer}
-                            className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+                          <motion.span
+                            animate={{ rotate: isOpen ? 180 : 0 }}
+                            transition={{ duration: 0.25, ease: "easeOut" }}
+                            className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-primary shadow-md ring-1 ring-primary/10"
                           >
-                            {layer.members.map(renderMemberButton)}
-                          </motion.div>
-                        ) : (
+                            <ChevronDown className="h-5 w-5" />
+                          </motion.span>
+                        </button>
+
+                        <motion.div
+                          initial={false}
+                          animate={
+                            isOpen
+                              ? { height: "auto", opacity: 1 }
+                              : { height: 0, opacity: 0 }
+                          }
+                          transition={{ duration: 0.35, ease: "easeOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="border-t border-primary/10 p-4 pt-4 sm:p-5">
+                            {layer.members.length > 0 ? (
+                              <motion.div
+                                variants={staggerContainer}
+                                initial="initial"
+                                animate={isOpen ? "animate" : "initial"}
+                                className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+                              >
+                                {layer.members.map(renderMemberButton)}
+                              </motion.div>
+                            ) : (
                           <motion.div
                             initial={{ opacity: 0.6 }}
                             animate={{ opacity: [0.65, 1, 0.65] }}
@@ -600,7 +660,9 @@ export function AboutPage({ language }: AboutPageProps) {
                           >
                             {layer.summary}
                           </motion.div>
-                        )}
+                            )}
+                          </div>
+                        </motion.div>
                       </CardContent>
                     </Card>
                   </div>
