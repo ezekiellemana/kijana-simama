@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { RefreshCw, ShieldCheck } from "lucide-react";
 import { Logo } from "./Logo";
 
 export function MaintenancePage() {
@@ -39,7 +38,8 @@ export function MaintenancePage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.22, duration: 0.5 }}
-            className="mb-3 text-sm font-bold uppercase tracking-[0.28em] text-secondary"
+            className="mb-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl"
+            style={{ fontFamily: "'Hachi Maru Pop', cursive" }}
           >
             Kijana Simama
           </motion.p>
@@ -62,24 +62,6 @@ export function MaintenancePage() {
           >
             We are making a few updates so we can serve young people and our community better. Thank you for your patience.
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.62, duration: 0.55 }}
-            className="mt-8 grid gap-3 sm:grid-cols-2"
-          >
-            <div className="rounded-2xl border border-white/15 bg-white/10 p-4 text-left">
-              <RefreshCw className="mb-3 h-6 w-6 text-secondary" />
-              <p className="font-bold">Updates in progress</p>
-              <p className="mt-1 text-sm text-blue-100">The website will return once maintenance is complete.</p>
-            </div>
-            <div className="rounded-2xl border border-white/15 bg-white/10 p-4 text-left">
-              <ShieldCheck className="mb-3 h-6 w-6 text-secondary" />
-              <p className="font-bold">Thank you for waiting</p>
-              <p className="mt-1 text-sm text-blue-100">Kijana Simama is still here, standing tall with youth.</p>
-            </div>
-          </motion.div>
         </motion.section>
       </main>
     </div>
