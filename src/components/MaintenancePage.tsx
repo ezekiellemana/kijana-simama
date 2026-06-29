@@ -53,17 +53,9 @@ export function MaintenancePage() {
             Site is down for now.
             <span className="block text-secondary">We will be back soon!</span>
           </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.46, duration: 0.55 }}
-            className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-blue-50 sm:text-lg"
-          >
-            We are making a few updates so we can serve young people and our community better. Thank you for your patience.
-          </motion.p>
         </motion.section>
       </main>
     </div>
   );
 }
+
