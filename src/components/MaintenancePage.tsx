@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { HeartHandshake, RefreshCw, ShieldCheck } from "lucide-react";
+import { RefreshCw, ShieldCheck } from "lucide-react";
+import { Logo } from "./Logo";
 
 export function MaintenancePage() {
   return (
@@ -29,9 +30,9 @@ export function MaintenancePage() {
             initial={{ scale: 0.8, rotate: -8 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 150, damping: 13, delay: 0.15 }}
-            className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-secondary text-white shadow-xl shadow-secondary/30"
+            className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-[1.75rem] border border-white/30 bg-white p-2 shadow-xl shadow-secondary/30"
           >
-            <HeartHandshake className="h-10 w-10" />
+            <Logo size="large" />
           </motion.div>
 
           <motion.p
