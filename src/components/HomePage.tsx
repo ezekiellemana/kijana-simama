@@ -19,6 +19,82 @@ const heroSlides = [
   { src: familyImage, alt: "Community youth support" },
 ];
 
+function TypewriterText({
+  text,
+  className = "",
+  speed = 32,
+  delay = 0,
+  cursorClassName = "bg-white",
+  keepCursor = false,
+}: {
+  text: string;
+  className?: string;
+  speed?: number;
+  delay?: number;
+  cursorClassName?: string;
+  keepCursor?: boolean;
+}) {
+  const [displayedText, setDisplayedText] = useState("");
+  const [hasStarted, setHasStarted] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
+
+  useEffect(() => {
+    setDisplayedText("");
+    setHasStarted(false);
+    setIsTyping(false);
+    setIsComplete(false);
+    let typingTimer: number | undefined;
+
+    const startTimer = window.setTimeout(() => {
+      let index = 0;
+      setHasStarted(true);
+      setIsTyping(true);
+      typingTimer = window.setInterval(() => {
+        index += 1;
+        setDisplayedText(text.slice(0, index));
+
+        if (index >= text.length) {
+          window.clearInterval(typingTimer);
+          setIsTyping(false);
+          setIsComplete(true);
+        }
+      }, speed);
+    }, delay);
+
+    return () => {
+      window.clearTimeout(startTimer);
+      if (typingTimer) {
+        window.clearInterval(typingTimer);
+      }
+    };
+  }, [text, speed, delay]);
+
+  const shouldShowCursor = hasStarted && (isTyping || keepCursor || !isComplete);
+
+  return (
+    <span className={className} aria-label={text}>
+      <span aria-hidden="true">{displayedText}</span>
+      {shouldShowCursor && (
+        <motion.span
+          aria-hidden="true"
+          animate={{
+            opacity: [1, 0.2, 1],
+            scaleY: [1, 0.72, 1],
+            boxShadow: [
+              "0 0 8px currentColor",
+              "0 0 22px currentColor",
+              "0 0 8px currentColor",
+            ],
+          }}
+          transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut" }}
+          className={`ml-1 inline-block h-[0.9em] w-[0.14em] translate-y-[0.1em] rounded-full ${cursorClassName}`}
+        />
+      )}
+    </span>
+  );
+}
+
 export function HomePage({ language, onNavigate }: HomePageProps) {
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -166,6 +242,15 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
   };
 
   const t = translations[language];
+  const titleSpeed = 34;
+  const highlightSpeed = 40;
+  const subtitleSpeed = 12;
+  const titleDelay = 250;
+  const highlightDelay = titleDelay + t.hero.title.length * titleSpeed + 260;
+  const subtitleDelay =
+    highlightDelay + t.hero.titleHighlight.length * highlightSpeed + 420;
+  const buttonsDelay =
+    (subtitleDelay + t.hero.subtitle.length * subtitleSpeed + 250) / 1000;
 
   // Animation variants
   const fadeInUp = {
@@ -224,37 +309,74 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
               variants={fadeInUp}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6"
             >
-              {t.hero.title}
-              <span className="block text-secondary mt-1 sm:mt-2">
-                {t.hero.titleHighlight}
-              </span>
+              <TypewriterText
+                text={t.hero.title}
+                speed={titleSpeed}
+                delay={titleDelay}
+                cursorClassName="bg-white text-white"
+              />
+              <TypewriterText
+                text={t.hero.titleHighlight}
+                speed={highlightSpeed}
+                delay={highlightDelay}
+                className="block text-secondary mt-1 sm:mt-2"
+                cursorClassName="bg-secondary text-secondary"
+              />
             </motion.h1>
             <motion.p
               variants={fadeInUp}
               className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-200"
             >
-              {t.hero.subtitle}
+              <TypewriterText
+                text={t.hero.subtitle}
+                speed={subtitleSpeed}
+                delay={subtitleDelay}
+                cursorClassName="bg-blue-100 text-blue-100"
+                keepCursor
+              />
             </motion.p>
             <motion.div
-              variants={fadeInUp}
+              initial={{ opacity: 0, y: 28, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                delay: buttonsDelay,
+                duration: 0.65,
+                type: "spring",
+                stiffness: 130,
+                damping: 15,
+              }}
               className="flex flex-col sm:flex-row gap-3 sm:gap-4"
             >
-              <Button
-                size="lg"
-                className="bg-secondary hover:bg-secondary/90 text-white transform hover:scale-105 transition-transform duration-200"
-                onClick={() => onNavigate("donate")}
+              <motion.div
+                whileHover={{ y: -4, scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                className="group"
               >
-                {t.hero.cta}
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-blue-900 transform hover:scale-105 transition-all duration-200"
-                onClick={() => onNavigate("about")}
+                <Button
+                  size="lg"
+                  className="relative overflow-hidden bg-secondary text-white shadow-xl shadow-secondary/25 transition-all duration-300 hover:bg-secondary/95 hover:shadow-2xl hover:shadow-secondary/35"
+                  onClick={() => onNavigate("donate")}
+                >
+                  <span className="absolute inset-y-0 -left-1/2 w-1/2 skew-x-[-18deg] bg-white/25 transition-transform duration-700 group-hover:translate-x-[340%]" />
+                  <span className="relative z-10">{t.hero.cta}</span>
+                  <ArrowRight className="relative z-10 ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ y: -4, scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                className="group"
               >
-                {t.hero.learn}
-              </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="relative overflow-hidden border-2 border-white text-white bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-blue-900 hover:shadow-2xl hover:shadow-white/20"
+                  onClick={() => onNavigate("about")}
+                >
+                  <span className="absolute inset-0 scale-x-0 bg-white origin-left transition-transform duration-300 group-hover:scale-x-100" />
+                  <span className="relative z-10">{t.hero.learn}</span>
+                </Button>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>

@@ -42,3 +42,24 @@ npm run build
 
 # Preview production build
 npm run preview
+```
+
+## Maintenance Mode
+
+A reusable site-down page is available at:
+
+```text
+/site-down
+```
+
+To temporarily show the maintenance page for the whole website, set this environment variable before building/deploying:
+
+```text
+VITE_SITE_DOWN=true
+```
+
+To bring the website back, remove the variable or set it to:
+
+```text
+VITE_SITE_DOWN=false
+```

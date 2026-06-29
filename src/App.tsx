@@ -20,6 +20,7 @@ import { FAQsPage } from "./components/FAQsPage";
 import { SuccessPage } from "./components/SuccessPage";
 import { NotFoundPage } from "./components/NotFoundPage";
 import { PartnersPage } from "./components/PartnersPage";
+import { MaintenancePage } from "./components/MaintenancePage";
 
 type Language = "en" | "sw";
 
@@ -27,6 +28,7 @@ function AppContent() {
   const [language, setLanguage] = useState<Language>("en");
   const navigate = useNavigate();
   const location = useLocation();
+  const isSiteDown = import.meta.env.VITE_SITE_DOWN === "true";
 
   const handleNavigate = (page: string) => {
     navigate(`/${page === "home" ? "" : page}`);
@@ -40,8 +42,14 @@ function AppContent() {
   const currentPage =
     location.pathname === "/" ? "home" : location.pathname.slice(1) || "home";
 
+  if (isSiteDown && location.pathname !== "/site-down") {
+    return <MaintenancePage />;
+  }
+
   const hideNavFooter =
-    currentPage.startsWith("success-") || currentPage === "404";
+    currentPage.startsWith("success-") ||
+    currentPage === "404" ||
+    currentPage === "site-down";
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -98,6 +106,7 @@ function AppContent() {
               <PartnersPage language={language} onNavigate={handleNavigate} />
             }
           />
+          <Route path="/site-down" element={<MaintenancePage />} />
           <Route
             path="/success-donation"
             element={
