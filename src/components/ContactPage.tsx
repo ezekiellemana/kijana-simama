@@ -344,7 +344,10 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
               <Twitter className="w-6 h-6" />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/kijanasimamatz"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
               className="w-14 h-14 bg-primary hover:bg-primary/90 rounded-full flex items-center justify-center text-white transition-colors"
             >
               <Instagram className="w-6 h-6" />
@@ -369,3 +372,4 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
     </div>
   );
 }
+

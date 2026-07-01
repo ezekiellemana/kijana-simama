@@ -146,7 +146,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
   const socials: SocialLink[] = [
     { icon: FacebookIcon, href: "#", label: "Facebook" },
     { icon: TwitterIcon, href: "#", label: "Twitter" },
-    { icon: InstagramIcon, href: "#", label: "Instagram" },
+    { icon: InstagramIcon, href: "https://www.instagram.com/kijanasimamatz", label: "Instagram" },
     { icon: LinkedinIcon, href: "#", label: "LinkedIn" },
   ];
 
@@ -237,6 +237,12 @@ export function Footer({ language, onNavigate }: FooterProps) {
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
+                    target={social.href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      social.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                     className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary flex items-center justify-center transition-all duration-200 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
                   >
                     <Icon className="w-4 h-4 text-gray-300" />
@@ -355,3 +361,4 @@ export function Footer({ language, onNavigate }: FooterProps) {
     </footer>
   );
 }
+
