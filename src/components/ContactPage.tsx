@@ -332,7 +332,10 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
           <p className="text-xl text-gray-600 mb-8">{t.social.description}</p>
           <div className="flex justify-center gap-4">
             <a
-              href="#"
+              href="https://www.facebook.com/kijanasimama-tz"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
               className="w-14 h-14 bg-primary hover:bg-primary/90 rounded-full flex items-center justify-center text-white transition-colors"
             >
               <Facebook className="w-6 h-6" />

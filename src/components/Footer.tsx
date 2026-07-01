@@ -144,7 +144,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
   ];
 
   const socials: SocialLink[] = [
-    { icon: FacebookIcon, href: "#", label: "Facebook" },
+    { icon: FacebookIcon, href: "https://www.facebook.com/kijanasimama-tz", label: "Facebook" },
     { icon: TwitterIcon, href: "#", label: "Twitter" },
     { icon: InstagramIcon, href: "https://www.instagram.com/kijanasimamatz", label: "Instagram" },
     { icon: LinkedinIcon, href: "#", label: "LinkedIn" },
