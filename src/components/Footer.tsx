@@ -144,9 +144,9 @@ export function Footer({ language, onNavigate }: FooterProps) {
   ];
 
   const socials: SocialLink[] = [
-    { icon: FacebookIcon, href: "https://www.facebook.com/kijanasimama-tz", label: "Facebook" },
+    { icon: FacebookIcon, href: "https://web.facebook.com/people/KijanaSimama-Tz/61590409662249/", label: "Facebook" },
     { icon: TwitterIcon, href: "#", label: "Twitter" },
-    { icon: InstagramIcon, href: "https://www.instagram.com/kijanasimamatz", label: "Instagram" },
+    { icon: InstagramIcon, href: "https://www.instagram.com/kijanasimamatz?igsh=bTl4bWJvbG93cWx0", label: "Instagram" },
     { icon: LinkedinIcon, href: "#", label: "LinkedIn" },
   ];
 
@@ -361,4 +361,5 @@ export function Footer({ language, onNavigate }: FooterProps) {
     </footer>
   );
 }
+
 

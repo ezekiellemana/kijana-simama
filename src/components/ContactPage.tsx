@@ -332,7 +332,7 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
           <p className="text-xl text-gray-600 mb-8">{t.social.description}</p>
           <div className="flex justify-center gap-4">
             <a
-              href="https://www.facebook.com/kijanasimama-tz"
+              href="https://web.facebook.com/people/KijanaSimama-Tz/61590409662249/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -347,7 +347,7 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
               <Twitter className="w-6 h-6" />
             </a>
             <a
-              href="https://www.instagram.com/kijanasimamatz"
+              href="https://www.instagram.com/kijanasimamatz?igsh=bTl4bWJvbG93cWx0"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -375,4 +375,5 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
     </div>
   );
 }
+
 
