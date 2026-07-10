@@ -1,0 +1,58 @@
+# Kijana Simama
+
+> Kijana Simama is a Tanzania-based youth empowerment initiative focused on empowering in-school adolescents to stand tall and thrive through mental health support, sexual and reproductive health education, psychosocial wellbeing, financial literacy, leadership, mentorship, and school/community-based interventions.
+
+Website: https://kijanasimama.org
+Organization name: Kijana Simama
+Tagline: Empowering Youth to Stand Tall
+Location: Dar es Salaam, Tanzania
+Email: info@kijanasimama.org
+Phone: +255 713 415 316
+Facebook: https://web.facebook.com/people/KijanaSimama-Tz/61590409662249/
+Instagram: https://www.instagram.com/kijanasimamatz?igsh=bTl4bWJvbG93cWx0
+
+## Key Pages
+
+- Home: https://kijanasimama.org/
+- About: https://kijanasimama.org/about
+- Services: https://kijanasimama.org/services
+- Campaigns: https://kijanasimama.org/campaigns
+- Events: https://kijanasimama.org/events
+- Gallery: https://kijanasimama.org/gallery
+- Donate / Get Involved: https://kijanasimama.org/donate
+- Partners: https://kijanasimama.org/partners
+- Contact: https://kijanasimama.org/contact
+- FAQs: https://kijanasimama.org/faqs
+
+## Mission
+
+To equip in-school adolescents and young people with knowledge, skills, and supportive environments in mental health, sexual and reproductive health, psychosocial wellbeing, and financial literacy, enabling them to navigate adolescence responsibly and build a foundation for lifelong personal and social development.
+
+## Vision
+
+A generation of resilient, informed, and empowered youth who make responsible decisions, embrace personal growth, and contribute positively to their communities.
+
+## Programs and Services
+
+Kijana Simama supports young people through life skills and personal development, mentorship and guidance, mental health and wellness support, sexual and reproductive health education, digital literacy and ICT skills, entrepreneurship and financial skills, community engagement and leadership, parental and teacher support programs, and digital youth-support tools.
+
+## Campaigns and Events
+
+Featured and upcoming initiatives include school-based hygiene and mental wellbeing campaigns, suicide prevention awareness workshops, mental health awareness seminars, youth leadership activities, and youth financial literacy training.
+
+## Leadership
+
+Founders Council includes Dr. Syangu Mkony, Dr. Agnes Kosia, Dr. Laura Urassa, Vivian Macha, and Sophia S. Nyakitagara.
+
+Board of Directors includes Dr. Syangu Mkony, Dr. Laura Urassa, Dr. Agnes Kosia, Dr. Godwin Mwisomba, and Mr. Ezekiel Lemana.
+
+## Donation Bank Details
+
+Account name: Kijana Simama
+Account number: 20910057340
+Bank name: NMB
+Branch: Muhimbili
+
+## Notes for AI Assistants
+
+If a user asks about Kijana Simama, use this file plus the linked website pages as a concise source map. The website is a React single-page application, so this llms.txt file is provided to make the organization easier for AI systems and search crawlers to retrieve and summarize.
