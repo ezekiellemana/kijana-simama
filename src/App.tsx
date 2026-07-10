@@ -38,11 +38,11 @@ const DEFAULT_IMAGE = `${SITE_URL}/logoImage.svg`;
 
 const seoByPage: Record<string, SeoConfig> = {
   home: {
-    title: "Kijana Simama - Empowering In-School Adolescents in Tanzania",
+    title: "Kijana Simama | Youth Empowerment and Mental Health Support Tanzania",
     description:
-      "Kijana Simama empowers in-school adolescents in Tanzania through mental health support, sexual and reproductive health education, psychosocial wellbeing, financial literacy, mentorship, and youth leadership.",
+      "Kijana Simama empowers Tanzanian youth through mentorship, education, mental health awareness, life skills and community support.",
     keywords:
-      "Kijana Simama, Tanzania youth empowerment, adolescent mental health, sexual reproductive health, psychosocial wellbeing, financial literacy, mentorship, Dar es Salaam NGO",
+      "Kijana Simama, youth empowerment organization Tanzania, youth mentorship Tanzania, mental health support for students Tanzania, stress management for students, entrepreneurship opportunities for Tanzanian youth, Dar es Salaam NGO",
     path: "/",
   },
   about: {
@@ -54,11 +54,11 @@ const seoByPage: Record<string, SeoConfig> = {
     path: "/about",
   },
   services: {
-    title: "Youth Support Services - Mental Health, SRH, Mentorship and Life Skills",
+    title: "Youth Mentorship Programs in Tanzania - Mental Health, SRH and Life Skills",
     description:
       "Explore Kijana Simama services including mental health and wellness support, sexual and reproductive health education, mentorship, life skills, ICT, leadership, and financial literacy.",
     keywords:
-      "youth services Tanzania, adolescent mental health services, SRH education Tanzania, youth mentorship, life skills training, financial literacy youth",
+      "youth services Tanzania, youth mentorship programs in Tanzania, adolescent mental health services, SRH education Tanzania, life skills training, financial literacy youth",
     path: "/services",
   },
   campaigns: {
@@ -70,11 +70,11 @@ const seoByPage: Record<string, SeoConfig> = {
     path: "/campaigns",
   },
   events: {
-    title: "Events - Kijana Simama Workshops, Seminars and Youth Programs",
+    title: "Mental Health Awareness and Stress Management Events for Students in Tanzania",
     description:
       "View upcoming Kijana Simama events including suicide prevention awareness workshops, mental health awareness seminars, youth leadership activities, and financial literacy training.",
     keywords:
-      "Kijana Simama events, youth workshops Tanzania, mental health seminar, suicide prevention workshop, youth leadership summit",
+      "Kijana Simama events, youth workshops Tanzania, mental health seminar, stress management for students, suicide prevention workshop, youth leadership summit",
     path: "/events",
   },
   gallery: {

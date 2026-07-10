@@ -172,6 +172,37 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
         subtitle: "Join us in empowering the next generation",
         button: "Donate Now",
       },
+      seoFocus: {
+        eyebrow: "Youth support in Tanzania",
+        title: "Youth Empowerment and Mental Health Support in Tanzania",
+        subtitle:
+          "Kijana Simama helps in-school adolescents and young people build confidence, resilience, life skills, and responsible decision-making.",
+        items: [
+          {
+            title: "Youth Mentorship Programs in Tanzania",
+            description:
+              "Mentorship and guidance that help students explore purpose, leadership, academic confidence, and healthy choices.",
+            action: "Explore Services",
+            page: "services",
+          },
+          {
+            title: "Mental Health Awareness for Students",
+            description:
+              "School-based mental health awareness, stress management, peer support, and safe referral pathways for adolescents.",
+            action: "View Events",
+            page: "events",
+          },
+          {
+            title: "Life Skills and Financial Literacy",
+            description:
+              "Practical learning on communication, self-care, entrepreneurship, saving, planning, and everyday financial confidence.",
+            action: "See Campaigns",
+            page: "campaigns",
+          },
+        ],
+        location:
+          "Based in Dar es Salaam and serving young people across Tanzania through school and community-based programs.",
+      },
     },
     sw: {
       hero: {
@@ -237,6 +268,37 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
         title: "Uko Tayari Kufanya Tofauti?",
         subtitle: "Jiunge nasi katika kuwapa nguvu kizazi kijacho",
         button: "Changia Sasa",
+      },
+      seoFocus: {
+        eyebrow: "Msaada kwa vijana Tanzania",
+        title: "Uwezeshaji wa Vijana na Msaada wa Afya ya Akili Tanzania",
+        subtitle:
+          "Kijana Simama huwasaidia wanafunzi vijana kujenga ujasiri, ustahimilivu, stadi za maisha, na uwezo wa kufanya maamuzi yenye uwajibikaji.",
+        items: [
+          {
+            title: "Programu za Ushauri kwa Vijana Tanzania",
+            description:
+              "Ushauri na mwongozo unaowasaidia wanafunzi kuelewa malengo, uongozi, kujiamini kielimu, na maamuzi salama.",
+            action: "Angalia Huduma",
+            page: "services",
+          },
+          {
+            title: "Uelewa wa Afya ya Akili kwa Wanafunzi",
+            description:
+              "Programu za shule kuhusu afya ya akili, kudhibiti msongo, msaada wa rika, na njia salama za kupata rufaa.",
+            action: "Angalia Matukio",
+            page: "events",
+          },
+          {
+            title: "Stadi za Maisha na Elimu ya Fedha",
+            description:
+              "Mafunzo ya mawasiliano, kujitunza, ujasiriamali, kuweka akiba, kupanga, na kujiamini kifedha.",
+            action: "Angalia Kampeni",
+            page: "campaigns",
+          },
+        ],
+        location:
+          "Tupo Dar es Salaam na tunahudumia vijana Tanzania kupitia programu za shule na jamii.",
       },
     },
   };
@@ -379,6 +441,81 @@ export function HomePage({ language, onNavigate }: HomePageProps) {
               </motion.div>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+      <section
+        aria-labelledby="tanzania-youth-support"
+        className="relative overflow-hidden bg-slate-50 py-14 sm:py-18 lg:py-24"
+      >
+        <div className="absolute -top-28 right-[-7rem] h-64 w-64 rounded-full bg-secondary/15 blur-3xl" />
+        <div className="absolute bottom-[-8rem] left-[-6rem] h-72 w-72 rounded-full bg-primary/15 blur-3xl" />
+        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mx-auto max-w-3xl text-center"
+          >
+            <span className="inline-flex rounded-full border border-secondary/20 bg-secondary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-secondary">
+              {t.seoFocus.eyebrow}
+            </span>
+            <h2
+              id="tanzania-youth-support"
+              className="mt-5 text-3xl sm:text-4xl lg:text-5xl text-primary"
+            >
+              {t.seoFocus.title}
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-slate-600">
+              {t.seoFocus.subtitle}
+            </p>
+          </motion.div>
+
+          <div className="mt-10 grid gap-4 sm:gap-5 lg:grid-cols-3">
+            {t.seoFocus.items.map((item, index) => (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 34, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  delay: index * 0.08,
+                  duration: 0.55,
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 18,
+                }}
+                className="group relative overflow-hidden rounded-[2rem] border border-white/80 bg-white p-6 shadow-xl shadow-blue-950/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-950/10"
+              >
+                <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-secondary via-blue-500 to-primary" />
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-secondary group-hover:text-white">
+                  <span className="font-bold">{index + 1}</span>
+                </div>
+                <h3 className="text-xl text-primary">{item.title}</h3>
+                <p className="mt-3 min-h-24 text-sm leading-7 text-slate-600">
+                  {item.description}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => onNavigate(item.page)}
+                  className="mt-5 inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-sm font-bold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
+                >
+                  {item.action}
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </button>
+              </motion.article>
+            ))}
+          </div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.55, delay: 0.15 }}
+            className="mx-auto mt-8 max-w-3xl rounded-[1.5rem] border border-blue-100 bg-white/80 px-5 py-4 text-center text-sm sm:text-base text-slate-600 shadow-lg shadow-blue-950/5 backdrop-blur"
+          >
+            {t.seoFocus.location}
+          </motion.p>
         </div>
       </section>
     </div>
