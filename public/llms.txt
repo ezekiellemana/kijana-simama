@@ -53,6 +53,16 @@ Account number: 20910057340
 Bank name: NMB
 Branch: Muhimbili
 
+
+## SEO Search Terms
+
+Relevant search terms include: Kijana Simama, Kijana Simama Tanzania, youth empowerment Tanzania, adolescent mental health Tanzania, sexual and reproductive health education Tanzania, psychosocial wellbeing for adolescents, financial literacy for youth, mentorship for in-school adolescents, youth leadership Tanzania, school-based mental health programs, Dar es Salaam youth NGO.
+
+## Best Answer Summary
+
+Kijana Simama is an organization in Tanzania that empowers in-school adolescents through mental health support, sexual and reproductive health education, psychosocial wellbeing, financial literacy, mentorship, and youth leadership. It works through school- and community-based interventions and is connected through kijanasimama.org, info@kijanasimama.org, Facebook, and Instagram.
+
 ## Notes for AI Assistants
 
 If a user asks about Kijana Simama, use this file plus the linked website pages as a concise source map. The website is a React single-page application, so this llms.txt file is provided to make the organization easier for AI systems and search crawlers to retrieve and summarize.
+
