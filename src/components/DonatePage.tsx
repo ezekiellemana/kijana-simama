@@ -1,8 +1,6 @@
 import { useState } from "react";
 import {
   Heart,
-  CreditCard,
-  Smartphone,
   Building2,
   CheckCircle,
 } from "lucide-react";
@@ -17,10 +15,8 @@ interface DonatePageProps {
 }
 
 export function DonatePage({ language, onNavigate }: DonatePageProps) {
-  const [selectedAmount, setSelectedAmount] = useState<string>("50");
+  const [selectedAmount, setSelectedAmount] = useState<string>("");
   const [customAmount, setCustomAmount] = useState<string>("");
-  const [donationType, setDonationType] = useState<string>("one-time");
-  const [paymentMethod, setPaymentMethod] = useState<string>("bank");
 
   const translations = {
     en: {
@@ -235,300 +231,166 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
         </div>
       </section>
 
-      {/* Donation Form */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card>
-            <CardContent className="p-8">
-              <h2 className="text-3xl mb-8 text-primary text-center">
-                {t.donationForm.title}
-              </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Donation Type */}
-                <div>
-                  <Label className="mb-3 block">
-                    {t.donationForm.type.label}
-                  </Label>
-                  <div className="grid grid-cols-2 gap-4">
-                    <button
-                      type="button"
-                      onClick={() => setDonationType("one-time")}
-                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex items-center justify-center gap-2 ${
-                        donationType === "one-time"
-                          ? "border-secondary bg-secondary/10 text-secondary"
-                          : "border-gray-200 hover:border-gray-300"
-                      }`}
-                    >
-                      {donationType === "one-time" && (
-                        <CheckCircle className="w-5 h-5 animate-bounce" />
-                      )}
-                      <span className="font-medium">
-                        {t.donationForm.type.oneTime}
-                      </span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setDonationType("monthly")}
-                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex items-center justify-center gap-2 ${
-                        donationType === "monthly"
-                          ? "border-secondary bg-secondary/10 text-secondary"
-                          : "border-gray-200 hover:border-gray-300"
-                      }`}
-                    >
-                      {donationType === "monthly" && (
-                        <CheckCircle className="w-5 h-5 animate-bounce" />
-                      )}
-                      <span className="font-medium">
-                        {t.donationForm.type.monthly}
-                      </span>
-                    </button>
+      {/* Donation Details */}
+      <section className="relative overflow-hidden bg-white py-12 sm:py-16 md:py-20">
+        <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-secondary/10 to-transparent" />
+        <div className="relative mx-auto max-w-5xl px-3 sm:px-4 md:px-6 lg:px-8">
+          <Card className="overflow-hidden border-secondary/15 shadow-2xl shadow-secondary/10">
+            <CardContent className="p-0">
+              <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr]">
+                <div className="bg-linear-to-br from-primary via-blue-700 to-secondary p-6 text-white sm:p-8 lg:p-10">
+                  <div className="mb-6 w-fit rounded-3xl bg-white p-4 shadow-xl">
+                    <img
+                      src="/nmb-bank-logo-png_seeklogo-526995.png"
+                      alt="NMB Bank"
+                      className="h-14 w-auto object-contain sm:h-16"
+                    />
                   </div>
+                  <p className="text-sm font-bold uppercase tracking-[0.22em] text-green-100">
+                    {t.donationForm.bankDetails.title}
+                  </p>
+                  <h2 className="mt-3 text-3xl font-black leading-tight sm:text-4xl">
+                    {language === "en"
+                      ? "Support Kijana Simama directly"
+                      : "Changia Kijana Simama moja kwa moja"}
+                  </h2>
+                  <p className="mt-4 max-w-md text-base leading-relaxed text-blue-50">
+                    {t.donationForm.bankDetails.description}
+                  </p>
                 </div>
 
-                {/* Amount Selection */}
-                <div>
-                  <Label className="mb-3 block">
-                    {t.donationForm.amount.label}
-                  </Label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-                    {predefinedAmounts.map((amount) => (
-                      <Button
-                        key={amount}
-                        type="button"
-                        variant={
-                          selectedAmount === amount ? "default" : "outline"
-                        }
-                        disabled={!!customAmount}
-                        onClick={() => {
-                          if (selectedAmount === amount) {
-                            setSelectedAmount("");
-                          } else {
-                            setSelectedAmount(amount);
-                            setCustomAmount("");
-                          }
-                        }}
-                        className={
-                          selectedAmount === amount
-                            ? "bg-secondary hover:bg-secondary/90 relative"
-                            : "relative"
-                        }
+                <div className="p-5 sm:p-7 lg:p-8">
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    {[
+                      {
+                        label: t.donationForm.bankDetails.accountName,
+                        value: t.donationForm.bankDetails.accountNameValue,
+                      },
+                      {
+                        label: t.donationForm.bankDetails.accountNumber,
+                        value: t.donationForm.bankDetails.accountNumberValue,
+                      },
+                      {
+                        label: t.donationForm.bankDetails.bankName,
+                        value: t.donationForm.bankDetails.bankNameValue,
+                      },
+                      {
+                        label: t.donationForm.bankDetails.branch,
+                        value: t.donationForm.bankDetails.branchValue,
+                      },
+                    ].map((detail) => (
+                      <div
+                        key={detail.label}
+                        className="rounded-2xl border border-gray-100 bg-gray-50 p-4 shadow-sm"
                       >
-                        {selectedAmount === amount && (
-                          <CheckCircle className="w-4 h-4 mr-2 animate-bounce" />
-                        )}
-                        {formatTZS(amount)}
-                      </Button>
+                        <p className="text-xs font-bold uppercase tracking-wider text-gray-500">
+                          {detail.label}
+                        </p>
+                        <p className="mt-1 text-lg font-black text-gray-950">
+                          {detail.value}
+                        </p>
+                      </div>
                     ))}
                   </div>
-                  <div>
-                    <Label htmlFor="custom-amount">
-                      {t.donationForm.amount.custom}
-                    </Label>
-                    <div className="relative">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
-                        TZS
-                      </span>
-                      <Input
-                        id="custom-amount"
-                        type="text"
-                        placeholder="0,000"
-                        value={customAmount}
-                        onChange={(e) => {
-                          const formatted = formatInputAmount(e.target.value);
-                          setCustomAmount(formatted);
-                          setSelectedAmount("");
-                        }}
-                        className="mt-2 pl-14"
-                      />
-                    </div>
-                  </div>
-                </div>
 
-                {/* Payment Method */}
-                <div>
-                  <Label className="mb-3 block">
-                    {t.donationForm.payment.label}
-                  </Label>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <button
-                      type="button"
-                      onClick={() => setPaymentMethod("card")}
-                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center gap-2 relative ${
-                        paymentMethod === "card"
-                          ? "border-secondary bg-secondary/10"
-                          : "border-gray-200 hover:border-gray-300"
-                      }`}
-                    >
-                      {paymentMethod === "card" && (
-                        <CheckCircle className="w-5 h-5 text-secondary animate-bounce absolute top-2 right-2" />
-                      )}
-                      <CreditCard
-                        className={`w-6 h-6 ${paymentMethod === "card" ? "text-secondary" : "text-gray-500"}`}
-                      />
-                      <span
-                        className={`font-medium text-sm ${paymentMethod === "card" ? "text-secondary" : ""}`}
-                      >
-                        {t.donationForm.payment.card}
-                      </span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setPaymentMethod("mpesa")}
-                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center gap-2 relative ${
-                        paymentMethod === "mpesa"
-                          ? "border-secondary bg-secondary/10"
-                          : "border-gray-200 hover:border-gray-300"
-                      }`}
-                    >
-                      {paymentMethod === "mpesa" && (
-                        <CheckCircle className="w-5 h-5 text-secondary animate-bounce absolute top-2 right-2" />
-                      )}
-                      <Smartphone
-                        className={`w-6 h-6 ${paymentMethod === "mpesa" ? "text-secondary" : "text-gray-500"}`}
-                      />
-                      <span
-                        className={`font-medium text-sm ${paymentMethod === "mpesa" ? "text-secondary" : ""}`}
-                      >
-                        {t.donationForm.payment.mpesa}
-                      </span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setPaymentMethod("bank")}
-                      className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center gap-2 relative ${
-                        paymentMethod === "bank"
-                          ? "border-secondary bg-secondary/10"
-                          : "border-gray-200 hover:border-gray-300"
-                      }`}
-                    >
-                      {paymentMethod === "bank" && (
-                        <CheckCircle className="w-5 h-5 text-secondary animate-bounce absolute top-2 right-2" />
-                      )}
-                      <Building2
-                        className={`w-6 h-6 ${paymentMethod === "bank" ? "text-secondary" : "text-gray-500"}`}
-                      />
-                      <span
-                        className={`font-medium text-sm ${paymentMethod === "bank" ? "text-secondary" : ""}`}
-                      >
-                        {t.donationForm.payment.bank}
-                      </span>
-                    </button>
-                  </div>
-
-                  <div className="mt-5 overflow-hidden rounded-2xl border border-secondary/25 bg-linear-to-br from-secondary/10 via-white to-primary/5 shadow-sm">
-                    <div className="border-b border-secondary/15 px-4 py-3 sm:px-5">
-                      <div className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-white">
-                          <Building2 className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-bold text-primary">
-                            {t.donationForm.bankDetails.title}
-                          </h3>
-                          <p className="text-sm text-gray-600">
-                            {t.donationForm.bankDetails.description}
-                          </p>
-                        </div>
+                  <form onSubmit={handleSubmit} className="mt-7 space-y-5 border-t border-gray-100 pt-6">
+                    <div>
+                      <Label className="mb-3 block text-sm font-bold text-gray-800">
+                        {t.donationForm.amount.label}
+                      </Label>
+                      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                        {predefinedAmounts.map((amount) => (
+                          <button
+                            key={amount}
+                            type="button"
+                            disabled={!!customAmount}
+                            onClick={() => {
+                              if (selectedAmount === amount) {
+                                setSelectedAmount("");
+                              } else {
+                                setSelectedAmount(amount);
+                                setCustomAmount("");
+                              }
+                            }}
+                            className={`rounded-2xl border px-3 py-3 text-sm font-bold transition-all duration-200 ${
+                              selectedAmount === amount
+                                ? "border-secondary bg-secondary text-white shadow-lg shadow-secondary/20"
+                                : "border-gray-200 bg-white text-gray-700 hover:border-secondary/60 hover:text-secondary"
+                            } ${customAmount ? "opacity-50" : ""}`}
+                          >
+                            {formatTZS(amount)}
+                          </button>
+                        ))}
                       </div>
                     </div>
-                    <div className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-2 sm:p-5">
-                      {[
-                        {
-                          label: t.donationForm.bankDetails.accountName,
-                          value: t.donationForm.bankDetails.accountNameValue,
-                        },
-                        {
-                          label: t.donationForm.bankDetails.accountNumber,
-                          value: t.donationForm.bankDetails.accountNumberValue,
-                        },
-                        {
-                          label: t.donationForm.bankDetails.bankName,
-                          value: t.donationForm.bankDetails.bankNameValue,
-                        },
-                        {
-                          label: t.donationForm.bankDetails.branch,
-                          value: t.donationForm.bankDetails.branchValue,
-                        },
-                      ].map((detail) => (
-                        <div
-                          key={detail.label}
-                          className="rounded-xl border border-white/70 bg-white/80 p-3"
-                        >
-                          <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-                            {detail.label}
-                          </p>
-                          <p className="mt-1 text-base font-bold text-gray-950">
-                            {detail.value}
-                          </p>
-                        </div>
-                      ))}
+
+                    <div>
+                      <Label htmlFor="custom-amount">
+                        {t.donationForm.amount.custom}
+                      </Label>
+                      <div className="relative">
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                          TZS
+                        </span>
+                        <Input
+                          id="custom-amount"
+                          type="text"
+                          placeholder="0,000"
+                          value={customAmount}
+                          onChange={(e) => {
+                            const formatted = formatInputAmount(e.target.value);
+                            setCustomAmount(formatted);
+                            setSelectedAmount("");
+                          }}
+                          className="mt-2 h-12 rounded-2xl border-gray-200 pl-14"
+                        />
+                      </div>
                     </div>
-                  </div>
+
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <div>
+                        <Label htmlFor="name">
+                          {t.donationForm.personal.name}
+                        </Label>
+                        <Input
+                          id="name"
+                          type="text"
+                          placeholder={t.donationForm.personal.namePlaceholder}
+                          className="mt-2 h-12 rounded-2xl border-gray-200"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone">
+                          {t.donationForm.personal.phone}
+                        </Label>
+                        <Input
+                          id="phone"
+                          type="tel"
+                          placeholder={t.donationForm.personal.phonePlaceholder}
+                          className="mt-2 h-12 rounded-2xl border-gray-200"
+                        />
+                      </div>
+                    </div>
+
+                    <Button
+                      type="submit"
+                      className="w-full rounded-2xl bg-secondary py-6 text-base font-bold text-white shadow-xl shadow-secondary/25 hover:bg-secondary/90"
+                      size="lg"
+                    >
+                      <Heart className="mr-2 h-5 w-5 fill-white" />
+                      {t.donationForm.submit}
+                    </Button>
+
+                    <p className="text-center text-sm text-gray-500">
+                      {t.donationForm.note}
+                    </p>
+                  </form>
                 </div>
-
-                {/* Personal Information */}
-                <div className="pt-6 border-t">
-                  <h3 className="text-xl mb-4 text-primary">
-                    {t.donationForm.personal.title}
-                  </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="name">
-                        {t.donationForm.personal.name}
-                      </Label>
-                      <Input
-                        id="name"
-                        type="text"
-                        placeholder={t.donationForm.personal.namePlaceholder}
-                        required
-                        className="mt-2"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">
-                        {t.donationForm.personal.email}
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder={t.donationForm.personal.emailPlaceholder}
-                        required
-                        className="mt-2"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="phone">
-                        {t.donationForm.personal.phone}
-                      </Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        placeholder={t.donationForm.personal.phonePlaceholder}
-                        className="mt-2"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Submit Button */}
-                <Button
-                  type="submit"
-                  className="w-full bg-secondary hover:bg-secondary/90 text-lg py-6"
-                  size="lg"
-                >
-                  <Heart className="mr-2 w-6 h-6 fill-white" />
-                  {t.donationForm.submit}
-                </Button>
-
-                <p className="text-sm text-center text-gray-500">
-                  {t.donationForm.note}
-                </p>
-              </form>
+              </div>
             </CardContent>
           </Card>
         </div>
       </section>
-
       {/* Other Ways to Support */}
       <section className="py-10 sm:py-12 md:py-16 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
@@ -605,3 +467,4 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
     </div>
   );
 }
+
