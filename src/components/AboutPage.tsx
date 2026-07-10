@@ -4,6 +4,7 @@ import {
   ChevronDown,
   Crown,
   Eye,
+  ExternalLink,
   Network,
   Target,
   Users,
@@ -36,6 +37,7 @@ type TeamMember = {
   credential: string;
   bio: string;
   photo?: string;
+  portfolioUrl?: string;
 };
 
 export function AboutPage({ language }: AboutPageProps) {
@@ -174,6 +176,7 @@ export function AboutPage({ language }: AboutPageProps) {
             role: "Member",
             credential: "Board of Directors",
             bio: "Mr. Ezekiel Lemana serves as a board member, supporting governance, digital implementation, and organizational growth for Kijana Simama.",
+            portfolioUrl: "https://lemana.dev",
           },
         ],
       },
@@ -319,6 +322,7 @@ export function AboutPage({ language }: AboutPageProps) {
             role: "Member",
             credential: "Board of Directors",
             bio: "Mr. Ezekiel Lemana ni mjumbe wa bodi anayesaidia katika governance, utekelezaji wa kidijitali, na ukuaji wa taasisi ya Kijana Simama.",
+            portfolioUrl: "https://lemana.dev",
           },
         ],
       },
@@ -733,6 +737,17 @@ export function AboutPage({ language }: AboutPageProps) {
                     <p className="text-sm font-semibold text-primary">
                       {selectedMember.role}
                     </p>
+                    {selectedMember.portfolioUrl && (
+                      <a
+                        href={selectedMember.portfolioUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90"
+                      >
+                        Portfolio
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    )}
                   </div>
                 </motion.div>
 
