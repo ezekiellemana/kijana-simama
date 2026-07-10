@@ -12,6 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "./ui/dialog";
+import nmbLogo from "../assets/nmb-logo.png";
 
 interface DonatePageProps {
   language: "en" | "sw";
@@ -275,8 +276,12 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                     className="relative mb-6 w-fit rounded-[1.6rem] bg-white p-4 shadow-xl ring-1 ring-white/30"
                   >
                     <img
-                      src="/nmb-bank-logo-png_seeklogo-526995.png"
+                      src={nmbLogo}
                       alt="NMB Bank"
+                      width={160}
+                      height={80}
+                      loading="eager"
+                      decoding="sync"
                       className="h-14 w-auto object-contain sm:h-16"
                     />
                   </motion.div>
