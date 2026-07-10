@@ -1,13 +1,17 @@
 import { useState } from "react";
-import {
-  Heart,
-  Building2,
-  CheckCircle,
-} from "lucide-react";
+import { Building2, CheckCircle, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "./ui/dialog";
 
 interface DonatePageProps {
   language: "en" | "sw";
@@ -17,6 +21,7 @@ interface DonatePageProps {
 export function DonatePage({ language, onNavigate }: DonatePageProps) {
   const [selectedAmount, setSelectedAmount] = useState<string>("");
   const [customAmount, setCustomAmount] = useState<string>("");
+  const [thankYouOpen, setThankYouOpen] = useState(false);
 
   const translations = {
     en: {
@@ -87,6 +92,13 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
         },
         submit: "Complete Donation",
         note: "Note: For direct support, please use the official bank account details above.",
+        customToggle: "Use a custom amount",
+        changeAmount: "Change amount",
+        selectedAmount: "Selected amount",
+        thanksTitle: "Thank you for your support",
+        thanksMessage:
+          "Your support means a lot to Kijana Simama. Online payment integration is not active yet, so please complete your donation using the official bank details shown on this page.",
+        thanksButton: "Okay",
       },
       otherWays: {
         title: "Other Ways to Support",
@@ -172,6 +184,13 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
         },
         submit: "Kamilisha Mchango",
         note: "Kumbuka: Kwa msaada wa moja kwa moja, tafadhali tumia taarifa rasmi za akaunti ya benki hapo juu.",
+        customToggle: "Tumia kiasi kingine",
+        changeAmount: "Badili kiasi",
+        selectedAmount: "Kiasi ulichochagua",
+        thanksTitle: "Asante kwa msaada wako",
+        thanksMessage:
+          "Msaada wako una maana kubwa kwa Kijana Simama. Mfumo wa malipo mtandaoni bado haujaunganishwa, hivyo tafadhali kamilisha mchango kwa kutumia taarifa rasmi za benki zilizo kwenye ukurasa huu.",
+        thanksButton: "Sawa",
       },
       otherWays: {
         title: "Njia Nyingine za Kusaidia",
@@ -211,9 +230,7 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (onNavigate) {
-      onNavigate("success-donation");
-    }
+    setThankYouOpen(true);
   };
 
   return (
@@ -235,31 +252,54 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
       <section className="relative overflow-hidden bg-white py-12 sm:py-16 md:py-20">
         <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-secondary/10 to-transparent" />
         <div className="relative mx-auto max-w-5xl px-3 sm:px-4 md:px-6 lg:px-8">
-          <Card className="overflow-hidden border-secondary/15 shadow-2xl shadow-secondary/10">
+          <motion.div
+            initial={{ opacity: 0, y: 36, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.65, ease: "easeOut" }}
+          >
+          <Card className="overflow-hidden rounded-[2rem] border-2 border-primary/15 shadow-2xl shadow-primary/15 ring-1 ring-secondary/10">
             <CardContent className="p-0">
               <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr]">
-                <div className="bg-linear-to-br from-primary via-blue-700 to-secondary p-6 text-white sm:p-8 lg:p-10">
-                  <div className="mb-6 w-fit rounded-3xl bg-white p-4 shadow-xl">
+                <motion.div
+                  initial={{ opacity: 0, x: -24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: 0.1 }}
+                  className="relative overflow-hidden bg-linear-to-br from-primary via-blue-700 to-secondary p-5 text-white sm:p-8 lg:p-10"
+                >
+                  <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-white/15 blur-3xl" />
+                  <div className="absolute -bottom-20 left-10 h-56 w-56 rounded-full bg-secondary/25 blur-3xl" />
+                  <motion.div
+                    whileHover={{ y: -4, rotate: -2, scale: 1.03 }}
+                    className="relative mb-6 w-fit rounded-[1.6rem] bg-white p-4 shadow-xl ring-1 ring-white/30"
+                  >
                     <img
                       src="/nmb-bank-logo-png_seeklogo-526995.png"
                       alt="NMB Bank"
                       className="h-14 w-auto object-contain sm:h-16"
                     />
-                  </div>
-                  <p className="text-sm font-bold uppercase tracking-[0.22em] text-green-100">
+                  </motion.div>
+                  <p className="relative text-xs font-bold uppercase tracking-[0.22em] text-green-100 sm:text-sm">
                     {t.donationForm.bankDetails.title}
                   </p>
-                  <h2 className="mt-3 text-3xl font-black leading-tight sm:text-4xl">
+                  <h2 className="relative mt-3 text-2xl font-black leading-tight sm:text-4xl">
                     {language === "en"
                       ? "Support Kijana Simama directly"
                       : "Changia Kijana Simama moja kwa moja"}
                   </h2>
-                  <p className="mt-4 max-w-md text-base leading-relaxed text-blue-50">
+                  <p className="relative mt-4 max-w-md text-sm leading-relaxed text-blue-50 sm:text-base">
                     {t.donationForm.bankDetails.description}
                   </p>
-                </div>
+                </motion.div>
 
-                <div className="p-5 sm:p-7 lg:p-8">
+                <motion.div
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: 0.18 }}
+                  className="p-4 sm:p-7 lg:p-8"
+                >
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     {[
                       {
@@ -278,10 +318,15 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                         label: t.donationForm.bankDetails.branch,
                         value: t.donationForm.bankDetails.branchValue,
                       },
-                    ].map((detail) => (
-                      <div
+                    ].map((detail, index) => (
+                      <motion.div
                         key={detail.label}
-                        className="rounded-2xl border border-gray-100 bg-gray-50 p-4 shadow-sm"
+                        initial={{ opacity: 0, y: 14 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.35, delay: 0.24 + index * 0.05 }}
+                        whileHover={{ y: -3, scale: 1.015 }}
+                        className="rounded-[1.35rem] border-2 border-slate-200 bg-white p-4 shadow-md shadow-slate-950/5 transition-colors duration-300 hover:border-secondary/40"
                       >
                         <p className="text-xs font-bold uppercase tracking-wider text-gray-500">
                           {detail.label}
@@ -289,21 +334,29 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                         <p className="mt-1 text-lg font-black text-gray-950">
                           {detail.value}
                         </p>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
 
-                  <form onSubmit={handleSubmit} className="mt-7 space-y-5 border-t border-gray-100 pt-6">
+                  <motion.form
+                    onSubmit={handleSubmit}
+                    initial={{ opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: 0.35 }}
+                    className="mt-7 space-y-5 border-t border-gray-200 pt-6"
+                  >
                     <div>
                       <Label className="mb-3 block text-sm font-bold text-gray-800">
                         {t.donationForm.amount.label}
                       </Label>
-                      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
                         {predefinedAmounts.map((amount) => (
-                          <button
+                          <motion.button
                             key={amount}
                             type="button"
-                            disabled={!!customAmount}
+                            whileHover={{ y: -3, scale: 1.02 }}
+                            whileTap={{ scale: 0.96 }}
                             onClick={() => {
                               if (selectedAmount === amount) {
                                 setSelectedAmount("");
@@ -312,40 +365,69 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                                 setCustomAmount("");
                               }
                             }}
-                            className={`rounded-2xl border px-3 py-3 text-sm font-bold transition-all duration-200 ${
+                            className={`min-h-14 rounded-[1.15rem] border-2 px-2 py-3 text-sm font-black transition-all duration-200 sm:px-3 ${
                               selectedAmount === amount
-                                ? "border-secondary bg-secondary text-white shadow-lg shadow-secondary/20"
-                                : "border-gray-200 bg-white text-gray-700 hover:border-secondary/60 hover:text-secondary"
-                            } ${customAmount ? "opacity-50" : ""}`}
+                                ? "border-secondary bg-secondary text-white shadow-xl shadow-secondary/25"
+                                : "border-slate-200 bg-white text-slate-700 shadow-sm hover:border-secondary/60 hover:text-secondary hover:shadow-md"
+                            }`}
                           >
                             {formatTZS(amount)}
-                          </button>
+                          </motion.button>
                         ))}
                       </div>
                     </div>
 
-                    <div>
-                      <Label htmlFor="custom-amount">
-                        {t.donationForm.amount.custom}
-                      </Label>
-                      <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
-                          TZS
-                        </span>
-                        <Input
-                          id="custom-amount"
-                          type="text"
-                          placeholder="0,000"
-                          value={customAmount}
-                          onChange={(e) => {
-                            const formatted = formatInputAmount(e.target.value);
-                            setCustomAmount(formatted);
-                            setSelectedAmount("");
-                          }}
-                          className="mt-2 h-12 rounded-2xl border-gray-200 pl-14"
-                        />
-                      </div>
-                    </div>
+                    {selectedAmount ? (
+                      <motion.div
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="rounded-[1.35rem] border-2 border-secondary/25 bg-secondary/10 p-4"
+                      >
+                        <p className="text-xs font-bold uppercase tracking-wider text-secondary">
+                          {t.donationForm.selectedAmount}
+                        </p>
+                        <div className="mt-1 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                          <p className="text-2xl font-black text-primary">
+                            {formatTZS(selectedAmount)}
+                          </p>
+                          <button
+                            type="button"
+                            onClick={() => setSelectedAmount("")}
+                            className="w-fit rounded-full border border-secondary/30 bg-white px-4 py-2 text-sm font-bold text-secondary transition-all duration-200 hover:-translate-y-0.5 hover:border-secondary hover:shadow-md"
+                          >
+                            {t.donationForm.changeAmount}
+                          </button>
+                        </div>
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.25 }}
+                      >
+                        <Label htmlFor="custom-amount">
+                          {t.donationForm.customToggle}
+                        </Label>
+                        <div className="relative">
+                          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                            TZS
+                          </span>
+                          <Input
+                            id="custom-amount"
+                            type="text"
+                            placeholder="0,000"
+                            value={customAmount}
+                            onChange={(e) => {
+                              const formatted = formatInputAmount(e.target.value);
+                              setCustomAmount(formatted);
+                              setSelectedAmount("");
+                            }}
+                            className="mt-2 h-13 rounded-[1.15rem] border-2 border-slate-200 pl-16 shadow-sm transition-all focus:border-secondary"
+                          />
+                        </div>
+                      </motion.div>
+                    )}
 
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div>
@@ -356,7 +438,7 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                           id="name"
                           type="text"
                           placeholder={t.donationForm.personal.namePlaceholder}
-                          className="mt-2 h-12 rounded-2xl border-gray-200"
+                          className="mt-2 h-12 rounded-[1.15rem] border-2 border-slate-200 shadow-sm transition-all focus:border-secondary"
                         />
                       </div>
                       <div>
@@ -367,14 +449,14 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                           id="phone"
                           type="tel"
                           placeholder={t.donationForm.personal.phonePlaceholder}
-                          className="mt-2 h-12 rounded-2xl border-gray-200"
+                          className="mt-2 h-12 rounded-[1.15rem] border-2 border-slate-200 shadow-sm transition-all focus:border-secondary"
                         />
                       </div>
                     </div>
 
                     <Button
                       type="submit"
-                      className="w-full rounded-2xl bg-secondary py-6 text-base font-bold text-white shadow-xl shadow-secondary/25 hover:bg-secondary/90"
+                      className="w-full rounded-[1.25rem] bg-secondary py-6 text-base font-bold text-white shadow-xl shadow-secondary/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary/90 hover:shadow-2xl hover:shadow-secondary/30"
                       size="lg"
                     >
                       <Heart className="mr-2 h-5 w-5 fill-white" />
@@ -384,11 +466,12 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                     <p className="text-center text-sm text-gray-500">
                       {t.donationForm.note}
                     </p>
-                  </form>
-                </div>
+                  </motion.form>
+                </motion.div>
               </div>
             </CardContent>
           </Card>
+          </motion.div>
         </div>
       </section>
       {/* Other Ways to Support */}
@@ -398,7 +481,7 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
             {t.otherWays.title}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center hover:shadow-lg transition-shadow">
+            <Card className="rounded-[1.75rem] border-2 border-slate-200 text-center shadow-md shadow-slate-950/5 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-xl">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8 text-secondary" />
@@ -419,7 +502,7 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow">
+            <Card className="rounded-[1.75rem] border-2 border-slate-200 text-center shadow-md shadow-slate-950/5 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-xl">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Building2 className="w-8 h-8 text-secondary" />
@@ -440,7 +523,7 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow">
+            <Card className="rounded-[1.75rem] border-2 border-slate-200 text-center shadow-md shadow-slate-950/5 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-xl">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Heart className="w-8 h-8 text-secondary" />
@@ -463,6 +546,36 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
           </div>
         </div>
       </section>
+
+      <Dialog open={thankYouOpen} onOpenChange={setThankYouOpen}>
+        <DialogContent className="max-w-[calc(100%-1.5rem)] overflow-hidden rounded-[1.75rem] border-2 border-secondary/20 bg-white p-0 shadow-2xl shadow-secondary/20 sm:max-w-md">
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.28, ease: "easeOut" }}
+            className="p-5 text-center sm:p-7"
+          >
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10 text-secondary">
+              <Heart className="h-8 w-8 fill-secondary" />
+            </div>
+            <DialogHeader className="text-center">
+              <DialogTitle className="text-2xl font-black text-primary">
+                {t.donationForm.thanksTitle}
+              </DialogTitle>
+              <DialogDescription className="text-sm leading-relaxed text-gray-600">
+                {t.donationForm.thanksMessage}
+              </DialogDescription>
+            </DialogHeader>
+            <Button
+              type="button"
+              onClick={() => setThankYouOpen(false)}
+              className="mt-6 w-full rounded-2xl bg-secondary py-5 font-bold text-white hover:bg-secondary/90"
+            >
+              {t.donationForm.thanksButton}
+            </Button>
+          </motion.div>
+        </DialogContent>
+      </Dialog>
 
     </div>
   );
