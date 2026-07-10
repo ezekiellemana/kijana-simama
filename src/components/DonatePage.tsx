@@ -20,7 +20,7 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
   const [selectedAmount, setSelectedAmount] = useState<string>("50");
   const [customAmount, setCustomAmount] = useState<string>("");
   const [donationType, setDonationType] = useState<string>("one-time");
-  const [paymentMethod, setPaymentMethod] = useState<string>("card");
+  const [paymentMethod, setPaymentMethod] = useState<string>("bank");
 
   const translations = {
     en: {
@@ -67,6 +67,19 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
           mpesa: "M-Pesa",
           bank: "Bank Transfer",
         },
+        bankDetails: {
+          title: "Official Bank Account",
+          description:
+            "Use these details for direct bank transfers to Kijana Simama.",
+          accountName: "Account name",
+          accountNumber: "Account number",
+          bankName: "Bank name",
+          branch: "Branch",
+          accountNameValue: "Kijana Simama",
+          accountNumberValue: "20910057340",
+          bankNameValue: "NMB",
+          branchValue: "Muhimbili",
+        },
         personal: {
           title: "Your Information",
           name: "Full Name",
@@ -77,7 +90,7 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
           phonePlaceholder: "+255 713 415 316",
         },
         submit: "Complete Donation",
-        note: "Note: This is a demo form. No actual payment will be processed.",
+        note: "Note: For direct support, please use the official bank account details above.",
       },
       otherWays: {
         title: "Other Ways to Support",
@@ -139,6 +152,19 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
           mpesa: "M-Pesa",
           bank: "Uhamisho wa Benki",
         },
+        bankDetails: {
+          title: "Akaunti Rasmi ya Benki",
+          description:
+            "Tumia taarifa hizi kufanya uhamisho wa moja kwa moja kwenda Kijana Simama.",
+          accountName: "Jina la akaunti",
+          accountNumber: "Namba ya akaunti",
+          bankName: "Jina la benki",
+          branch: "Tawi",
+          accountNameValue: "Kijana Simama",
+          accountNumberValue: "20910057340",
+          bankNameValue: "NMB",
+          branchValue: "Muhimbili",
+        },
         personal: {
           title: "Maelezo Yako",
           name: "Jina Kamili",
@@ -149,7 +175,7 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
           phonePlaceholder: "+255 713 415 316",
         },
         submit: "Kamilisha Mchango",
-        note: "Kumbuka: Hii ni fomu ya mfano. Hakuna malipo halisi yatakayofanywa.",
+        note: "Kumbuka: Kwa msaada wa moja kwa moja, tafadhali tumia taarifa rasmi za akaunti ya benki hapo juu.",
       },
       otherWays: {
         title: "Njia Nyingine za Kusaidia",
@@ -387,6 +413,56 @@ export function DonatePage({ language, onNavigate }: DonatePageProps) {
                         {t.donationForm.payment.bank}
                       </span>
                     </button>
+                  </div>
+
+                  <div className="mt-5 overflow-hidden rounded-2xl border border-secondary/25 bg-linear-to-br from-secondary/10 via-white to-primary/5 shadow-sm">
+                    <div className="border-b border-secondary/15 px-4 py-3 sm:px-5">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-white">
+                          <Building2 className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-bold text-primary">
+                            {t.donationForm.bankDetails.title}
+                          </h3>
+                          <p className="text-sm text-gray-600">
+                            {t.donationForm.bankDetails.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-2 sm:p-5">
+                      {[
+                        {
+                          label: t.donationForm.bankDetails.accountName,
+                          value: t.donationForm.bankDetails.accountNameValue,
+                        },
+                        {
+                          label: t.donationForm.bankDetails.accountNumber,
+                          value: t.donationForm.bankDetails.accountNumberValue,
+                        },
+                        {
+                          label: t.donationForm.bankDetails.bankName,
+                          value: t.donationForm.bankDetails.bankNameValue,
+                        },
+                        {
+                          label: t.donationForm.bankDetails.branch,
+                          value: t.donationForm.bankDetails.branchValue,
+                        },
+                      ].map((detail) => (
+                        <div
+                          key={detail.label}
+                          className="rounded-xl border border-white/70 bg-white/80 p-3"
+                        >
+                          <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                            {detail.label}
+                          </p>
+                          <p className="mt-1 text-base font-bold text-gray-950">
+                            {detail.value}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
