@@ -109,7 +109,7 @@ export function AboutPage({ language }: AboutPageProps) {
             name: "Dr. Syangu Mkony",
             role: "Founder",
             credential: "Psychiatrist & Public Health Specialist",
-            bio: "Dr. Syangu Mkony is dedicated to advancing adolescent mental health, sexual and reproductive health, and psychosocial wellbeing through school- and community-based interventions in Tanzania. Through Kijana Simama, she champions youth empowerment, early talent nurturing, and resilient, healthy futures for young people.",
+            bio: "Dr. Syangu Mkony is a psychiatrist and public health specialist with over 15 years of experience working in the fields of substance abuse, public health, and mental health. She is dedicated to advancing adolescent mental health, sexual and reproductive health, and psychosocial wellbeing through school- and community-based interventions in Tanzania. Through Kijana Simama, she champions youth empowerment, early talent nurturing, and the development of resilient, healthy futures for young people.",
             photo: drSyangu,
           },
           {
@@ -146,7 +146,7 @@ export function AboutPage({ language }: AboutPageProps) {
             name: "Dr. Syangu Mkony",
             role: "Interim Chairperson",
             credential: "Board of Directors",
-            bio: "Dr. Syangu Mkony provides interim board leadership and strategic guidance for Kijana Simama's adolescent wellbeing, school-based mental health, and youth empowerment work.",
+            bio: "Dr. Syangu Mkony is a psychiatrist and public health specialist with over 15 years of experience working in the fields of substance abuse, public health, and mental health. She is dedicated to advancing adolescent mental health, sexual and reproductive health, and psychosocial wellbeing through school- and community-based interventions in Tanzania. Through Kijana Simama, she champions youth empowerment, early talent nurturing, and the development of resilient, healthy futures for young people.",
             photo: drSyangu,
           },
           {
@@ -254,7 +254,7 @@ export function AboutPage({ language }: AboutPageProps) {
             name: "Dkt. Syangu Mkony",
             role: "Mwanzilishi",
             credential: "Daktari wa Akili & Mtaalamu wa Afya ya Umma",
-            bio: "Dkt. Syangu Mkony amejitolea kuendeleza afya ya akili ya vijana, afya ya uzazi na uzazi, na ustawi wa kisaikolojia kupitia mipango ya shule na jamii Tanzania. Kupitia Kijana Simama, anaunga mkono uwezeshaji wa vijana na mustakabali wenye afya.",
+            bio: "Dkt. Syangu Mkony ni daktari bingwa wa afya ya akili na mtaalamu wa afya ya umma mwenye uzoefu wa zaidi ya miaka 15 katika maeneo ya matumizi ya dawa za kulevya, afya ya umma, na afya ya akili. Amejitoa kuendeleza afya ya akili ya vijana, afya ya uzazi na ujinsia, na ustawi wa kisaikolojia kupitia afua za shule na jamii nchini Tanzania. Kupitia Kijana Simama, anaendeleza uwezeshaji wa vijana, kukuza vipaji mapema, na kujenga mustakabali wenye ustahimilivu na afya kwa vijana.",
             photo: drSyangu,
           },
           {
@@ -291,7 +291,7 @@ export function AboutPage({ language }: AboutPageProps) {
             name: "Dkt. Syangu Mkony",
             role: "Interim Chairperson",
             credential: "Board of Directors",
-            bio: "Dkt. Syangu Mkony anatoa uongozi wa muda wa bodi na mwongozo wa kimkakati kwa kazi za Kijana Simama katika ustawi wa vijana, afya ya akili, na uwezeshaji wa vijana mashuleni.",
+            bio: "Dkt. Syangu Mkony ni daktari bingwa wa afya ya akili na mtaalamu wa afya ya umma mwenye uzoefu wa zaidi ya miaka 15 katika maeneo ya matumizi ya dawa za kulevya, afya ya umma, na afya ya akili. Amejitoa kuendeleza afya ya akili ya vijana, afya ya uzazi na ujinsia, na ustawi wa kisaikolojia kupitia afua za shule na jamii nchini Tanzania. Kupitia Kijana Simama, anaendeleza uwezeshaji wa vijana, kukuza vipaji mapema, na kujenga mustakabali wenye ustahimilivu na afya kwa vijana.",
             photo: drSyangu,
           },
           {
@@ -757,6 +757,7 @@ export function AboutPage({ language }: AboutPageProps) {
     </div>
   );
 }
+
 
 
 
