@@ -22,7 +22,9 @@ interface ContactPageProps {
 }
 
 const MAP_URL = "https://www.google.com/maps?q=-6.7924,39.2083";
-const MAP_COORDINATES = "6.7924° S, 39.2083° E";
+const MAP_EMBED_URL =
+  "https://www.google.com/maps?q=-6.7924,39.2083&z=14&output=embed";
+const MAP_COORDINATES = "6.7924 S, 39.2083 E";
 
 export function ContactPage({ language, onNavigate }: ContactPageProps) {
   const [formData, setFormData] = useState({
@@ -380,29 +382,42 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
 
       {/* Map Section */}
       <section className="bg-gray-100 px-3 py-10 sm:px-4 md:py-14">
-        <a
-          href={MAP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group mx-auto flex min-h-72 max-w-5xl flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-primary/10 bg-linear-to-br from-primary via-blue-600 to-secondary p-6 text-center text-white shadow-2xl shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-primary/25 sm:min-h-80"
-          aria-label="Open Kijana Simama location in Google Maps"
-        >
-          <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-3xl bg-white/15 backdrop-blur transition-transform duration-300 group-hover:scale-110">
-            <MapPin className="h-8 w-8" />
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-primary/10 bg-white shadow-2xl shadow-primary/15">
+          <iframe
+            title="Kijana Simama location map"
+            src={MAP_EMBED_URL}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="h-80 w-full border-0 grayscale-[15%] sm:h-96"
+            allowFullScreen
+          />
+          <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-blue-950/35 via-transparent to-transparent" />
+          <div className="absolute left-4 right-4 top-4 rounded-[1.5rem] border border-white/40 bg-white/90 p-4 shadow-xl shadow-blue-950/10 backdrop-blur sm:left-6 sm:right-auto sm:max-w-sm">
+            <div className="flex items-start gap-3">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/25">
+                <MapPin className="h-6 w-6" />
+              </span>
+              <div className="min-w-0">
+                <h2 className="text-lg font-bold text-primary sm:text-xl">
+                  {t.map.title}
+                </h2>
+                <p className="mt-1 text-sm text-gray-600">
+                  {t.map.coordinates}
+                </p>
+                <a
+                  href={MAP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex rounded-full bg-secondary px-4 py-2 text-xs font-bold text-white shadow-md shadow-secondary/20 transition-colors hover:bg-secondary/90"
+                >
+                  {t.map.action}
+                </a>
+              </div>
+            </div>
           </div>
-          <h2 className="text-2xl font-bold sm:text-3xl">{t.map.title}</h2>
-          <p className="mt-2 text-sm text-blue-50 sm:text-base">
-            {t.map.coordinates}
-          </p>
-          <span className="mt-6 rounded-full bg-white px-5 py-3 text-sm font-bold text-primary shadow-lg transition-all duration-300 group-hover:bg-secondary group-hover:text-white">
-            {t.map.action}
-          </span>
-        </a>
+        </div>
       </section>
     </div>
   );
 }
-
-
-
 
