@@ -99,11 +99,11 @@ export function AboutPage({ language }: AboutPageProps) {
         comingSoon: "Coming soon",
         layers: {
           founders: "Founders Council",
-          board: "Governance Team",
+          board: "Board of Director",
           executive: "Executive Team",
         },
         boardSummary:
-          "This governance team provides accountability, stewardship, and strategic oversight.",
+          "This leadership group provides accountability, stewardship, and strategic oversight.",
         executiveSummary:
           "Executive Team profiles will be added once the full list is confirmed.",
         members: [
@@ -245,7 +245,7 @@ export function AboutPage({ language }: AboutPageProps) {
         comingSoon: "Inakuja",
         layers: {
           founders: "Founders Council",
-          board: "Governance Team",
+          board: "Board of Director",
           executive: "Executive Team",
         },
         boardSummary:
@@ -569,14 +569,14 @@ export function AboutPage({ language }: AboutPageProps) {
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="relative mx-auto max-w-5xl space-y-5"
+            className="relative mx-auto max-w-5xl space-y-4 sm:space-y-5"
           >
             <motion.div
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: "easeOut" }}
-              className="absolute left-5 top-8 bottom-8 hidden w-px origin-top bg-linear-to-b from-primary via-secondary to-blue-300 sm:block"
+              className="absolute left-[1.625rem] top-[1.625rem] bottom-[1.625rem] hidden w-px origin-top bg-linear-to-b from-primary via-secondary to-blue-300 sm:block"
             />
             {teamLayers.map((layer) => {
               const Icon = layer.icon;
@@ -587,29 +587,29 @@ export function AboutPage({ language }: AboutPageProps) {
                   variants={treeLayerVariants}
                   className="relative"
                 >
-                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-[2.75rem_1fr] sm:gap-5">
+                  <span className="absolute left-[1.625rem] top-[1.625rem] z-0 hidden h-px w-[3.125rem] bg-linear-to-r from-primary via-secondary to-primary/15 sm:block" />
+                  <div className="relative z-10 grid grid-cols-1 gap-3 sm:grid-cols-[3.25rem_1fr] sm:gap-4">
                     <motion.div
                       whileHover={{ scale: 1.08, rotate: 4 }}
-                      className="relative hidden h-11 w-11 items-center justify-center rounded-2xl border-4 border-gray-50 bg-primary text-white shadow-lg shadow-primary/20 sm:flex"
+                      className="relative hidden h-[3.25rem] w-[3.25rem] items-center justify-center rounded-2xl border-4 border-gray-50 bg-primary text-white shadow-lg shadow-primary/20 sm:flex"
                     >
-                      <span className="absolute left-full top-1/2 hidden h-px w-5 bg-primary/30 sm:block" />
                       <Icon className="h-5 w-5" />
                     </motion.div>
-                    <Card className="overflow-hidden border-white/70 bg-white/90 shadow-xl shadow-primary/5 backdrop-blur transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
+                    <Card className="min-w-0 overflow-hidden border-white/70 bg-white/90 shadow-xl shadow-primary/5 backdrop-blur transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
                       <CardContent className="p-0">
                         <button
                           type="button"
                           onClick={() =>
                             setOpenTeamLayer(isOpen ? null : layer.id)
                           }
-                          className="group flex w-full items-start justify-between gap-4 p-4 text-left transition-colors duration-300 hover:bg-blue-50/60 sm:p-5"
+                          className="group flex w-full items-start justify-between gap-3 p-4 text-left transition-colors duration-300 hover:bg-blue-50/60 sm:gap-4 sm:p-5"
                         >
                           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary sm:hidden">
                             <Icon className="h-5 w-5" />
                           </div>
                           <div className="min-w-0 flex-1">
                             <div className="flex flex-wrap items-center gap-2">
-                              <h3 className="text-lg font-bold text-gray-950 transition-colors group-hover:text-primary sm:text-xl">
+                              <h3 className="text-base font-bold text-gray-950 transition-colors group-hover:text-primary sm:text-xl">
                                 {layer.title}
                               </h3>
                               <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-bold text-primary">

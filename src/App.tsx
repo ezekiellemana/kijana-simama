@@ -48,9 +48,9 @@ const seoByPage: Record<string, SeoConfig> = {
   about: {
     title: "About Kijana Simama - Mission, Vision, Founders and Leadership",
     description:
-      "Learn about Kijana Simama, our mission, vision, founders council, governance team, and commitment to empowering in-school adolescents across Tanzania.",
+      "Learn about Kijana Simama, our mission, vision, founders council, Board of Director, and commitment to empowering in-school adolescents across Tanzania.",
     keywords:
-      "about Kijana Simama, Kijana Simama founders, youth NGO Tanzania, adolescent wellbeing Tanzania, governance team",
+      "about Kijana Simama, Kijana Simama founders, youth NGO Tanzania, adolescent wellbeing Tanzania, Board of Director",
     path: "/about",
   },
   services: {
