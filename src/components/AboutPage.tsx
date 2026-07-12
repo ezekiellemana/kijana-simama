@@ -99,11 +99,11 @@ export function AboutPage({ language }: AboutPageProps) {
         comingSoon: "Coming soon",
         layers: {
           founders: "Founders Council",
-          board: "Board of Directors",
+          board: "Governance Team",
           executive: "Executive Team",
         },
         boardSummary:
-          "The Board provides governance, accountability, and strategic oversight.",
+          "This governance team provides accountability, stewardship, and strategic oversight.",
         executiveSummary:
           "Executive Team profiles will be added once the full list is confirmed.",
         members: [
@@ -147,35 +147,35 @@ export function AboutPage({ language }: AboutPageProps) {
           {
             name: "Dr. Syangu Mkony",
             role: "Interim Chairperson",
-            credential: "Board of Directors",
+            credential: "",
             bio: "Dr. Syangu Mkony is a psychiatrist and public health specialist with over 15 years of experience working in the fields of substance abuse, public health, and mental health. She is dedicated to advancing adolescent mental health, sexual and reproductive health, and psychosocial wellbeing through school- and community-based interventions in Tanzania. Through Kijana Simama, she champions youth empowerment, early talent nurturing, and the development of resilient, healthy futures for young people.",
             photo: drSyangu,
           },
           {
             name: "Dr. Laura Urassa",
             role: "Interim Treasurer",
-            credential: "Board of Directors",
+            credential: "",
             bio: "Dr. Laura Urassa supports financial oversight and governance as Interim Treasurer, helping strengthen accountability and responsible stewardship of Kijana Simama resources.",
             photo: drLaura,
           },
           {
             name: "Dr. Agnes Kosia",
-            role: "Interim Board Secretary",
-            credential: "Board of Directors",
-            bio: "Dr. Agnes Kosia supports board coordination, documentation, and governance processes as Interim Board Secretary.",
+            role: "Interim Secretary",
+            credential: "",
+            bio: "Dr. Agnes Kosia supports governance coordination, documentation, and governance processes as Interim Secretary.",
             photo: drAgnes,
           },
           {
             name: "Dr. Godwin Mwisomba",
             role: "Member",
-            credential: "Board of Directors",
-            bio: "Dr. Godwin Mwisomba serves as a board member, contributing oversight and guidance to support Kijana Simama's mission and programs.",
+            credential: "",
+            bio: "Dr. Godwin Mwisomba serves as a member, contributing oversight and guidance to support Kijana Simama's mission and programs.",
           },
           {
             name: "Mr. Ezekiel Lemana",
             role: "Member",
-            credential: "Board of Directors",
-            bio: "Mr. Ezekiel Lemana serves as a board member, supporting governance, digital implementation, and organizational growth for Kijana Simama.",
+            credential: "",
+            bio: "Mr. Ezekiel Lemana serves as a member, supporting governance, digital implementation, and organizational growth for Kijana Simama.",
             portfolioUrl: "https://lemana.dev",
           },
         ],
@@ -245,11 +245,11 @@ export function AboutPage({ language }: AboutPageProps) {
         comingSoon: "Inakuja",
         layers: {
           founders: "Founders Council",
-          board: "Board of Directors",
+          board: "Governance Team",
           executive: "Executive Team",
         },
         boardSummary:
-          "Board inasimamia uongozi, uwajibikaji, na mwelekeo wa kimkakati.",
+          "Timu hii inasimamia uwajibikaji, usimamizi, na mwelekeo wa kimkakati.",
         executiveSummary:
           "Taarifa za Executive Team zitaongezwa baada ya orodha kamili kuthibitishwa.",
         members: [
@@ -293,35 +293,35 @@ export function AboutPage({ language }: AboutPageProps) {
           {
             name: "Dkt. Syangu Mkony",
             role: "Interim Chairperson",
-            credential: "Board of Directors",
+            credential: "",
             bio: "Dkt. Syangu Mkony ni daktari bingwa wa afya ya akili na mtaalamu wa afya ya umma mwenye uzoefu wa zaidi ya miaka 15 katika maeneo ya matumizi ya dawa za kulevya, afya ya umma, na afya ya akili. Amejitoa kuendeleza afya ya akili ya vijana, afya ya uzazi na ujinsia, na ustawi wa kisaikolojia kupitia afua za shule na jamii nchini Tanzania. Kupitia Kijana Simama, anaendeleza uwezeshaji wa vijana, kukuza vipaji mapema, na kujenga mustakabali wenye ustahimilivu na afya kwa vijana.",
             photo: drSyangu,
           },
           {
             name: "Dkt. Laura Urassa",
             role: "Interim Treasurer",
-            credential: "Board of Directors",
+            credential: "",
             bio: "Dkt. Laura Urassa anasaidia usimamizi wa fedha na uwajibikaji kama Interim Treasurer, akiimarisha matumizi sahihi ya rasilimali za Kijana Simama.",
             photo: drLaura,
           },
           {
             name: "Dkt. Agnes Kosia",
-            role: "Interim Board Secretary",
-            credential: "Board of Directors",
-            bio: "Dkt. Agnes Kosia anasaidia uratibu wa bodi, kumbukumbu, na taratibu za kiutawala kama Interim Board Secretary.",
+            role: "Interim Secretary",
+            credential: "",
+            bio: "Dkt. Agnes Kosia anasaidia uratibu wa uongozi, kumbukumbu, na taratibu za kiutawala kama Interim Secretary.",
             photo: drAgnes,
           },
           {
             name: "Dr. Godwin Mwisomba",
             role: "Member",
-            credential: "Board of Directors",
-            bio: "Dr. Godwin Mwisomba ni mjumbe wa bodi anayechangia usimamizi na mwongozo wa kusaidia dhamira na programu za Kijana Simama.",
+            credential: "",
+            bio: "Dr. Godwin Mwisomba ni mjumbe anayechangia usimamizi na mwongozo wa kusaidia dhamira na programu za Kijana Simama.",
           },
           {
             name: "Mr. Ezekiel Lemana",
             role: "Member",
-            credential: "Board of Directors",
-            bio: "Mr. Ezekiel Lemana ni mjumbe wa bodi anayesaidia katika governance, utekelezaji wa kidijitali, na ukuaji wa taasisi ya Kijana Simama.",
+            credential: "",
+            bio: "Mr. Ezekiel Lemana ni mjumbe anayesaidia katika governance, utekelezaji wa kidijitali, na ukuaji wa taasisi ya Kijana Simama.",
             portfolioUrl: "https://lemana.dev",
           },
         ],
@@ -419,9 +419,11 @@ export function AboutPage({ language }: AboutPageProps) {
             {member.name}
           </p>
           <p className="text-xs font-semibold leading-snug text-secondary">{member.role}</p>
-          <p className="line-clamp-1 text-xs text-gray-500">
-            {member.credential}
-          </p>
+          {member.credential && (
+            <p className="line-clamp-1 text-xs text-gray-500">
+              {member.credential}
+            </p>
+          )}
         </div>
       </div>
     </motion.button>
@@ -697,9 +699,11 @@ export function AboutPage({ language }: AboutPageProps) {
                   <DialogTitle className="pr-12 text-2xl leading-tight text-white sm:text-3xl">
                     {selectedMember.name}
                   </DialogTitle>
-                  <DialogDescription className="max-w-lg text-sm leading-relaxed text-blue-50 sm:text-base">
-                    {selectedMember.credential}
-                  </DialogDescription>
+                  {selectedMember.credential && (
+                    <DialogDescription className="max-w-lg text-sm leading-relaxed text-blue-50 sm:text-base">
+                      {selectedMember.credential}
+                    </DialogDescription>
+                  )}
                 </DialogHeader>
               </div>
 
