@@ -21,6 +21,9 @@ interface ContactPageProps {
   onNavigate?: (page: string) => void;
 }
 
+const MAP_URL = "https://www.google.com/maps?q=-6.7924,39.2083";
+const MAP_COORDINATES = "6.7924° S, 39.2083° E";
+
 export function ContactPage({ language, onNavigate }: ContactPageProps) {
   const [formData, setFormData] = useState({
     name: "",
@@ -75,6 +78,11 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
         title: "Follow Us",
         description: "Stay connected with us on social media",
       },
+      map: {
+        title: "Dar es Salaam, Tanzania",
+        coordinates: `Coordinates: ${MAP_COORDINATES}`,
+        action: "Open in Google Maps",
+      },
     },
     sw: {
       title: "Wasiliana Nasi",
@@ -119,6 +127,11 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
       social: {
         title: "Tufuate",
         description: "Endelea kuungana nasi kwenye mitandao ya kijamii",
+      },
+      map: {
+        title: "Dar es Salaam, Tanzania",
+        coordinates: `Coordinates: ${MAP_COORDINATES}`,
+        action: "Fungua kwenye Google Maps",
       },
     },
   };
@@ -332,7 +345,7 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
           <p className="text-xl text-gray-600 mb-8">{t.social.description}</p>
           <div className="flex justify-center gap-4">
             <a
-              href="https://web.facebook.com/people/KijanaSimama-Tz/61590409662249/"
+              href="https://www.facebook.com/people/KijanaSimama-Tz/61590409662249/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -366,14 +379,30 @@ export function ContactPage({ language, onNavigate }: ContactPageProps) {
       </section>
 
       {/* Map Section */}
-      <section className="h-96 bg-gray-200">
-        <div className="w-full h-full flex items-center justify-center text-gray-500">
-          <MapPin className="w-12 h-12 mr-3" />
-          <span>Map Location - Dar es Salaam, Tanzania</span>
-        </div>
+      <section className="bg-gray-100 px-3 py-10 sm:px-4 md:py-14">
+        <a
+          href={MAP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group mx-auto flex min-h-72 max-w-5xl flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-primary/10 bg-linear-to-br from-primary via-blue-600 to-secondary p-6 text-center text-white shadow-2xl shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-primary/25 sm:min-h-80"
+          aria-label="Open Kijana Simama location in Google Maps"
+        >
+          <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-3xl bg-white/15 backdrop-blur transition-transform duration-300 group-hover:scale-110">
+            <MapPin className="h-8 w-8" />
+          </div>
+          <h2 className="text-2xl font-bold sm:text-3xl">{t.map.title}</h2>
+          <p className="mt-2 text-sm text-blue-50 sm:text-base">
+            {t.map.coordinates}
+          </p>
+          <span className="mt-6 rounded-full bg-white px-5 py-3 text-sm font-bold text-primary shadow-lg transition-all duration-300 group-hover:bg-secondary group-hover:text-white">
+            {t.map.action}
+          </span>
+        </a>
       </section>
     </div>
   );
 }
+
+
 
 

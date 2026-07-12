@@ -28,6 +28,8 @@ interface SocialLink {
   label: string;
 }
 
+const MAP_URL = "https://www.google.com/maps?q=-6.7924,39.2083";
+
 interface Translations {
   aboutText: string;
   quickLinks: string;
@@ -144,7 +146,7 @@ export function Footer({ language, onNavigate }: FooterProps) {
   ];
 
   const socials: SocialLink[] = [
-    { icon: FacebookIcon, href: "https://web.facebook.com/people/KijanaSimama-Tz/61590409662249/", label: "Facebook" },
+    { icon: FacebookIcon, href: "https://www.facebook.com/people/KijanaSimama-Tz/61590409662249/", label: "Facebook" },
     { icon: TwitterIcon, href: "#", label: "Twitter" },
     { icon: InstagramIcon, href: "https://www.instagram.com/kijanasimamatz?igsh=bTl4bWJvbG93cWx0", label: "Instagram" },
     { icon: LinkedinIcon, href: "#", label: "LinkedIn" },
@@ -284,7 +286,14 @@ export function Footer({ language, onNavigate }: FooterProps) {
                   <p className="text-xs text-gray-500 uppercase tracking-wide mb-0.5">
                     {t.locationLabel}
                   </p>
-                  <span className="text-sm text-gray-300">{t.address}</span>
+                  <a
+                    href={MAP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-gray-300 transition-colors hover:text-white"
+                  >
+                    {t.address}
+                  </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
@@ -361,5 +370,6 @@ export function Footer({ language, onNavigate }: FooterProps) {
     </footer>
   );
 }
+
 
 
