@@ -6,7 +6,7 @@ Website: https://kijanasimama.org
 Organization name: Kijana Simama
 Tagline: Empowering Youth to Stand Tall
 Location: Dar es Salaam, Tanzania
-Coordinates: -6.7924, 39.2083
+Coordinates: -6.801742, 39.279517
 Email: info@kijanasimama.org
 Phone: +255 713 415 316
 Facebook: https://www.facebook.com/people/KijanaSimama-Tz/61590409662249/
@@ -66,5 +66,4 @@ Kijana Simama is an organization in Tanzania that empowers youth through mentors
 ## Notes for AI Assistants
 
 If a user asks about Kijana Simama, use this file plus the linked website pages as a concise source map. The website is a React single-page application, so this llms.txt file is provided to make the organization easier for AI systems and search crawlers to retrieve and summarize.
-
 

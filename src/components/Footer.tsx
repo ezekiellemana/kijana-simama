@@ -28,7 +28,7 @@ interface SocialLink {
   label: string;
 }
 
-const MAP_URL = "https://www.google.com/maps?q=-6.7924,39.2083";
+const MAP_URL = "https://www.google.com/maps?q=-6.801742,39.279517";
 
 interface Translations {
   aboutText: string;
@@ -370,6 +370,4 @@ export function Footer({ language, onNavigate }: FooterProps) {
     </footer>
   );
 }
-
-
 

@@ -21,10 +21,10 @@ interface ContactPageProps {
   onNavigate?: (page: string) => void;
 }
 
-const MAP_URL = "https://www.google.com/maps?q=-6.7924,39.2083";
+const MAP_URL = "https://www.google.com/maps?q=-6.801742,39.279517";
 const MAP_EMBED_URL =
-  "https://www.google.com/maps?q=-6.7924,39.2083&z=14&output=embed";
-const MAP_COORDINATES = "6.7924 S, 39.2083 E";
+  "https://www.google.com/maps?q=-6.801742,39.279517&z=14&output=embed";
+const MAP_COORDINATES = "6.801742 S, 39.279517 E";
 
 export function ContactPage({ language, onNavigate }: ContactPageProps) {
   const [formData, setFormData] = useState({
